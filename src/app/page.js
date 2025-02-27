@@ -1,165 +1,19 @@
 "use client";
-import { useEffect } from "react";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
-import { Montserrat } from "next/font/google";
-import { MdOutlineDoubleArrow } from "react-icons/md";
-import Section1 from "@/components/Section1/Section1";
+
+import Section1 from "@/components/Home/Section1/Section1";
+import Counter from "@/components/Home/Counter/Counter";
 
 gsap.registerPlugin(ScrollTrigger);
-const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
-const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
+
 export default function Home() {
-  useEffect(() => {
-    gsap.to(
-      "#leftChair",
-
-      {
-        y: "-200px", // To state
-        duration: 2,
-        opacity: 0.8,
-        ease: "power3.inOut",
-        scrollTrigger: {
-          trigger: ".trigger",
-          start: "top 0%",
-          end: "bottom 40%",
-          scrub: 2,
-        },
-      }
-    );
-    gsap.to(
-      "#leftWall",
-
-      {
-        y: "-200px", // To state
-        duration: 2,
-        ease: "power3.inOut",
-        opacity: 0.8,
-        scrollTrigger: {
-          trigger: ".trigger",
-          start: "top 0%",
-          end: "bottom 40%",
-          scrub: 2,
-        },
-      }
-    );
-    gsap.to(
-      "#rightChair",
-
-      {
-        y: "-200px", // To state
-        duration: 2,
-        opacity: 0.8,
-        ease: "power3.inOut",
-        scrollTrigger: {
-          trigger: ".trigger",
-          start: "top 0%",
-          end: "bottom 40%",
-          scrub: 2,
-        },
-      }
-    );
-    gsap.to(
-      "#rightWall",
-
-      {
-        y: "-200px", // To state
-        duration: 2,
-        opacity: 0.8,
-        ease: "power3.inOut",
-        scrollTrigger: {
-          trigger: ".trigger",
-          start: "top 0%",
-          end: "bottom 40%",
-          scrub: 2,
-        },
-      }
-    );
-    // gsap.to(
-    //   "#ground",
-
-    //   {
-    //     y: "50px", // To state
-    //     z: "200px",
-    //     duration: 2,
-    //     opacity: 0.8,
-    //     ease: "power3.inOut",
-    //     scrollTrigger: {
-    //       trigger: ".trigger",
-    //       start: "top 0%",
-    //       end: "bottom 40%",
-    //       scrub: 2,
-    //     },
-    //   }
-    // );
-
-    //openings
-
-    gsap.fromTo(
-      "#ground",
-
-      { y: "200px", opacity: 0.4 },
-      {
-        y: "0px", // To state
-        duration: 1,
-        ease: "power3.inOut",
-        opacity: 1,
-        scrollTrigger: ".trigger",
-      }
-    );
-    gsap.fromTo(
-      "#leftWall",
-
-      { y: "-200px", opacity: 0.4 },
-      {
-        y: "0px", // To state
-        duration: 1.5,
-        ease: "power3.inOut",
-        opacity: 1,
-        scrollTrigger: ".trigger",
-      }
-    );
-    gsap.fromTo(
-      "#rightWall",
-
-      { y: "-200px", opacity: 0.4 },
-      {
-        y: "0px", // To state
-        duration: 1.5,
-        ease: "power3.inOut",
-        opacity: 1,
-        scrollTrigger: ".trigger",
-      }
-    );
-    gsap.fromTo(
-      "#leftChair",
-
-      { y: "-200px", opacity: 0.4 },
-      {
-        y: "0px", // To state
-        duration: 1.5,
-        ease: "power3.inOut",
-        opacity: 1,
-        scrollTrigger: ".trigger",
-      }
-    );
-    gsap.fromTo(
-      "#rightChair",
-      { y: "-200px", opacity: 0.4 },
-      {
-        y: "0px", // To state
-        duration: 1.5,
-        ease: "power3.inOut",
-        opacity: 1,
-        scrollTrigger: ".trigger",
-      }
-    );
-  }, []);
-
   return (
     <>
       <Section1 />
+      <Counter />
+      <div className="h-screen"></div>
     </>
   );
 }

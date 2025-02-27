@@ -22,6 +22,8 @@ module.exports = {
         "custom-gradient": "linear-gradient(150deg, #000000, #4D4040)",
         "title-gradient":
           "linear-gradient(90deg, rgba(237,136,28,1) 0%, rgba(190,116,66,1) 32%, rgba(194,194,194,1) 87%)",
+        counter:
+          "linear-gradient(90deg, rgba(154,101,10,1) 0%, rgba(233,206,165,1) 51%, rgba(149,140,140,1) 100%)",
       },
     },
   },
