@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <Section1 />
       <Counter />
-      <div className="h-screen"></div>
+      <div className="h-screen "></div>
     </>
   );
 }
