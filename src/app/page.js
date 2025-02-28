@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Section1 from "@/components/Home/Section1/Section1";
 import Counter from "@/components/Home/Counter/Counter";
+import About from "@/components/Home/About/About";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +14,10 @@ export default function Home() {
     <>
       <Section1 />
       <Counter />
-      <div className="h-screen "></div>
+      <About />
+      <div className="h-screen">
+        <p>www</p>
+      </div>
     </>
   );
 }
