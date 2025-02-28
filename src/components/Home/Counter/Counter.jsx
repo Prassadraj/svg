@@ -43,36 +43,46 @@ function Counter() {
 
   return (
     <div
-      className={` flex w-full items-center justify-around tablet:px-10 h-auto ${mont.className}`}
+      className={` flex w-full items-center justify-around tablet:px-10 h-fit py-5 ${mont.className}`}
     >
-      <div className=" flex gap-4 items-center  ">
+      <div className=" flex gap-8 items-center  ">
         <div className=" flex flex-col items-start gap-4">
-          <div className="h-auto w-fit ">
+          <div
+            className="h-auto w-60   overflow-hidden"
+            style={{
+              borderRadius: "0% 37% 57% 37% / 25% 39% 0% 44%",
+            }}
+          >
             <Image
-              src="/CounterImgs/counterLeft.png"
+              src="/CounterImgs/right.png"
               width={100}
               height={100}
               alt="img"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hover:scale-105 hover:-rotate-2 duration-200 ease-in-out"
             />
           </div>
-          <div className="h-auto w-fit">
+          <div className="h-auto w-fit ">
             <Image
               src="/CounterImgs/light.png"
               width={100}
               height={100}
               alt="img"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hover:scale-105 hover:-rotate-2 duration-200 ease-in-out"
             />
           </div>
         </div>
-        <div className="h-auto w-fit">
+        <div
+          className="h-auto w-60  overflow-hidden"
+          style={{
+            borderRadius: "0% 1% 57% 0% / 25% 25% 47% 25%",
+          }}
+        >
           <Image
-            src="/CounterImgs/counterRight.png"
+            src="/CounterImgs/rightimg.png"
             width={100}
             height={100}
             alt="img"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover hover:scale-105 hover:rotate-2 duration-200 ease-in-out"
           />
         </div>
       </div>
