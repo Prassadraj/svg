@@ -15,6 +15,7 @@ function Counter() {
     { end: 200, label: "Projects completed", img: clients },
     { end: 250, label: "Satisfied Clients", img: design },
     { end: 500, label: "Unique Style", img: complete },
+    { end: 500, label: "Commercial Spaces Designed", img: complete },
   ];
 
   const statRefs = useRef([]);
@@ -42,11 +43,11 @@ function Counter() {
 
   return (
     <div
-      className={` flex w-full items-center justify-around tablet:px-10 h-1/2 ${mont.className}`}
+      className={` flex w-full items-center justify-around tablet:px-10 h-auto ${mont.className}`}
     >
       <div className=" flex gap-4 items-center  ">
         <div className=" flex flex-col items-start gap-4">
-          <div className="h-[250px] w-fit ">
+          <div className="h-auto w-fit ">
             <Image
               src="/CounterImgs/counterLeft.png"
               width={100}
@@ -55,7 +56,7 @@ function Counter() {
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="h-36 w-fit">
+          <div className="h-auto w-fit">
             <Image
               src="/CounterImgs/light.png"
               width={100}
@@ -65,7 +66,7 @@ function Counter() {
             />
           </div>
         </div>
-        <div className="h-64 w-fit">
+        <div className="h-auto w-fit">
           <Image
             src="/CounterImgs/counterRight.png"
             width={100}
@@ -76,7 +77,7 @@ function Counter() {
         </div>
       </div>
       {/* {stats.map((stat, index) => ( */}
-      <div className="grid grid-cols-2 gap-4 place-items-center w-1/2 tablet:flex">
+      <div className="grid grid-cols-2 gap-4 place-items-center  tablet:flex">
         {stats.map((stat, i) => (
           <div
             key={i}
