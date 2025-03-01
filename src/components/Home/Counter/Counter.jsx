@@ -33,7 +33,7 @@ function Counter() {
             ease: "power3.inOut",
             snap: { textContent: 1 },
             scrollTrigger: {
-              trigger: stat,
+              trigger: ".trig",
               start: "top 80%",
             },
           }
@@ -44,7 +44,7 @@ function Counter() {
 
   return (
     <div
-      className={` flex w-full laptop:flex-row px-5 gap-6 tablet:gap-10 laptop:gap-5 flex-col items-center justify-around tablet:px-10 container h-fit py-5 ${mont.className}`}
+      className={` flex w-full laptop:flex-row px-5 gap-6 tablet:gap-10 laptop:gap-5 flex-col items-center justify-around tablet:px-10 mx-auto container h-full mb-10 ${mont.className} trig`}
     >
       {/* left div  */}
       <div className=" flex gap-8 items-center  ">
@@ -109,11 +109,22 @@ function Counter() {
       </div>
 
       {/* right div  */}
-      <div className="grid grid-cols-2 tablet:gap-4 justify-center laptop:gap-8 place-items-center tablet:flex tablet:flex-wrap w-full">
+      <div className="grid tablet:grid-cols-6 grid-rows-2 grid-cols-4   laptop:w-1/2 w-full laptop:gap-10 gap-10">
         {stats.map((stat, i) => (
-          <div key={i} className="flex flex-col gap-2 items-center ">
-            {/* Animated Number */}
-            <div className="flex items-center gap-1 text-transparent bg-counter bg-clip-text tablet:text-5xl text-2xl font-semibold">
+          <div
+            key={i}
+            className={`grid place-items-center ${
+              i == 0 && "col-start-1 row-start-1 col-end-3"
+            } ${i == 1 && "col-start-3 row-start-1  col-end-5"} ${
+              i == 2 &&
+              "tablet:col-start-5 tablet:row-start-1  tablet:col-end-7 col-start-1 col-end-3 row-start-2"
+            } ${i == 3 && "col-start-3 row-start-2  col-end-5"}`}
+          >
+            <div
+              className="flex gap-1 text-center items-center w-full justify-center
+            text-transparent bg-counter bg-clip-text tablet:text-5xl text-2xl font-semibold"
+            >
+              {" "}
               <Image
                 src={stat.img}
                 width={100}
@@ -126,9 +137,9 @@ function Counter() {
               </p>
               <span>+</span>
             </div>
-            {/* Label */}
+
             <p
-              className={`${montLight.className} text-center tablet:text-sm text-nowrap font-semibold`}
+              className={`${montLight.className} text-center tablet:text-sm laptop:text-nowrap font-semibold`}
             >
               {stat.label}
             </p>
@@ -140,3 +151,31 @@ function Counter() {
 }
 
 export default Counter;
+{
+  /* <div className="grid grid-cols-2 tablet:gap-4 justify-center laptop:gap-8 place-items-center tablet:flex tablet:flex-wrap w-full">
+{stats.map((stat, i) => (
+  <div key={i} className="flex flex-col gap-2 items-center ">
+  
+    <div className="flex items-center gap-1 text-transparent bg-counter bg-clip-text tablet:text-5xl text-2xl font-semibold">
+      <Image
+        src={stat.img}
+        width={100}
+        height={100}
+        alt="img"
+        className="h-10 w-fit object-cover"
+      />
+      <p ref={(el) => (statRefs.current[i] = el)} className="">
+        0
+      </p>
+      <span>+</span>
+    </div>
+
+    <p
+      className={`${montLight.className} text-center tablet:text-sm text-nowrap font-semibold`}
+    >
+      {stat.label}
+    </p>
+  </div>
+))}
+</div> */
+}

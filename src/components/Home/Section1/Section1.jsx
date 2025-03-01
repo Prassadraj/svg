@@ -63,7 +63,7 @@ export default function Section1() {
   }, []);
 
   return (
-    <div className="container  tablet:px-10">
+    <div className="mx-auto container  tablet:px-10">
       {/* gradient */}
       <div className="absolute w-full h-full left-0 top-0 z-0">
         <Image

@@ -1,25 +1,45 @@
+import axios from "axios";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 
 function About() {
+  // const [data, setdata] = useState([]);
+  // useEffect(() => {
+  //   const fetchCatFact = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "https://dog.ceo/api/breeds/image/random"
+  //       );
+  //       console.log("Cat Fact:", response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching cat fact:", error);
+  //     }
+  //   };
+  //   fetchCatFact();
+  // }, []);
+
   return (
-    <div className="h-screen w-full tablet:px-10 container flex flex-col gap-5 ">
+    <div className=" w-full tablet:px-10 mb-20  mx-auto container flex flex-col gap-5 h-screen ">
       {/* first div  */}
-      <div className="flex  flex-col items-end w-full ml-auto gap-3">
-        <h1 className=" text-transparent bg-clip-text h-fit text-right bg-title-gradient text-5xl font-semibold">
+      <div className="flex  flex-col laptop:items-end w-full laptop:ml-auto laptop:gap-3 gap-4 items-center">
+        <h1 className=" text-transparent bg-clip-text h-fit laptop:text-right text-center  bg-title-gradient text-5xl font-semibold">
           {/* Modern Interior Design Service  */}
           ksdkskdks ksdkskd <br /> ksdksdsd sdsdsd.
         </h1>
-        <p className="text-right break-words w-1/3">
+        <p className="laptop:text-right text-center break-words laptop:w-1/3">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
           optio necessitatibus voluptates amet consectetur, tempora omnis rerum
         </p>
       </div>
-      <div className="relative w-full h-full bg-[url('/bgHome.png')] bg-no-repeat bg-cover">
+      {/* tablet  */}
+      <div
+        className=" grid-cols-[0.2fr_1fr_1fr_1fr_1fr_1fr_1fr_0.5fr] grid-rows-10 gap-5  h-full
+      tablet:grid hidden"
+      >
         <div
-          className="absolute -top-32 left-10 w-[500px] h-[450px]  overflow-hidden
-         "
+          className="relative grid col-start-1 col-end-6 row-start-1 laptop:row-end-10
+        tablet:row-end-6 bg-red-500 overflow-hidden"
         >
           <Image
             alt="img"
@@ -28,34 +48,67 @@ function About() {
             className="w-full h-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
         </div>
-        <div className="absolute top-16 right-32 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px]  rounded-br-full z-10 overflow-hidden">
+        <div
+          className="relative overflow-hidden col-start-4 laptop:col-end-7 tablet:col-end-9
+         rounded-br-full row-start-2 laptop:row-end-7 tablet:row-end-5 bg-blue-500 z-20"
+        >
           <Image
-            fill
             alt="img"
+            fill
             src="/AboutImgs/about2.jpg"
-            className="w-full h-full object-cover hover:scale-105 transition-all duration-500 ease-in-out hover:rotate-1"
+            className="w-full h-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
         </div>
         <div
-          className="absolute bottom-0 w-[800px]  h-full right-0 rounded-tr-full flex items-end p-5"
+          className="laptop:row-start-5 tablet:row-start-3 z-10 border-gray-600 border laptop:row-end-12
+          tablet:row-end-7
+           laptop:col-start-5
+          col-start-4 col-end-10   rounded-tr-full"
+          style={{
+            background:
+              "linear-gradient(135deg, #757575 0%, #695F55 28%,#413A34 60%,#332B24 100%)",
+          }}
+        ></div>
+        <div
+          className="relative p-2 gap-4 flex z-10 flex-col  laptop:row-start-7 row-start-5
+         row-end-12  laptop:col-start-5 col-start-4 col-end-8 "
+        >
+          <p className="">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Consequuntur autem quibusdam laborum omnis quis architecto ipsum rem
+            magni voluptate.
+          </p>
+          <div className="flex gap-1 rounded-md w-fit items-center bg-gradient-to-l from-[#D48345] to-[#472B15] p-2 ">
+            <p className=" text-xs">About Us</p>
+            <BsArrowRight className="text-xl" />
+          </div>
+        </div>
+      </div>
+      {/* mobile  */}
+      <div className="tablet:hidden">
+        <Image
+          alt="img"
+          src="/AboutImgs/about1.jpeg"
+          width={100}
+          height={100}
+          className="aspect-square w-full object-cover"
+        />
+        <div
+          className=" p-2 gap-4 flex z-10 flex-col  laptop:row-start-7 row-start-5
+         row-end-12  laptop:col-start-5 col-start-4 col-end-8 "
           style={{
             background:
               "linear-gradient(135deg, #757575 0%, #695F55 28%,#413A34 60%,#332B24 100%)",
           }}
         >
-          <div className=" max-w-[90%]  break-words whitespace-normal flex flex-col gap-4">
-            <p className="">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptatibus aliquid laudantium magnam temporibus, ipsa tempora
-              aspernatur! Natus numquam iusto velit sunt quo, delectus mollitia
-              temporibus quaerat quia repellendus earum voluptatibus.
-            </p>
-            <div className="flex justify-between w-full">
-              <p className=" p-2 text-sm rounded-md bg-gradient-to-l from-[#D48345] to-[#472B15] text-white ">
-                About us
-              </p>
-              <BsArrowRight className="text-lg" />
-            </div>
+          <p className="">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Consequuntur autem quibusdam laborum omnis quis architecto ipsum rem
+            magni voluptate.
+          </p>
+          <div className="flex gap-1 rounded-md w-fit items-center bg-gradient-to-l from-[#D48345] to-[#472B15] p-2 ">
+            <p className=" text-xs">About Us</p>
+            <BsArrowRight className="text-xl" />
           </div>
         </div>
       </div>
@@ -64,24 +117,3 @@ function About() {
 }
 
 export default About;
-{
-  /* <div className="relative -top-32 left-44 bg-white h-[400px] w-1/3">
-<div className="absolute bottom-6 left-44 bg-orange-600 z-10 h-[250px] w-[550px] rounded-br-full"></div>
-</div>
-<div
-className="w-[650px] h-[400px] absolute bottom-10 right-0 z-0  rounded-tr-full"
-style={{
-  background:
-    "linear-gradient(135deg, #757575 0%, #695F55 28%,#413A34 60%,#332B24 100%)",
-}}
->
-<div className="absolute bottom-10 right-0">
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
-    quibusdam necessitatibus beatae, inventore ad alias perspiciatis
-    eius vitae provident excepturi? Nisi, porro! Sapiente aspernatur
-    numquam delectus? Culpa amet provident atque.
-  </p>
-</div>
-</div> */
-}

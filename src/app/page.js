@@ -15,7 +15,7 @@ export default function Home() {
       <Section1 />
       <Counter />
       <About />
-      <div className="h-screen">
+      <div className="h-screen bg-slate-700">
         <p>www</p>
       </div>
     </>
