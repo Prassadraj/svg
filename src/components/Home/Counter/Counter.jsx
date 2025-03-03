@@ -44,7 +44,7 @@ function Counter() {
 
   return (
     <div
-      className={` flex w-full laptop:flex-row px-5 gap-6 tablet:gap-10 laptop:gap-5 flex-col items-center justify-around tablet:px-10 mx-auto container h-full mb-10 ${mont.className} trig`}
+      className={` flex w-full laptop:flex-row px-5 gap-6 tablet:gap-10 laptop:gap-5 flex-col items-center justify-around tablet:px-10 mx-auto container h-full mb-10 ${mont.className} trig mb-20`}
     >
       {/* left div  */}
       <div className=" flex gap-8 items-center  ">
