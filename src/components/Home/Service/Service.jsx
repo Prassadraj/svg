@@ -8,7 +8,7 @@ function Service() {
   const [view, setView] = useState("");
   return (
     <div
-      className={`relative w-full tablet:px-10 px-5 mb-20 laptop:h-screen flex flex-col tablet:gap-10
+      className={`relative w-full tablet:px-10 px-5 mb-32  flex flex-col tablet:gap-10
         gap-7 laptop:gap-5 overflow-hidden ${mont.className}`}
       style={{
         backgroundImage: "url('/Service/serviceBg.png')",
@@ -17,7 +17,7 @@ function Service() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="flex  flex-col laptop:items-start w-full laptop:mr-auto laptop:gap-3 gap-4 items-center">
+      <div className="flex tablet:px-10  flex-col laptop:items-start w-full laptop:mr-auto laptop:gap-3 gap-4 items-center">
         <h1 className=" text-transparent bg-clip-text h-fit laptop:text-left text-center  bg-title-gradient text-5xl font-semibold">
           Our Services
         </h1>

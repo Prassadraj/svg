@@ -8,6 +8,7 @@ import Counter from "@/components/Home/Counter/Counter";
 import About from "@/components/Home/About/About";
 import Service from "@/components/Home/Service/Service";
 import Gallery from "@/components/Home/Gallery/Gallery";
+import Events from "@/components/Home/Events/Events";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +20,7 @@ export default function Home() {
       <About />
       <Service />
       <Gallery />
+      <Events />
     </>
   );
 }

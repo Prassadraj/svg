@@ -27,7 +27,7 @@ function About() {
       className={` w-full tablet:px-10 mb-20  mx-auto container flex flex-col gap-5 h-fit ${mont.className}`}
     >
       {/* first div  */}
-      <div className="flex  flex-col laptop:items-end w-full laptop:ml-auto laptop:gap-3 gap-4 items-center">
+      <div className="flex tablet:px-10 flex-col laptop:items-end w-full laptop:ml-auto laptop:gap-3 gap-4 items-center">
         <h1 className=" text-transparent bg-clip-text h-fit laptop:text-right text-center  bg-title-gradient text-5xl font-semibold">
           {/* Modern Interior Design Service  */}
           ksdkskdks ksdkskd <br /> ksdksdsd sdsdsd.
@@ -44,7 +44,7 @@ function About() {
         {/* title  */}
 
         <p
-          className={`col-start-5 col-end-7 row-start-1 text-right laptop:block hidden ${montLight.className}`}
+          className={`col-start-4 tablet:px-10 col-end-7 row-start-1 text-right laptop:block hidden ${montLight.className}`}
         >
           {/* Modern Interior Design Service  */}
           Lorem ipsum dolor sit amet consectetur adipisicing elitcc. Laboriosam
@@ -82,15 +82,19 @@ function About() {
         >
           {" "}
           <div
-            className={`px-5 py-1 bottom-3 absolute flex flex-col gap-2 ${montLight.className}`}
+            className={`px-5 py-1 bottom-3 absolute flex flex-col 
+                gap-2 ${montLight.className}`}
           >
             <p className="text-sm">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
               reiciendis iusto tempora. Provident cum iste nisi inventore
               voluptatum eligendi laudantium ex,
             </p>
-            <div className="flex gap-1 font-semibold rounded-md w-fit items-center bg-gradient-to-l from-[#D48345] to-[#472B15] py-1 px-3 ">
-              <p className=" text-xs ">About Us</p>
+            <div
+              className="flex gap-1
+        font-semibold rounded-md w-fit items-center bg-gradient-to-l from-[#D48345] to-[#472B15] py-1 px-3 "
+            >
+              <p className=" text-xs font-light">About Us</p>
               <BsArrowRight className="text-xl" />
             </div>
           </div>

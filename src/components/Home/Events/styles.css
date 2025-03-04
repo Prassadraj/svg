@@ -1,0 +1,35 @@
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+/* Change Swiper navigation button color */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff !important; /* 🔥 Change to your preferred color */
+}
+
+/* Optional: Change pagination dot color */
+.swiper-pagination-bullet {
+  background-color: #ffffff !important; /* 🔥 Change dot color */
+  font-size: xx-large;
+  height: 14px;
+  width: 14px;
+  border: 2px rgb(255, 255, 255) solid;
+}
+
+/* Optional: Change active pagination dot color */
+.swiper-pagination-bullet-active {
+  background-color: #ffffff !important; /* Darker shade */
+  border: 3px rgb(255, 93, 23) solid;
+}

@@ -63,9 +63,9 @@ export default function Section1() {
   }, []);
 
   return (
-    <div className="mx-auto container  tablet:px-10">
+    <div className="mx-auto container  tablet:px-10 tablet:mb-32 mt-24">
       {/* gradient */}
-      <div className="absolute w-full h-full left-0 top-0 z-0">
+      <div className="absolute w-full h-full left-0 top-0 -z-10">
         <Image
           src="/two.png"
           width={100}
@@ -74,7 +74,7 @@ export default function Section1() {
           className="w-full h-full "
         />
       </div>{" "}
-      <div className="absolute w-full h-full left-0 top-0 z-0">
+      <div className="absolute w-full h-full left-0 top-0 -z-10">
         <Image
           src="/circle.png"
           width={100}
@@ -85,7 +85,7 @@ export default function Section1() {
       </div>{" "}
       {/* gradient close*/}
       <div
-        className={` w-full  justify-evenly laptop:mt-10 laptop:justify-center  flex  flex-col-reverse laptop:flex-row items-center h-screen  trigger ${mont.className} `}
+        className={` w-full  justify-evenly  laptop:justify-center  flex  flex-col-reverse laptop:flex-row items-center   trigger ${mont.className} `}
       >
         {/* section one  */}
         <div className=" w-full tablet:h-full h-fit z-10 text-lg  flex flex-col gap-10 items-center justify-center  laptop:!items-start">
