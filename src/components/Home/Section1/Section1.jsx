@@ -123,7 +123,7 @@ export default function Section1() {
           </div>
         </div>
         {/* section two  */}
-        <div className="  w-full tablet:h-full h-fit flex flex-col gap-5 tablet:gap-10  items-center justify-center mt-20 tablet:mt-32 laptop:mt-0 tablet:justify-center">
+        <div className="  w-full tablet:h-full h-fit flex flex-col gap-5 tablet:gap-10 laptop:gap-0  items-center justify-center mt-20 tablet:mt-32 laptop:mt-0 tablet:justify-center">
           <p
             className="text-center text-3xl tablet:text-6xl font-semibold px-2
            bg-title-gradient w-full text-transparent bg-clip-text laptop:hidden z-10"

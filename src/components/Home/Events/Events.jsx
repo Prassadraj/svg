@@ -17,7 +17,7 @@ function Events() {
   return (
     <div
       className={`relative w-full tablet:px-10 px-5 mb-32  flex flex-col tablet:gap-10
-      gap-7 laptop:gap-3 overflow-hidden ${mont.className}`}
+      gap-7 laptop:gap-1 overflow-hidden ${mont.className}`}
       style={{
         backgroundImage: "url('/Service/serviceBg.png')",
         backgroundPosition: "center",

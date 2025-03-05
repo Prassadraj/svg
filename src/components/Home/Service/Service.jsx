@@ -67,7 +67,7 @@ function Service() {
             alt="img"
             fill
             src="/Service/service2.png"
-            className="h-full relative w-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
+            className="h-full relative w-full object-cover hover:scale-95 transition-all duration-500 ease-in-out"
           />
           <div
             className={`${
