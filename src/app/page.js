@@ -5,7 +5,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Section1 from "@/components/Home/Section1/Section1";
 import Counter from "@/components/Home/Counter/Counter";
-import New from "@/components/New/New";
+import About from "@/components/Home/About/About";
+import Service from "@/components/Home/Service/Service";
+import Gallery from "@/components/Home/Gallery/Gallery";
+import Events from "@/components/Home/Events/Events";
+import Manufacture from "@/components/Home/Manufacture/Manufacture";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +18,11 @@ export default function Home() {
     <>
       <Section1 />
       <Counter />
-      <New />
+      <About />
+      <Service />
+      <Gallery />
+      <Events />
+      <Manufacture />
     </>
   );
 }
