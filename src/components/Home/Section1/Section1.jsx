@@ -139,11 +139,11 @@ export default function Section1() {
           <Image
             src="/wall.svg"
             width={100}
-            className="w-full h-fit object-contain  z-10 laptop:hidden"
+            className="w-full h-fit object-contain  z-10 tablet:hidden"
             alt="img"
             height={100}
           />
-          <div className="grid grid-cols-[100px_100px_100px_100px_100px_100px] grid-rows-[100px_100px_100px_100px_100px] ">
+          <div className="tablet:grid grid-cols-[100px_100px_100px_100px_100px_100px] grid-rows-[100px_100px_100px_100px_100px] hidden ">
             <div className="col-start-1 col-end-4 row-start-1 row-end-4">
               <Image
                 src="/right.jpeg"
