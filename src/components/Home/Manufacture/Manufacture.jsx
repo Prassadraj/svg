@@ -40,8 +40,8 @@ function Manufacture() {
           </p>
         </div>
       </div>
-      <div className="hidden grid-cols-[1fr_0.75fr_200px_0.5fr]   w-full tablet:grid">
-        <div className="col-start-1 col-end-5 row-start-2 z-20">
+      <div className="hidden grid-cols-[1fr_200px_200px_0.5fr]   w-full tablet:grid">
+        <div className="col-start-1 col-end-2 row-start-2 z-20">
           <h1
             className={`p-1 text-transparent bg-clip-text h-fit text-center tablet:text-left  bg-title-gradient text-4xl tablet:text-5xl font-semibold  ${news.className} `}
           >
@@ -59,7 +59,16 @@ function Manufacture() {
             for Assemby, Packaging and Dispatch
           </p>
         </div>
-
+        {/* Manufacturing img  */}
+        <div className="row-start-1 row-end-4 col-start-2 col-end-4 z-0">
+          <Image
+            src="/Manufacture/img1.jpeg"
+            width={900}
+            alt="img"
+            height={900}
+            className="w-full !h-[500px] object-cover rounded-md"
+          />
+        </div>
         <div className="row-start-2 col-start-3 col-end-5 row-end-3 z-10">
           {/* right img  */}
           <Image
@@ -70,18 +79,9 @@ function Manufacture() {
             className="w-full !h-[350px] object-cover rounded-md"
           />
         </div>
-        {/* Manufacturing img  */}
-        <div className="row-start-1 row-end-4 col-start-4 col-end-7 z-0">
-          <Image
-            src="/Manufacture/img1.jpeg"
-            width={900}
-            alt="img"
-            height={900}
-            className="w-full object-cover rounded-md"
-          />
-        </div>
+
         {/* vector */}
-        <div className="row-start-1 row-end-4 col-start-4 col-end-8  -z-10">
+        <div className="row-start-1 row-end-4 col-start-3 col-end-5  -z-10">
           <Image
             src="/Manufacture/vector.svg"
             width={900}
@@ -90,7 +90,7 @@ function Manufacture() {
             className="w-full  object-cover rounded-md"
           />
         </div>
-        <div className="row-start-1 row-end-4 col-start-5 col-end-8  -z-10">
+        <div className="row-start-2 row-end-4 col-start-3 col-end-5  -z-10">
           <Image
             src="/Manufacture/vector2.svg"
             width={900}
