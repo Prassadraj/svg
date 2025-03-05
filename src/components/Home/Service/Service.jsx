@@ -91,7 +91,7 @@ function Service() {
         <div
           onMouseEnter={() => setView("three")}
           onMouseLeave={() => setView("")}
-          className="tablet:w-[300px] w-[200px] tablet:h-[350px] h-[250px] tablet:!col-span-2  laptop:col-span-1 relative rounded-t-full overflow-hidden border-2 border-dotted "
+          className="tablet:w-[300px] w-[200px] tablet:h-[350px] h-[250px] tablet:!col-span-2  laptop:!col-span-1 relative rounded-t-full overflow-hidden border-2 border-dotted "
         >
           <Image
             alt="img"
