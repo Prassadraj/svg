@@ -27,9 +27,10 @@ export default function Section1() {
       ease: "power3.inOut",
       scrollTrigger: {
         trigger: ".trigger",
+        // markers:true,
         start: "top 10%", // Adjusted to reduce aggressive triggering
-        end: "bottom 50%",
-        scrub: 1,
+        end: "bottom 10%",
+        scrub: 2,
       },
     });
 
@@ -86,10 +87,10 @@ export default function Section1() {
       </div>{" "}
       {/* gradient close*/}
       <div
-        className={` justify-evenly  laptop:justify-center  flex  flex-col-reverse laptop:flex-row items-center   trigger ${news.className} `}
+        className={` justify-evenly  laptop:justify-center  flex gap-2 tablet:gap-4 flex-col-reverse laptop:flex-row items-center   trigger ${news.className} `}
       >
         {/* section one  */}
-        <div className=" w-full tablet:h-full h-fit z-10 text-lg  flex flex-col gap-10 items-center justify-center  laptop:!items-start">
+        <div className=" w-full tablet:h-full h-fit z-10 text-lg   flex flex-col gap-10 items-center justify-center  laptop:!items-start">
           <h1
             className="text-center text-3xl font-semibold 
            bg-title-gradient w-full h-fit text-transparent bg-clip-text laptop:block hidden tablet:text-left tablet:text-6xl "
@@ -97,7 +98,7 @@ export default function Section1() {
             dfdfh nfdnf dnkdnf nkdnf
           </h1>
           <p
-            className={`${montLight.className} text-center mt-2  laptop:text-left tablet:text-3xl laptop:text-xl`}
+            className={`${montLight.className} text-center mt-2   laptop:text-left tablet:text-3xl laptop:text-xl`}
           >
             {/* Design Qube, founded in 2020 in Chennai, specializes in interior
             fit-outs, project management, and execution. With a 9000 sq. ft.
@@ -138,10 +139,30 @@ export default function Section1() {
           <Image
             src="/wall.svg"
             width={100}
-            className="w-full h-fit object-contain  z-10"
+            className="w-full h-fit object-contain  z-10 laptop:hidden"
             alt="img"
             height={100}
           />
+          <div className="grid grid-cols-[100px_100px_100px_100px_100px_100px] grid-rows-[100px_100px_100px_100px_100px] ">
+            <div className="col-start-1 col-end-4 row-start-1 row-end-4">
+              <Image
+                src="/right.jpeg"
+                width={100}
+                className="w-full  object-cover  rounded-tl-[20%] rounded-xl"
+                alt="img"
+                height={100}
+              />
+            </div>
+            <div className="col-start-3 col-end-7 row-start-2 row-end-4 z-10">
+              <Image
+                src="/Gallery/livingRoom.png"
+                width={100}
+                className="w-full  object-cover h-[300px] rounded-2xl "
+                alt="img"
+                height={100}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
