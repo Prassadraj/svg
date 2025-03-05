@@ -6,7 +6,8 @@ import design from "../../../../public/CounterImgs/design.gif";
 import complete from "../../../../public/CounterImgs/complete.gif";
 import corporate from "../../../../public/CounterImgs/corporate.gif";
 import Image from "next/image";
-import { Montserrat } from "next/font/google";
+import { Allerta_Stencil, Montserrat, Newsreader } from "next/font/google";
+const news = Allerta_Stencil({ subsets: ["latin"], weight: ["400"] });
 
 gsap.registerPlugin(ScrollTrigger);
 const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
@@ -44,7 +45,7 @@ function Counter() {
 
   return (
     <div
-      className={` flex w-full laptop:flex-row px-5 gap-6 tablet:gap-10 laptop:gap-5 flex-col items-center justify-around tablet:px-10 mx-auto container h-full mb-10 ${mont.className} trig mb-20`}
+      className={` flex w-full laptop:flex-row px-5 gap-6 tablet:gap-10 laptop:gap-5 flex-col items-center justify-around tablet:px-10 mx-auto container h-full mb-10 ${news.className} trig mb-20`}
     >
       {/* left div  */}
       <div className=" flex gap-8 items-center  ">

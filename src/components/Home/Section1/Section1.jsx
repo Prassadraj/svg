@@ -3,11 +3,12 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Newsreader } from "next/font/google";
 import { MdOutlineDoubleArrow } from "react-icons/md";
 
 gsap.registerPlugin(ScrollTrigger);
 const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
+const news = Newsreader({ subsets: ["latin"], weight: ["800"] });
 const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
 export default function Section1() {
   useEffect(() => {
@@ -63,7 +64,7 @@ export default function Section1() {
   }, []);
 
   return (
-    <div className="mx-auto container  tablet:px-10 tablet:mb-32 mt-24">
+    <div className="mx-auto container   tablet:!px-10 tablet:mb-32 mt-28 mb-10 w-full">
       {/* gradient */}
       <div className="absolute w-full h-full left-0 top-0 -z-10">
         <Image
@@ -85,18 +86,18 @@ export default function Section1() {
       </div>{" "}
       {/* gradient close*/}
       <div
-        className={` w-full  justify-evenly  laptop:justify-center  flex  flex-col-reverse laptop:flex-row items-center   trigger ${mont.className} `}
+        className={` justify-evenly  laptop:justify-center  flex  flex-col-reverse laptop:flex-row items-center   trigger ${news.className} `}
       >
         {/* section one  */}
         <div className=" w-full tablet:h-full h-fit z-10 text-lg  flex flex-col gap-10 items-center justify-center  laptop:!items-start">
           <h1
-            className="text-center text-3xl font-semibold px-2
+            className="text-center text-3xl font-semibold 
            bg-title-gradient w-full h-fit text-transparent bg-clip-text laptop:block hidden tablet:text-left tablet:text-6xl "
           >
             dfdfh nfdnf dnkdnf nkdnf
           </h1>
           <p
-            className={`${montLight.className} text-center laptop:text-left tablet:text-3xl laptop:text-xl`}
+            className={`${montLight.className} text-center mt-2  laptop:text-left tablet:text-3xl laptop:text-xl`}
           >
             {/* Design Qube, founded in 2020 in Chennai, specializes in interior
             fit-outs, project management, and execution. With a 9000 sq. ft.
@@ -115,7 +116,9 @@ export default function Section1() {
               <div className="absolute inset-0 bg-black rounded-lg m-[1px] tablet:rounded-tr-full tablet:rounded-none"></div>
               <div className="relative z-10 text-white text-center  font-light group-hover:transform group-hover:-translate-x-2 duration-500 ease-linear">
                 <div className="flex items-center  gap-1 ">
-                  <p className="text-base">Explore Now</p>
+                  <p className={`text-base ${montLight.className}`}>
+                    Explore Now
+                  </p>
                   <MdOutlineDoubleArrow className="group-hover:rotate-180 transform transition-transform duration-500" />
                 </div>
               </div>
@@ -125,7 +128,7 @@ export default function Section1() {
         {/* section two  */}
         <div className="  w-full tablet:h-full h-fit flex flex-col gap-5 tablet:gap-10 laptop:gap-0  items-center justify-center mt-20 tablet:mt-32 laptop:mt-0 tablet:justify-center">
           <p
-            className="text-center text-3xl tablet:text-6xl font-semibold px-2
+            className="text-center text-3xl tablet:text-6xl font-semibold 
            bg-title-gradient w-full text-transparent bg-clip-text laptop:hidden z-10"
           >
             {/* Modern Interior Design Service  */}
@@ -135,7 +138,7 @@ export default function Section1() {
           <Image
             src="/wall.svg"
             width={100}
-            className="w-full h-fit object-contain px-5 z-10"
+            className="w-full h-fit object-contain  z-10"
             alt="img"
             height={100}
           />

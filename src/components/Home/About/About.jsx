@@ -2,8 +2,8 @@ import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
-import { Montserrat } from "next/font/google";
-
+import { Montserrat, Newsreader } from "next/font/google";
+const news = Newsreader({ subsets: ["latin"], weight: ["800"] });
 const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
 const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
 function About() {
@@ -28,7 +28,9 @@ function About() {
     >
       {/* first div  */}
       <div className="flex tablet:px-10 flex-col laptop:items-end w-full laptop:ml-auto laptop:gap-3 gap-4 items-center">
-        <h1 className=" text-transparent bg-clip-text h-fit laptop:text-right text-center  bg-title-gradient text-5xl font-semibold">
+        <h1
+          className={` text-transparent bg-clip-text h-fit laptop:text-right text-center  bg-title-gradient text-5xl font-semibold ${news.className}`}
+        >
           {/* Modern Interior Design Service  */}
           ksdkskdks ksdkskd <br /> ksdksdsd sdsdsd.
         </h1>
@@ -82,7 +84,7 @@ function About() {
         >
           {" "}
           <div
-            className={`px-5 py-1 bottom-3 absolute flex flex-col 
+            className={`px-2 py-1 bottom-3 absolute flex flex-col 
                 gap-2 ${montLight.className}`}
           >
             <p className="text-sm">
@@ -101,7 +103,7 @@ function About() {
         </div>
       </div>
       {/* mobile  */}
-      <div className="tablet:hidden">
+      <div className={`${montLight.className} tablet:hidden`}>
         <Image
           alt="img"
           src="/AboutImgs/about1.jpeg"
@@ -123,7 +125,7 @@ function About() {
             magni voluptate.
           </p>
           <div className="flex gap-1 rounded-md w-fit items-center bg-gradient-to-l from-[#D48345] to-[#472B15] p-2 ">
-            <p className=" text-xs font-semibold">About Us</p>
+            <p className=" text-xs ">About Us</p>
             <BsArrowRight className="text-xl" />
           </div>
         </div>

@@ -1,14 +1,14 @@
 import React from "react";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Newsreader } from "next/font/google";
 import Image from "next/image";
 import { BsArrowRight } from "react-icons/bs";
-
+const news = Newsreader({ subsets: ["latin"], weight: ["800"] });
 const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
 const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
 function Gallery() {
   return (
     <div
-      className={`container mx-auto relative w-full tablet:px-10 px-5 mb-20 tablet:h-screen  flex flex-col tablet:gap-10
+      className={`container mx-auto relative w-full tablet:!px-10 mb-20 tablet:h-screen  flex flex-col tablet:gap-10
     gap-7 laptop:gap-5 overflow-hidden ${mont.className}`}
       style={{
         backgroundImage: "url('/Service/serviceBg.png')",
@@ -18,7 +18,9 @@ function Gallery() {
       }}
     >
       <div className="flex  flex-col  w-full  laptop:gap-3 gap-4 items-center">
-        <h1 className="p-1 text-transparent bg-clip-text h-fit text-center  bg-title-gradient text-5xl font-semibold ">
+        <h1
+          className={`p-1 text-transparent bg-clip-text h-fit text-center  bg-title-gradient text-5xl font-semibold  ${news.className}`}
+        >
           Gallery
         </h1>
         <p
@@ -136,7 +138,7 @@ function Gallery() {
         </div>
       </div>
       <div
-        className="flex gap-1 justify-center items-center mt-2
+        className="flex gap-1 justify-center items-center mt-1
           font-semibold  w-full "
       >
         <div className="bg-gradient-to-l from-[#D48345] items-center to-[#472B15] flex gap-1 py-1 px-3 rounded-md">
