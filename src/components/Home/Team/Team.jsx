@@ -59,7 +59,7 @@ function Team() {
           >
             <div>
               <div
-                className="absolute  z-0 top-20 left-2 
+                className="absolute  z-0 top-20 left-6
                     
                    
                   "
@@ -73,7 +73,7 @@ function Team() {
                 <IoIosMail className="text-4xl" />
               </div>
               <div
-                className="absolute z-0 top-20 right-2
+                className="absolute z-0 top-20 right-6
               "
               >
                 <FaLinkedin className="text-4xl" />
@@ -82,7 +82,7 @@ function Team() {
             {/* hover  */}
             <div>
               <div
-                className="absolute top-1/2 left-1/2 z-0 group-hover:top-20 group-hover:left-2 
+                className="absolute top-1/2 left-1/2 z-0 group-hover:top-20 group-hover:left-6 
                     group-hover:rotate-0 rotate-90
                     transition-all duration-1000 ease-in-out
                   "
@@ -96,7 +96,7 @@ function Team() {
                 <IoIosMail className="text-4xl" />
               </div>
               <div
-                className="absolute top-1/2 right-1/2  z-0 group-hover:top-20 group-hover:right-2
+                className="absolute top-1/2 right-1/2  z-0 group-hover:top-20 group-hover:right-6
                    group-hover:rotate-0 rotate-90 transition-all duration-1000 ease-in-out"
               >
                 <FaLinkedin className="text-4xl" />
