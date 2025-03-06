@@ -8,16 +8,19 @@ function Service() {
   const [view, setView] = useState("");
   return (
     <div
-      className={`container mx-auto relative w-full tablet:px-10 mb-32  flex flex-col tablet:gap-10
-        gap-7 laptop:gap-5 overflow-hidden ${mont.className}`}
+      className={`container mx-auto relative w-full tablet:p-10 py-5 mb-32  flex flex-col tablet:gap-10
+        gap-7 laptop:gap-2 overflow-hidden ${mont.className}`}
       style={{
-        backgroundImage: "url('/Service/serviceBg.png')",
+        backgroundImage: "url('/Service/bgForService.jpeg')",
         backgroundPosition: "center",
-        backgroundSize: "60% 96%",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="flex tablet:px-10  flex-col laptop:items-start w-full laptop:mr-auto laptop:gap-3 gap-4 items-center">
+      <div className="absolute w-full h-full left-0 top-0  bg-black/50 "></div>
+
+      <div className="flex z-10   flex-col laptop:items-start w-full laptop:mr-auto laptop:gap-3 gap-4 items-center">
         <h1
           className={`text-transparent bg-clip-text h-fit laptop:text-left text-center  bg-title-gradient text-5xl font-semibold ${news.className}`}
         >
@@ -40,7 +43,7 @@ function Service() {
           <Image
             alt="img"
             fill
-            src="/Service/service1.png"
+            src="/Service/service5.jpeg"
             className="h-full relative w-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
           <div
@@ -68,7 +71,7 @@ function Service() {
           <Image
             alt="img"
             fill
-            src="/Service/service2.png"
+            src="/Service/service2.jpeg"
             className="h-full relative w-full object-cover hover:scale-95 transition-all duration-500 ease-in-out"
           />
           <div
@@ -96,7 +99,7 @@ function Service() {
           <Image
             alt="img"
             fill
-            src="/Service/service3.png"
+            src="/Service/service3.jpeg"
             className="h-full relative w-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
           <div

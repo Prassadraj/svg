@@ -10,6 +10,7 @@ import Service from "@/components/Home/Service/Service";
 import Gallery from "@/components/Home/Gallery/Gallery";
 import Events from "@/components/Home/Events/Events";
 import Manufacture from "@/components/Home/Manufacture/Manufacture";
+import Team from "@/components/Home/Team/Team";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +24,7 @@ export default function Home() {
       <Gallery />
       <Events />
       <Manufacture />
+      <Team />
     </>
   );
 }

@@ -70,8 +70,8 @@ export default function Section1() {
       <div className="absolute w-full h-full left-0 top-0 -z-10">
         <Image
           src="/two.png"
-          width={100}
-          height={100}
+          width={900}
+          height={900}
           alt="m"
           className="w-full h-full "
         />
@@ -79,9 +79,9 @@ export default function Section1() {
       <div className="absolute w-full h-full left-0 top-0 -z-10">
         <Image
           src="/circle.png"
-          width={100}
+          width={900}
           alt="m"
-          height={100}
+          height={900}
           className="w-full h-full "
         />
       </div>{" "}
@@ -138,28 +138,28 @@ export default function Section1() {
 
           <Image
             src="/wall.svg"
-            width={100}
+            width={900}
             className="w-full h-fit object-contain  z-10 tablet:hidden"
             alt="img"
-            height={100}
+            height={900}
           />
           <div className="tablet:grid grid-cols-[100px_100px_100px_100px_100px_100px] grid-rows-[100px_100px_100px_100px_100px] hidden ">
             <div className="col-start-1 col-end-4 row-start-1 row-end-4">
               <Image
                 src="/right.jpeg"
-                width={100}
+                width={900}
                 className="w-full  object-cover  rounded-tl-[20%] rounded-xl"
                 alt="img"
-                height={100}
+                height={900}
               />
             </div>
             <div className="col-start-3 col-end-7 row-start-2 row-end-4 z-10">
               <Image
                 src="/Gallery/livingRoom.png"
-                width={100}
+                width={900}
                 className="w-full  object-cover h-[300px] rounded-2xl "
                 alt="img"
-                height={100}
+                height={900}
               />
             </div>
           </div>

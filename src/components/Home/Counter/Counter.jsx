@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import clients from "../../../../public/CounterImgs/clients.gif";
@@ -19,6 +19,7 @@ function Counter() {
     { end: 500, label: "Unique Style", img: complete },
     { end: 400, label: "Corporate Interiors", img: corporate },
   ];
+  const [videoSrc, setVideoSrc] = useState("/Events/bgVideo.mp4");
 
   const statRefs = useRef([]);
 
@@ -45,10 +46,31 @@ function Counter() {
 
   return (
     <div
-      className={` flex w-full laptop:flex-row px-5 gap-6 tablet:gap-10 laptop:gap-5 flex-col items-center justify-around tablet:px-10 mx-auto container h-full mb-10 ${news.className} trig mb-20`}
+      className={` flex w-full laptop:flex-row px-5 gap-6 tablet:gap-10 laptop:gap-5 flex-col items-center justify-around tablet:p-10 mx-auto container h-full mb-10 ${news.className} trig mb-20 relative`}
     >
+      {" "}
+      <div className="absolute w-full h-full left-0 top-0 bg-black/50 z-10 "></div>
+      <div className="absolute w-full h-full left-0 top-0  ">
+        <video
+          key={videoSrc}
+          autoPlay
+          muted
+          onEnded={() =>
+            setVideoSrc((prev) =>
+              prev == "/Events/bgVideo.mp4"
+                ? "/Service/bgVideo2.mp4"
+                : "/Events/bgVideo.mp4"
+            )
+          }
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+        >
+          <source src={videoSrc} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       {/* left div  */}
-      <div className=" flex gap-8 items-center  ">
+      <div className=" flex gap-8 items-center z-10 ">
         {/* first two imgs */}
         <div className=" flex flex-col items-start gap-4">
           <div
@@ -108,9 +130,8 @@ function Counter() {
           />
         </div>
       </div>
-
       {/* right div  */}
-      <div className="grid tablet:grid-cols-6 grid-rows-2 grid-cols-4   laptop:w-1/2 w-full laptop:gap-10 gap-10">
+      <div className="grid tablet:grid-cols-6 grid-rows-2 grid-cols-4 z-10   laptop:w-1/2 w-full laptop:gap-10 gap-10">
         {stats.map((stat, i) => (
           <div
             key={i}

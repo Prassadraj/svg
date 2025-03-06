@@ -16,35 +16,19 @@ import Image from "next/image";
 function Events() {
   return (
     <div
-      className={`container mx-auto relative w-full tablet:px-10 mb-32  flex flex-col tablet:gap-10
-      gap-7 laptop:gap-1 overflow-hidden ${mont.className}`}
+      className={`container mx-auto relative w-full tablet:p-10 mb-32 py-5  flex flex-col tablet:gap-10
+      gap-7 laptop:gap-1 overflow-hidden ${mont.className} `}
       style={{
-        backgroundImage: "url('/Service/serviceBg.png')",
+        backgroundImage: "url('/Service/background7.jpeg')",
         backgroundPosition: "center",
-        backgroundSize: "60% 96%",
+        backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
       }}
     >
-      <div
-        className="absolute w-full h-full left-0 top-0 -z-10"
-        style={{
-          maskImage:
-            "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%)",
-          WebkitMaskImage:
-            "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%)",
-          backdropFilter: "blur(10px)", // Optional: Adds extra blur effect behind
-        }}
-      >
-        <Image
-          src="/circle.png"
-          width={100}
-          height={100}
-          alt="m"
-          className="w-full h-full"
-        />
-      </div>
+      <div className="absolute w-full h-full left-0 top-0  bg-black/30 "></div>
 
-      <div className="flex  flex-col  w-full laptop:ml-auto laptop:gap-3 gap-4 items-center">
+      <div className="flex  flex-col  w-full laptop:ml-auto laptop:gap-3 gap-4 items-center z-10">
         <h1
           className={` text-transparent bg-clip-text h-fit  text-center  bg-title-gradient text-5xl font-semibold ${news.className}`}
         >
@@ -81,7 +65,7 @@ function Events() {
             (val, i) => (
               <SwiperSlide
                 key={i}
-                className="tablet:!w-[350px] tablet:!h-[350px] !h-[200px] !w-[200px] relative rounded-md overflow-hidden"
+                className="tablet:!w-[350px] tablet:!h-[350px] !h-[200px] !w-[200px] relative rounded-md overflow-hidden !z-10"
               >
                 <img alt={`Nature ${i + 1}`} src={`/Events/${val}.jpeg`} />
                 <div className="absolute bottom-0 w-full bg-black/50 p-2">
