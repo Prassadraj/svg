@@ -11,6 +11,7 @@ import Gallery from "@/components/Home/Gallery/Gallery";
 import Events from "@/components/Home/Events/Events";
 import Manufacture from "@/components/Home/Manufacture/Manufacture";
 import Team from "@/components/Home/Team/Team";
+import Footer from "@/components/Footer/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,6 +26,7 @@ export default function Home() {
       <Events />
       <Manufacture />
       <Team />
+      <Footer />
     </>
   );
 }
