@@ -96,7 +96,7 @@ function About() {
               className="flex gap-1
         font-semibold rounded-md w-fit items-center bg-gradient-to-l from-[#D48345] to-[#472B15] py-1 px-3 "
             >
-              <p className=" text-xs font-light">About Us</p>
+              <p className=" text-xs font-light   cursor-pointer">About Us</p>
               <BsArrowRight className="text-xl" />
             </div>
           </div>
@@ -125,7 +125,7 @@ function About() {
             magni voluptate.
           </p>
           <div className="flex gap-1 rounded-md w-fit items-center bg-gradient-to-l from-[#D48345] to-[#472B15] p-2 ">
-            <p className=" text-xs ">About Us</p>
+            <p className=" text-xs   cursor-pointer">About Us</p>
             <BsArrowRight className="text-xl" />
           </div>
         </div>
