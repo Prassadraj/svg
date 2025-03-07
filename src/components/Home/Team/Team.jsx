@@ -57,8 +57,12 @@ function Team() {
             {data.map((val, i) => (
               <div
                 key={i}
-                className={`relative rounded-xl shadow-sm shadow-gray-400 w-[300px] h-[380px] bg-gradient-to-t from-[#503B31] to-[#6f452b] backdrop-blur-md justify-end pb-6 items-center flex flex-col gap-4 group cursor-pointer
-             ${i == 2 && "tablet:col-span-2 laptop:col-span-1 "}`}
+                className={`relative rounded-xl shadow-sm shadow-gray-400 w-[300px] h-[380px] 
+                      bg-gradient-to-b from-[#4a4847]/30 to-[#6f452b]/50 
+                      backdrop-blur-md justify-end pb-6 items-center flex flex-col gap-4 
+                      group cursor-pointer ${
+                        i == 2 && "tablet:col-span-2 laptop:col-span-1 "
+                      }`}
               >
                 <div>
                   <div
