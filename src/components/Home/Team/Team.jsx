@@ -58,7 +58,7 @@ function Team() {
               <div
                 key={i}
                 className={`relative rounded-xl shadow-sm shadow-gray-400 w-[300px] h-[380px] 
-                      bg-gradient-to-b from-[#4a4847]/30 to-[#6f452b]/50 
+                      bg-gradient-to-b from-[#4a4847]/20 to-[#6f452b]/50 
                       backdrop-blur-md justify-end pb-6 items-center flex flex-col gap-4 
                       group cursor-pointer ${
                         i == 2 && "tablet:col-span-2 laptop:col-span-1 "
