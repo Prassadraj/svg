@@ -10,7 +10,7 @@ function Service() {
     <div
       className="relative"
       style={{
-        backgroundImage: "url('/Service/bgForService.jpeg')",
+        backgroundImage: "url('/Service/background6.jpeg')",
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundAttachment: "fixed",

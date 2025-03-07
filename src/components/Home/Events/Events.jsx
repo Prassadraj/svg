@@ -18,7 +18,8 @@ function Events() {
     <div
       className="relative"
       style={{
-        backgroundImage: "url('/Service/background7.jpeg')",
+        backgroundImage: "url('/Service/bgForService.jpeg')",
+
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
