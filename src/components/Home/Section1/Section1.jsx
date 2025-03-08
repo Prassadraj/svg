@@ -65,7 +65,7 @@ export default function Section1() {
   }, []);
 
   return (
-    <div className="mx-auto container   tablet:!px-10 tablet:mb-32 mt-28 mb-10 w-full">
+    <div className="mx-auto tablet:container px-2   tablet:!px-10 tablet:mb-32 mt-10 tablet:mt-32 mb-10 w-full">
       {/* gradient */}
       <div className="absolute w-full h-full left-0 top-0 -z-10">
         <Image
@@ -87,27 +87,23 @@ export default function Section1() {
       </div>{" "}
       {/* gradient close*/}
       <div
-        className={` justify-evenly  laptop:justify-center  flex gap-2 tablet:gap-4 flex-col-reverse laptop:flex-row items-center   trigger ${news.className} `}
+        className={` justify-evenly  laptop:justify-center  flex gap-2 tablet:gap-4 flex-col-reverse laptop:flex-row items-center   trigger ${news.className} overflow-x-hidden`}
       >
         {/* section one  */}
-        <div className=" w-full tablet:h-full h-fit z-10 text-lg   flex flex-col gap-10 items-center justify-center  laptop:!items-start">
+        <div className=" w-full tablet:h-full h-fit z-10 text-lg   flex flex-col gap-10 items-center justify-center  laptop:!items-start ">
           <h1
             className="text-center text-3xl font-semibold 
            bg-title-gradient w-full h-fit text-transparent bg-clip-text laptop:block hidden tablet:text-left tablet:text-6xl "
           >
-            dfdfh nfdnf dnkdnf nkdnf
+            Modern Interior Design Service
           </h1>
           <p
             className={`${montLight.className} text-center mt-2   laptop:text-left tablet:text-3xl laptop:text-xl`}
           >
-            {/* Design Qube, founded in 2020 in Chennai, specializes in interior
+            Design Qube, founded in 2020 in Chennai, specializes in interior
             fit-outs, project management, and execution. With a 9000 sq. ft.
             facility, we deliver innovative, cost-effective solutions for
-            commercial, residential, and retail spaces across India. */}
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum
-            sequi ad fuga maxime odio assumenda, maiores libero quibusdam amet
-            fugit impedit enim ipsam aperiam ipsa rerum. Ratione et nam
-            laudantium!
+            commercial, residential, and retail spaces across India.
           </p>
           <div className="flex flex-col items-center justify-center cursor-pointer group">
             <div
@@ -133,31 +129,31 @@ export default function Section1() {
            bg-title-gradient w-full text-transparent bg-clip-text laptop:hidden z-10"
           >
             {/* Modern Interior Design Service  */}
-            mlmlml mlmlmlml mlmlm mlmmlml
+            Modern Interior Design Service
           </p>
 
-          <Image
+          {/* <Image
             src="/wall.svg"
             width={900}
-            className="w-full h-fit object-contain  z-10 tablet:hidden"
+            className="w-full h-fit object-contain  z-10 hidden"
             alt="img"
             height={900}
-          />
-          <div className="tablet:grid grid-cols-[100px_100px_100px_100px_100px_100px] grid-rows-[100px_100px_100px_100px_100px] hidden ">
-            <div className="col-start-1 col-end-4 row-start-1 row-end-4">
+          /> */}
+          <div className="grid grid-cols-[100px_100px_100px_100px_100px_100px] tablet:!grid-rows-[100px_100px_100px_100px_100px] !grid-rows-[100px_100px_100px_100px] ">
+            <div className="col-start-2 tablet:col-start-1 col-end-4 row-start-1 row-end-4">
               <Image
                 src="/right.jpeg"
                 width={900}
-                className="w-full  object-cover  rounded-tl-[20%] rounded-xl"
+                className="w-full  object-cover  rounded-tl-[20%] rounded-xl bg-slate-400"
                 alt="img"
                 height={900}
               />
             </div>
-            <div className="col-start-3 col-end-7 row-start-2 row-end-4 z-10">
+            <div className="col-start-3 tablet:!col-end-7 col-end-6 row-start-2 row-end-4 z-10">
               <Image
                 src="/Gallery/livingRoom.png"
                 width={900}
-                className="w-full  object-cover h-[300px] rounded-2xl "
+                className="w-full  object-cover h-[300px] rounded-2xl bg-slate-400"
                 alt="img"
                 height={900}
               />

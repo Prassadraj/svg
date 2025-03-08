@@ -24,24 +24,22 @@ function Counter() {
   const statRefs = useRef([]);
 
   useEffect(() => {
-    if (window.innerWidth >= 768) {
-      statRefs.current.forEach((stat, index) => {
-        gsap.fromTo(
-          stat,
-          { textContent: 0 },
-          {
-            textContent: stats[index].end,
-            duration: 1,
-            ease: "power3.inOut",
-            snap: { textContent: 1 },
-            scrollTrigger: {
-              trigger: ".trig",
-              start: "top 80%",
-            },
-          }
-        );
-      });
-    }
+    statRefs.current.forEach((stat, index) => {
+      gsap.fromTo(
+        stat,
+        { textContent: 0 },
+        {
+          textContent: stats[index].end,
+          duration: 1,
+          ease: "power3.inOut",
+          snap: { textContent: 1 },
+          scrollTrigger: {
+            trigger: ".trig",
+            start: "top 80%",
+          },
+        }
+      );
+    });
   }, []);
 
   return (
@@ -68,7 +66,7 @@ function Counter() {
         </video>
       </div>
       <div
-        className={` flex w-full laptop:flex-row px-5 gap-6 tablet:gap-10 laptop:gap-5 flex-col items-center justify-around tablet:p-10 mx-auto container h-full mb-32 ${news.className} trig relative`}
+        className={` flex w-full laptop:flex-row p-2 gap-6 tablet:gap-10 laptop:gap-5 flex-col items-center justify-around tablet:p-10 mx-auto tablet:container h-full mb-32 ${news.className} trig relative`}
       >
         {" "}
         {/* left div  */}
@@ -94,7 +92,7 @@ function Counter() {
                 width={100}
                 height={100}
                 alt="img"
-                className="w-full h-full object-cover hover:scale-105 hover:-rotate-2 duration-200 ease-in-out"
+                className="w-full bg-slate-400 h-full object-cover hover:scale-105 hover:-rotate-2 duration-200 ease-in-out"
               />
             </div>
 
@@ -104,7 +102,7 @@ function Counter() {
                 width={100}
                 height={100}
                 alt="img"
-                className="w-full h-full object-cover duration-200 ease-in-out"
+                className="w-full  h-full object-cover duration-200 ease-in-out"
               />
             </div>
           </div>
@@ -128,7 +126,7 @@ function Counter() {
               width={100}
               height={100}
               alt="img"
-              className="w-full h-full object-cover hover:scale-105 hover:rotate-2 transition-all duration-700 ease-in-out"
+              className="w-full bg-slate-400 h-full object-cover hover:scale-105 hover:rotate-2 transition-all duration-700 ease-in-out"
             />
           </div>
         </div>

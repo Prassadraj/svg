@@ -28,7 +28,7 @@ function Events() {
     >
       <div className="absolute w-full h-full left-0 top-0  bg-black/30 "></div>
       <div
-        className={`container mx-auto relative w-full tablet:p-10 mb-32 py-5  flex flex-col tablet:gap-10
+        className={`tablet:container mx-auto relative w-full tablet:p-10 mb-32 p-2  flex flex-col tablet:gap-10
       gap-7 laptop:gap-1 overflow-hidden ${mont.className} `}
       >
         <div className="flex  flex-col  w-full laptop:ml-auto laptop:gap-3 gap-4 items-center z-10">

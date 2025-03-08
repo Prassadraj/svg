@@ -24,7 +24,7 @@ function About() {
 
   return (
     <div
-      className={` w-full tablet:px-10 mb-20  mx-auto container flex flex-col gap-5 h-fit ${mont.className}`}
+      className={` w-full tablet:px-10 mb-20  mx-auto tablet:container p-2 flex flex-col gap-5 h-fit ${mont.className}`}
     >
       {/* first div  */}
       <div className="flex tablet:px-10 flex-col laptop:items-end w-full laptop:ml-auto laptop:gap-3 gap-4 items-center">
@@ -32,7 +32,7 @@ function About() {
           className={` text-transparent bg-clip-text h-fit laptop:text-right text-center  bg-title-gradient text-5xl font-semibold ${news.className}`}
         >
           {/* Modern Interior Design Service  */}
-          ksdkskdks ksdkskd <br /> ksdksdsd sdsdsd.
+          Providing Innovative <br /> Interior Design.
         </h1>
         <p
           className={`laptop:text-right text-center break-words laptop:w-1/3 laptop:hidden ${montLight.className}`}
@@ -56,7 +56,7 @@ function About() {
         {/* img1  */}
         <div
           className="col-start-1 col-end-4  row-start-1 laptop:row-end-7 row-end-6 
-        bg-red-300 relative overflow-hidden z-10"
+          bg-slate-400 relative overflow-hidden z-10"
         >
           <Image
             alt="img"
@@ -71,7 +71,7 @@ function About() {
             alt="img"
             fill
             src="/AboutImgs/about2.jpg"
-            className="w-full h-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
+            className="w-full h-full bg-slate-400 object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
         </div>
         {/* img3  */}
@@ -109,7 +109,7 @@ function About() {
           src="/AboutImgs/about1.jpeg"
           width={100}
           height={100}
-          className="aspect-square w-full object-cover"
+          className="aspect-square w-full object-cover bg-slate-400"
         />
         <div
           className=" p-2 gap-4 flex z-10 flex-col  laptop:row-start-7 row-start-5

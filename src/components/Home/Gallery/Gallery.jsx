@@ -8,7 +8,7 @@ const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
 function Gallery() {
   return (
     <div
-      className={`container mx-auto relative w-full tablet:!px-10 mb-20 tablet:h-screen  flex flex-col tablet:gap-10
+      className={`tablet:container p-2 mx-auto relative w-full tablet:!px-10 mb-20 tablet:h-screen  flex flex-col tablet:gap-10
     gap-7 laptop:gap-5 overflow-hidden ${mont.className}`}
       style={{
         backgroundImage: "url('/Service/serviceBg.png')",

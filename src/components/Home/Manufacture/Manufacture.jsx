@@ -11,7 +11,7 @@ const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
 function Manufacture() {
   return (
     <div
-      className={`container mx-auto w-full flex flex-col items-center justify-center tablet:!flex-row gap-4 
+      className={`tablet:container p-2 mx-auto w-full flex flex-col items-center justify-center tablet:!flex-row gap-4 
         laptop:px-10 mb-32 ${mont.className}`}
     >
       <div className="flex flex-col gap-4  tablet:hidden">
@@ -27,7 +27,7 @@ function Manufacture() {
             width={900}
             alt="img"
             height={900}
-            className="w-full h-full object-cover rounded-md laption:hidden tablet:px-10"
+            className="w-full bg-slate-400 h-full object-cover rounded-md laption:hidden tablet:px-10"
           />
           <p className={`${montLight.className} text-center tablet:px-10 `}>
             At our ultra modern manufacturing facility in Chennai, we use the
@@ -66,7 +66,7 @@ function Manufacture() {
             width={900}
             alt="img"
             height={900}
-            className="w-full !h-[500px] object-cover rounded-md"
+            className="w-fullbg-slate-400 !h-[500px] object-cover rounded-md"
           />
         </div>
         <div className="row-start-2 col-start-3 col-end-5 row-end-3 z-10">
@@ -76,7 +76,7 @@ function Manufacture() {
             width={900}
             height={900}
             alt="img"
-            className="w-full !h-[350px] object-cover rounded-md"
+            className="w-full bg-slate-400 !h-[350px] object-cover rounded-md"
           />
         </div>
 
@@ -87,7 +87,7 @@ function Manufacture() {
             width={900}
             height={900}
             alt="img"
-            className="w-full  object-cover rounded-md"
+            className="w-fullbg-slate-400  object-cover rounded-md"
           />
         </div>
         <div className="row-start-2 row-end-4 col-start-3 col-end-5  -z-10">
@@ -96,7 +96,7 @@ function Manufacture() {
             width={900}
             alt="img"
             height={900}
-            className="w-full  object-cover rounded-md"
+            className="w-fullbg-slate-400  object-cover rounded-md"
           />
         </div>
       </div>
