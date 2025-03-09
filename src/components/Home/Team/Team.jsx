@@ -9,14 +9,14 @@ const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
 const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
 function Team() {
   const data = [
-    { img: "/Team/team1.png", name: "name", position: "Ceo" },
+    { img: "/Team/team11.png", name: "name", position: "Ceo" },
     {
-      img: "/Team/team2.jpg",
+      img: "/Team/team22.png",
       name: "name",
       position: "Managing partner",
     },
     {
-      img: "/Team/team3.png",
+      img: "/Team/team33.png",
       name: "name",
       position: "Managing partner",
     },
@@ -108,7 +108,7 @@ function Team() {
                   src={val.img}
                   width={900}
                   height={900}
-                  className="h-[200px] w-[200px] z-10 object-cover rounded-[50%]"
+                  className="h-[200px] bg-white w-[200px] z-10 object-cover rounded-[50%]"
                   alt="img"
                 />
                 <div className="flex flex-col items-center">

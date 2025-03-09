@@ -50,13 +50,22 @@ function Manufacture() {
           <p
             className={`${montLight.className} text-center tablet:text-left p-3`}
           >
-            At our ultra modern manufacturing facility in Chennai, we use the
-            latest cutting edge technologies to manufacture our high quality,
-            contemporary, stylish and ergonomic range of furniture for office
+            At our ultra-modern manufacturing facility in Chennai, we use the
+            latest cutting-edge technologies to manufacture our high-quality,
+            contemporary, stylish, and ergonomic range of furniture for office
             spaces. Our unit is equipped with the latest European machines for
-            Pasting, Presssing, Cutting, Edge Banding, Post Forming, Moulding,
-            Drilling, Boring, Sanding, Painting and Finishing along with areas
-            for Assemby, Packaging and Dispatch
+            Pasting, Pressing, Cutting, Edge Banding, Post Forming, Moulding,
+            Drilling, Boring, Sanding, Painting, and Finishing along with areas
+            for Assembly, Packaging, and Dispatch. Our skilled team ensures
+            precision and consistency at every stage of the manufacturing
+            process, delivering products that meet international quality
+            standards. We emphasize sustainability by incorporating eco-friendly
+            materials and processes that minimize waste and reduce environmental
+            impact. Continuous innovation and stringent quality control are at
+            the core of our operations, ensuring products that are not only
+            durable but also aesthetically appealing. With a focus on customer
+            satisfaction, we offer customized solutions tailored to meet the
+            diverse needs of modern workspaces.
           </p>
         </div>
         {/* Manufacturing img  */}

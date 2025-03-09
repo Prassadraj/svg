@@ -14,10 +14,10 @@ const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
 const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
 function Counter() {
   const stats = [
-    { end: 200, label: "Projects completed", img: clients },
-    { end: 250, label: "Satisfied Clients", img: design },
-    { end: 500, label: "Unique Style", img: complete },
-    { end: 400, label: "Corporate Interiors", img: corporate },
+    { end: 600, label: "Projects completed", img: clients },
+    { end: 500, label: "Satisfied Clients", img: design },
+    { end: 550, label: "Unique Style", img: complete },
+    { end: 350, label: "Corporate Interiors", img: corporate },
   ];
   const [videoSrc, setVideoSrc] = useState("/Events/bgVideo.mp4");
 

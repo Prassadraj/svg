@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
@@ -30,12 +31,24 @@ function Nav() {
       <div>logo</div>
       <div className="absolute transform left-1/2 -translate-x-1/2 hidden tablet:block">
         <ul className="flex gap-6 text-nowrap">
-          <li className="text-red-400">Home</li>
-          <li>About Us</li>
-          <li>Service</li>
-          <li>Project</li>
-          <li>Enquiry</li>
-          <li>Contact Us</li>
+          <li className="text-red-400">
+            <Link href="/">Home</Link>
+          </li>
+          <li>
+            <Link href="/about">About Us</Link>
+          </li>
+          <li>
+            <Link href="/service">Service</Link>
+          </li>
+          <li>
+            <Link href="/project">Project</Link>
+          </li>
+          <li>
+            <Link href="/enquiry">Enquiry</Link>
+          </li>
+          <li>
+            <Link href="/contact">Contact Us</Link>
+          </li>
         </ul>
       </div>
       <div className="tablet:flex gap-2 items-center hidden ">
