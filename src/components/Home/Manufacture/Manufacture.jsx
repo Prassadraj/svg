@@ -60,23 +60,23 @@ function Manufacture() {
           </p>
         </div>
         {/* Manufacturing img  */}
-        <div className="row-start-1 row-end-4 col-start-2 col-end-4 z-0">
+        <div className="row-start-1 row-end-4 col-start-2 col-end-4 z-0 overflow-hidden">
           <Image
             src="/Manufacture/img1.jpeg"
             width={900}
             alt="img"
             height={900}
-            className="w-fullbg-slate-400 !h-[500px] object-cover rounded-md"
+            className="w-fullbg-slate-400 hover:rotate-1 hover:scale-105 transition-all duration-500 ease-in-out !h-[500px] object-cover rounded-md"
           />
         </div>
-        <div className="row-start-2 col-start-3 col-end-5 row-end-3 z-10">
+        <div className="row-start-2 col-start-3 col-end-5 row-end-3 z-10 overflow-hidden">
           {/* right img  */}
           <Image
             src="/Manufacture/img2.jpeg"
             width={900}
             height={900}
             alt="img"
-            className="w-full bg-slate-400 !h-[350px] object-cover rounded-md"
+            className="w-full bg-slate-400 hover:-rotate-1 hover:scale-105 transition-all duration-500 ease-in-out !h-[350px] object-cover rounded-md"
           />
         </div>
 

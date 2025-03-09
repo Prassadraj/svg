@@ -8,7 +8,7 @@ function Service() {
   const [view, setView] = useState("");
   return (
     <div
-      className="relative"
+      className="relative "
       style={{
         backgroundImage: "url('/Service/background6.jpeg')",
         backgroundPosition: "center",

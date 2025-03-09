@@ -62,7 +62,7 @@ function About() {
             alt="img"
             fill
             src="/AboutImgs/about3.jpg"
-            className="h-full w-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
+            className="h-full w-full hover:rotate-1 object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
         </div>
         {/* img2  */}
@@ -71,7 +71,7 @@ function About() {
             alt="img"
             fill
             src="/AboutImgs/about2.jpg"
-            className="w-full h-full bg-slate-400 object-cover hover:scale-105 transition-all duration-500 ease-in-out"
+            className="w-full h-full hover:-rotate-1 bg-slate-400 object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
         </div>
         {/* img3  */}
