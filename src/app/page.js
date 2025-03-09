@@ -2,7 +2,7 @@
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import "aos/dist/aos.css";
 import Section1 from "@/components/Home/Section1/Section1";
 import Counter from "@/components/Home/Counter/Counter";
 import About from "@/components/Home/About/About";
