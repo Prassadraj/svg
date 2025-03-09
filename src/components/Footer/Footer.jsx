@@ -4,6 +4,7 @@ import { Montserrat, Newsreader } from "next/font/google";
 import { MdOutlineDoubleArrow } from "react-icons/md";
 import { FaSquareInstagram, FaXTwitter } from "react-icons/fa6";
 import { FaFacebook, FaLinkedin } from "react-icons/fa";
+import Link from "next/link";
 
 const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
 const news = Newsreader({ subsets: ["latin"], weight: ["800"] });
@@ -34,11 +35,22 @@ function Footer() {
       <div className="z-10">
         <ul className={`flex flex-col gap-3 ${montLight.className}`}>
           <li className="font-bold">Links</li>
-          <li>About Us</li>
-          <li>Services</li>
-          <li>Project</li>
-          <li>Enquiry</li>
-          <li>Contact Us</li>
+
+          <li>
+            <Link href="/about">About Us</Link>
+          </li>
+          <li>
+            <Link href="/service">Service</Link>
+          </li>
+          <li>
+            <Link href="/project">Project</Link>
+          </li>
+          <li>
+            <Link href="/enquiry">Enquiry</Link>
+          </li>
+          <li>
+            <Link href="/contact">Contact Us</Link>
+          </li>
         </ul>
       </div>
       <div className="z-10">
