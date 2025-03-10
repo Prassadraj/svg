@@ -16,7 +16,8 @@ import Image from "next/image";
 function Events() {
   return (
     <div
-      className="relative bg-[url('/Service/bgForService.jpeg')] bg-center tablet:bg-fixed bg-cover bg-scroll
+      className="relative tablet:bg-[url('/Service/bgForService.jpeg')]
+      bg-[url('/Service/serviceBgMobile.png')] bg-center tablet:bg-fixed bg-cover bg-scroll
       bg-no-repeat "
     >
       <div className="absolute w-full h-full left-0 top-0  bg-black/30 "></div>

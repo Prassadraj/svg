@@ -17,7 +17,8 @@ function Footer() {
 
         overflow: "hidden",
       }}
-      className={`relative px-2 py-5 bg-[url('/Footer/footer4.png')] bg-top bg-scroll tablet:bg-fixed
+      className={`relative px-2 py-5 tablet:bg-[url('/Footer/footer4.png')] 
+        bg-[url('/Footer/footerBgMobile.png')] bg-top bg-scroll tablet:bg-fixed
       bg-cover  tablet:!p-10 justify-between gap-5 tablet:gap-8 grid-cols-2 grid
    tablet:grid-cols-4 laptop:grid-cols-5 ${mont.className}`}
     >

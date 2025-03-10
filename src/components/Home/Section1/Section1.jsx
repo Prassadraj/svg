@@ -100,10 +100,11 @@ export default function Section1() {
           <p
             className={`${montLight.className} text-center   laptop:text-left tablet:text-3xl laptop:!text-lg`}
           >
-            Design Qube, founded in 2020 in Chennai, specializes in interior
-            fit-outs, project management, and execution. With a 9000 sq. ft.
-            facility, we deliver innovative, cost-effective solutions for
-            commercial, residential, and retail spaces across India.
+            {/* Design Qube, */}
+            founded in 2020 in Chennai, specializes in interior fit-outs,
+            project management, and execution. With a 9000 sq. ft. facility, we
+            deliver innovative, cost-effective solutions for commercial,
+            residential, and retail spaces across India.
           </p>
           <div className="flex flex-col items-center justify-center cursor-pointer group">
             <div

@@ -7,8 +7,11 @@ const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
 function Service() {
   const [view, setView] = useState("");
   return (
-    <div className="relative bg-[url('/Service/background6.jpeg')] bg-no-repeat bg-cover bg-center 
-    bg-scroll tablet:bg-fixed">
+    <div
+      className="relative tablet:bg-[url('/Service/background6.jpeg')] 
+    bg-[url('/Service/serviceBgmobile.png')] bg-no-repeat bg-cover bg-center 
+    bg-scroll tablet:bg-fixed"
+    >
       <div className="absolute w-full h-full left-0 top-0  bg-black/50 "></div>
 
       <div

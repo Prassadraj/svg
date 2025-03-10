@@ -23,7 +23,7 @@ function Team() {
   ];
   return (
     <div
-      className="relative tablet:bg-[url('/Team/bg4.jpeg')] 
+      className="relative tablet:bg-[url('/Team/bg4.jpeg')] bg-[url('/Team/teamBgMobile.png')]
       bg-center bg-cover bg-no-repeat 
       bg-local tablet:bg-fixed"
     >

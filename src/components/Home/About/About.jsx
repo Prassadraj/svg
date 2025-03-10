@@ -24,8 +24,26 @@ function About() {
 
   return (
     <div
-      className={` w-full tablet:px-10 mb-20  mx-auto tablet:container p-2 flex flex-col gap-5 h-fit ${mont.className}`}
+      className={`relative w-full tablet:px-10 mb-20  mx-auto tablet:container p-2 flex flex-col gap-5 h-fit ${mont.className}`}
     >
+      <div className="absolute w-full h-80 left-0 -top-32  -z-10">
+        <Image
+          src="/two.png"
+          width={900}
+          height={900}
+          alt="m"
+          className="w-full h-full "
+        />
+      </div>{" "}
+      <div className="absolute w-full h-full left-0 -top-32  -z-10">
+        <Image
+          src="/circle.png"
+          width={900}
+          alt="m"
+          height={900}
+          className="w-full h-full "
+        />
+      </div>{" "}
       {/* first div  */}
       <div className="flex tablet:px-10 flex-col laptop:items-end w-full laptop:ml-auto laptop:gap-3 gap-4 items-center">
         <h1
