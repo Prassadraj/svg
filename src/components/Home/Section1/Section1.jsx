@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { Montserrat, Newsreader } from "next/font/google";
 import { MdOutlineDoubleArrow } from "react-icons/md";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
@@ -91,13 +92,19 @@ export default function Section1() {
       >
         {/* section one  */}
         <div className=" w-full tablet:h-full h-fit z-10 text-lg   flex flex-col gap-7 items-center justify-center  laptop:!items-start ">
-          <h1
+          <motion.h1
+            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            transition={{ duration: 1 }}
             className="text-center text-3xl font-semibold 
            bg-title-gradient w-full h-fit text-transparent bg-clip-text laptop:block hidden tablet:text-left tablet:text-6xl "
           >
             Modern Interior Design Service
-          </h1>
-          <p
+          </motion.h1>
+          <motion.p
+            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            transition={{ duration: 1.1 }}
             className={`${montLight.className} text-center   laptop:text-left tablet:text-3xl laptop:!text-lg`}
           >
             {/* Design Qube, */}
@@ -105,8 +112,13 @@ export default function Section1() {
             project management, and execution. With a 9000 sq. ft. facility, we
             deliver innovative, cost-effective solutions for commercial,
             residential, and retail spaces across India.
-          </p>
-          <div className="flex flex-col items-center justify-center cursor-pointer group">
+          </motion.p>
+          <motion.div
+            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            transition={{ duration: 1.1 }}
+            className="flex flex-col items-center justify-center cursor-pointer group"
+          >
             <div
               className="relative py-1 px-4 border 
            border-transparent bg-gradient-to-tr w-fit  from-[#FAFAFA] to-[#C1792C] rounded-lg tablet:rounded-none tablet:p-4 tablet:px-6 tablet:rounded-tr-full"
@@ -121,17 +133,17 @@ export default function Section1() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
         {/* section two  */}
         <div className="  w-full tablet:h-full h-fit flex flex-col gap-5 tablet:gap-10 laptop:gap-0  items-center justify-center mt-20 tablet:mt-32 laptop:mt-0 tablet:justify-center">
-          <p
+          <motion.p
             className="text-center text-3xl tablet:text-6xl font-semibold 
            bg-title-gradient w-full text-transparent bg-clip-text laptop:hidden z-10"
           >
             {/* Modern Interior Design Service  */}
             Modern Interior Design Service
-          </p>
+          </motion.p>
 
           {/* <Image
             src="/wall.svg"
@@ -141,7 +153,12 @@ export default function Section1() {
             height={900}
           /> */}
           <div className="grid grid-cols-[100px_100px_100px_100px_100px_100px] tablet:!grid-rows-[100px_100px_100px_100px_100px] !grid-rows-[100px_100px_100px_100px] ">
-            <div className="col-start-2 tablet:col-start-1 col-end-4 row-start-1 row-end-4">
+            <motion.div
+              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              transition={{ duration: 1 }}
+              className="col-start-2 tablet:col-start-1 col-end-4 row-start-1 row-end-4"
+            >
               <Image
                 src="/right.jpeg"
                 width={900}
@@ -149,8 +166,13 @@ export default function Section1() {
                 alt="img"
                 height={900}
               />
-            </div>
-            <div className="col-start-3 tablet:!col-end-7 col-end-6 row-start-2 row-end-4 z-10">
+            </motion.div>
+            <motion.div
+              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: 20 }}
+              transition={{ duration: 1 }}
+              className="col-start-3 tablet:!col-end-7 col-end-6 row-start-2 row-end-4 z-10"
+            >
               <Image
                 src="/Gallery/livingRoom.png"
                 width={900}
@@ -158,7 +180,7 @@ export default function Section1() {
                 alt="img"
                 height={900}
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

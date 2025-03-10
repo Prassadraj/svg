@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
-import "./styles.css";
+import "./styles.css"; 
 import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
 import Image from "next/image";
 function Events() {
