@@ -90,7 +90,7 @@ export default function Section1() {
         className={` justify-evenly  laptop:justify-center  flex gap-2 tablet:gap-4 flex-col-reverse laptop:flex-row items-center   trigger ${news.className} overflow-x-hidden`}
       >
         {/* section one  */}
-        <div className=" w-full tablet:h-full h-fit z-10 text-lg   flex flex-col gap-10 items-center justify-center  laptop:!items-start ">
+        <div className=" w-full tablet:h-full h-fit z-10 text-lg   flex flex-col gap-7 items-center justify-center  laptop:!items-start ">
           <h1
             className="text-center text-3xl font-semibold 
            bg-title-gradient w-full h-fit text-transparent bg-clip-text laptop:block hidden tablet:text-left tablet:text-6xl "
@@ -98,7 +98,7 @@ export default function Section1() {
             Modern Interior Design Service
           </h1>
           <p
-            className={`${montLight.className} text-center mt-2   laptop:text-left tablet:text-3xl laptop:text-xl`}
+            className={`${montLight.className} text-center   laptop:text-left tablet:text-3xl laptop:!text-lg`}
           >
             Design Qube, founded in 2020 in Chennai, specializes in interior
             fit-outs, project management, and execution. With a 9000 sq. ft.
