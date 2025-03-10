@@ -20,7 +20,7 @@ function Events() {
       bg-[url('/Service/serviceBgMobile.png')] bg-center tablet:bg-fixed bg-cover bg-scroll
       bg-no-repeat "
     >
-      <div className="absolute w-full h-full left-0 top-0  bg-black/30 "></div>
+      <div className="absolute w-full h-full left-0 top-0 bg-black/50 tablet:bg-black/30 "></div>
       <div
         className={`tablet:container mx-auto relative w-full tablet:p-10 mb-32 p-2  flex flex-col tablet:gap-10
       gap-7 laptop:gap-1 overflow-hidden ${mont.className} `}
