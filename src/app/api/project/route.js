@@ -10,6 +10,17 @@ export const config = {
     bodyParser: false,
   },
 };
+export async function GET() {
+  try {
+    connectDB();
+    const data = await Project.find();
+    return NextResponse.json({
+      data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export async function POST(req) {
   try {
