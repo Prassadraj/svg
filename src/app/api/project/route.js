@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import formidable from "formidable";
 import { promises as fsPromises } from "fs";
 import path from "path";
 import { connectDB } from "@/app/lib/mongodb";
@@ -16,6 +15,99 @@ export async function GET() {
     const data = await Project.find();
     return NextResponse.json({
       data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+// export async function GET(req) {
+//   try {
+//     const url = new URL(req.url);
+//     const id = url.searchParams.get("postId");
+//     await connectDB();
+//     const data = await Project.findById(id);
+//     if (!data) {
+//       return NextResponse.json(
+//         {
+//           message: "Post not Found",
+//         },
+//         { status: 404 }
+//       );
+//     }
+//     return NextResponse.json(
+//       {
+//         message: data,
+//       },
+//       { status: 200 }
+//     );
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+export async function PATCH(req) {
+  try {
+    const url = new URL(req.url);
+    const id = url.searchParams.get("postId");
+
+    const formData = await req.formData(); // Use formData instead of json
+    const name = formData.get("name");
+    const desc = formData.get("desc");
+    const file = formData.get("img");
+    await connectDB();
+    const post = await Project.findById(id);
+    if (!post) {
+      return NextResponse.json({
+        message: "Not found",
+      });
+    }
+    post.name = name || post.name;
+    post.desc = desc || post.desc;
+
+    if (file) {
+      const oldPath = path.join(process.cwd(), "public", post.img);
+      await fsPromises.unlink(oldPath);
+      const newPath = path.join(process.cwd(), "public", "Project", file.name);
+      const fileBuffer = await file.arrayBuffer();
+      await fsPromises.writeFile(newPath, Buffer.from(fileBuffer));
+      post.img = `/Project/${file.name}`;
+    }
+    await post.save();
+    return NextResponse.json({
+      message: "Updated",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function DELETE(req) {
+  try {
+    const url = new URL(req.url);
+    const id = url.searchParams.get("postId");
+    await connectDB();
+    const post = await Project.findById(id);
+    if (!post) {
+      return NextResponse.json({
+        message: "not found",
+      });
+    }
+    await Project.findByIdAndDelete(id);
+    const filePath = path.join(process.cwd(), "public", post.img);
+    try {
+      await fsPromises.unlink(filePath);
+      console.log("pic deleted");
+    } catch (error) {
+      if (error.code === "ENOENT") {
+        // File not found
+        console.log(`File ${filePath} not found, skipping deletion.`);
+      } else {
+        console.error(`Error deleting file ${filePath}:`, error);
+        // Handle other errors appropriately (e.g., re-throw if critical)
+        // throw error;  // Example: re-throw if you want to stop execution
+      }
+    }
+    return NextResponse.json({
+      message: "pic and post deleted",
     });
   } catch (error) {
     console.log(error);
