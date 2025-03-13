@@ -9,10 +9,14 @@ function Admin() {
     setShowPassword((prev) => !prev);
   };
   const [user, setUser] = useState([]);
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("/api/user"); // <- THIS IS A GET REQUEST
+        const res = await axios.get("/api/login"); // <- THIS IS A GET REQUEST
         setUser(res.data);
       } catch (err) {
         console.log(err);
@@ -35,6 +39,12 @@ function Admin() {
           <input
             type="text"
             id="email"
+            onChange={(e) =>
+              setUserData((prev) => ({
+                ...prev,
+                email: e.target.value,
+              }))
+            }
             className="flex-1 px-3 text-black py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400"
           />
         </div>
@@ -48,6 +58,12 @@ function Admin() {
           <input
             type={showPassword ? "text" : "password"}
             id="password"
+            onChange={(e) =>
+              setUserData((prev) => ({
+                ...prev,
+                password: e.target.value,
+              }))
+            }
             className="flex-1 p-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400 pr-10"
           />
 

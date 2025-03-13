@@ -107,11 +107,10 @@ export default function Section1() {
             transition={{ duration: 1.1 }}
             className={`${montLight.className} text-center   laptop:text-left tablet:text-3xl laptop:!text-lg`}
           >
-            {/* Design Qube, */}
-            founded in 2020 in Chennai, specializes in interior fit-outs,
-            project management, and execution. With a 9000 sq. ft. facility, we
-            deliver innovative, cost-effective solutions for commercial,
-            residential, and retail spaces across India.
+            Design Qube, founded in 2020 in Chennai, specializes in interior
+            fit-outs, project management, and execution. With a 9000 sq. ft.
+            facility, we deliver innovative, cost-effective solutions for
+            commercial, residential, and retail spaces across India.
           </motion.p>
           <motion.div
             animate={{ opacity: 1, y: 0 }}
