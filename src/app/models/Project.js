@@ -6,8 +6,8 @@ const projectSchema = new mongoose.Schema(
     desc: { type: String },
     img: { type: String },
   },
-  { timestamps: true }
+  { timestamps: true, collection: "projectinfo" }
 );
 
-export default mongoose.models.Project ||
-  mongoose.model("Project", projectSchema);
+export default mongoose.models.projectinfo ||
+  mongoose.model("projectinfo", projectSchema);
