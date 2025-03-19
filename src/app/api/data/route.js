@@ -53,7 +53,7 @@ export async function GET(req) {
   }
 }
 
-export async function PATCH(req) {
+export async function PUT(req) {
   try {
     const url = new URL(req.url);
     const id = url.searchParams.get("postId");

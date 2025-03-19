@@ -8,13 +8,20 @@ import { IoMdInformationCircleOutline } from "react-icons/io";
 
 function Admin() {
   const [spinner, setSpinner] = useState(false);
-  const [deleteId, setDeleteId] = useState(null);
+  const [currentId, setCurrentId] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [info, setInfo] = useState(false);
   const [deleteBtn, setDeleteBtn] = useState(false);
   const [edit, setEdit] = useState(false);
   const [project, setProject] = useState([]);
+  const [updatedData, setUpdatedData] = useState([]);
+  const [formData, setFormData] = useState({
+    name: "",
+    desc: "",
+    img: "",
+  });
+
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
@@ -45,21 +52,31 @@ function Admin() {
 
   // 👇 Call the function inside useEffect
   const fetchProjectData = async () => {
+    setSpinner(true);
     try {
-      setSpinner(true);
-      const res = await axios.get("api/data");
-
-      if (res && res.data && res.data.data) {
-        setProject(res.data.data);
-      } else {
-        console.warn("No data received!");
+      const res = await fetch("/api/data", {
+        cache: "no-store",
+      });
+      if (!res.ok) {
+        throw new Error("went wrong");
       }
+      const data = await res.json();
+
+      setProject(data.data);
     } catch (err) {
       console.log(err);
-    } finally {
-      setSpinner(false);
     }
+    setSpinner(false);
   };
+  useEffect(() => {
+    const filterData = project?.find((val) => val._id == currentId);
+    setUpdatedData(filterData);
+    setFormData({
+      name: filterData?.name || "",
+      desc: filterData?.desc || "",
+      img: filterData?.img || "",
+    });
+  }, [currentId]);
 
   function handleLogin() {
     if (getUser.email === user.email && getUser.password === user.password) {
@@ -76,24 +93,19 @@ function Admin() {
   async function handleInformation() {}
 
   const handleDeletion = async (id) => {
-    try {
-      const res = await axios.delete(`api/data?postId=${id}`);
-
-      if (res.status === 200) {
-        console.log("Deleted successfully:", res.data);
-        setDeleteBtn(false);
-        alert("deleted");
-        setProject(project.filter((post) => post._id !== id));
-        fetchProjectData();
-        // Optionally update your UI or refetch data
-      } else {
-        console.log("Failed to delete:", res.data.message);
+    const confirmed = confirm("Are you Sure");
+    if (confirmed) {
+      try {
+        await axios.delete(`/api/data?postId=${id}`);
+        setProject((prev) => prev?.filter((data) => data._id !== id));
+      } catch (error) {
+        alert("went wrong");
       }
-    } catch (error) {
-      console.error("Error deleting:", error.response?.data || error.message);
     }
   };
-  async function handleUpdate() {}
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+  };
 
   return (
     // <div className="h-screen w-full flex ">
@@ -207,19 +219,25 @@ function Admin() {
                           <div className="flex items-center gap-4 text-lg">
                             <CiEdit
                               title="Edit"
-                              onClick={() => setEdit((prev) => !prev)}
+                              onClick={() => {
+                                setEdit((prev) => !prev);
+                                setCurrentId(val._id);
+                              }}
                               className="cursor-pointer"
                             />
                             <MdDelete
                               title="Delete"
                               onClick={() => {
                                 setDeleteBtn(true);
-                                setDeleteId(val._id);
+                                handleDeletion(val._id);
                               }}
                               className="cursor-pointer text-red-500"
                             />
                             <IoMdInformationCircleOutline
-                              onClick={() => setInfo((prev) => !prev)}
+                              onClick={() => {
+                                setInfo((prev) => !prev);
+                                setCurrentId(val._id);
+                              }}
                               title="Info"
                               className="cursor-pointer text-blue-500"
                             />
@@ -277,7 +295,7 @@ function Admin() {
       {/* Edit info  */}
       {edit && (
         <div className="fixed inset-0 bg-black/40 bg-opacity-50 z-50 flex justify-center items-center">
-          <div className="relative bg-gray-200 w-80 text-black h-80 p-4 rounded-md justify-center flex flex-col items-center gap-4">
+          <div className="relative bg-gray-200 w-1/2 text-black h-80 p-4 rounded-md justify-center flex flex-col items-center gap-4">
             {/* cancel btn  */}
             <button
               onClick={() => setEdit((prev) => !prev)}
@@ -285,26 +303,77 @@ function Admin() {
             >
               X
             </button>
-            <div className=" flex items-center gap-2">
-              <label htmlFor="name" className="w-20">
-                Title
-              </label>
-              <input type="text" className="rounded-sm" />
-            </div>
-            <div className=" flex items-center gap-2">
-              <label htmlFor="name" className="w-20">
-                Description
-              </label>
-              <textarea
-                placeholder="Write your Description here..."
-                className="border border-gray-300 rounded-md p-2 w-full h-48 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            <div className="flex w-full justify-center items-center ">
-              <input type="file" className="text-xs" />
-              <button className="bg-green-700 text-sm text-white rounded-md p-2">
-                Save
-              </button>
+
+            <div className="flex flex-col gap-4 w-full">
+              <div className=" flex items-center gap-2">
+                <label htmlFor="name" className="w-20">
+                  Title
+                </label>
+                <input
+                  type="text"
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      name: e.target.value,
+                    }))
+                  }
+                  value={formData.name}
+                  className="rounded-sm"
+                />
+              </div>
+              <div className=" flex items-center gap-2">
+                <label htmlFor="name" className="w-20">
+                  Description
+                </label>
+                <textarea
+                  value={formData.desc}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      desc: e.target.value,
+                    }))
+                  }
+                  placeholder="Write your Description here..."
+                  className="border border-gray-300 rounded-md p-2 w-full h-48 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div className="flex w-full justify-between items-center ">
+                <input
+                  type="file"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                      const imgUrl = URL.createObjectURL(file);
+                      setFormData((prev) => ({
+                        ...prev,
+                        img: imgUrl,
+                      }));
+                    }
+                  }}
+                  className="text-xs"
+                />
+                <div>
+                  <p className="text-sm">Selected Image Preview:</p>
+                  {formData.img ? (
+                    <img
+                      src={formData.img}
+                      alt="Preview"
+                      className="w-40 h-40 object-cover border border-gray-300"
+                    />
+                  ) : (
+                    <p>No image selected</p>
+                  )}
+                  <p className="text-xs mt-2 break-all text-gray-600">
+                    {formData.img}
+                  </p>
+                </div>
+                <button
+                  onClick={handleUpdate}
+                  className="bg-green-700 text-sm text-white rounded-md p-2"
+                >
+                  Save
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -313,38 +382,44 @@ function Admin() {
       {info && (
         <div className="fixed inset-0 bg-black/40 bg-opacity-50 z-50 flex justify-center items-center">
           <div className="relative bg-gray-200 tablet:w-1/2 w-full text-black h-fit p-4 rounded-md  flex flex-col  gap-4">
-            {/* cancel btn  */}
             <button
               onClick={() => setInfo((prev) => !prev)}
               className="tablet:text-white right-2 top-2 absolute tablet:-top-5 tablet:-right-5 text-xl "
             >
               X
             </button>
-            <div className=" flex  gap-2">
-              <label htmlFor="name" className="w-20">
-                Title:
-              </label>
-              <p>title1</p>
-            </div>
-            <div className=" flex  gap-2 ">
-              <label htmlFor="name" className="w-20">
-                Description:
-              </label>
-              <p className="h-fit ">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam
-                sunt quas rem magnam quos voluptas doloremque debitis architecto
-                sit? Perspiciatis sequi magni omnis harum odit explicabo magnam
-                repellat neque voluptates! lore
-              </p>
-            </div>
-            <div className="flex w-full justify-center items-center ">
-              <input type="file" className="text-xs" />
-            </div>
+            {updatedData?.map((val, i) => (
+              <div key={i} className="flex flex-col gap-4 w-full">
+                <div className="flex gap-2">
+                  <label htmlFor="name" className="w-20">
+                    Title:
+                  </label>
+                  <p>{val.name}</p>
+                </div>
+                <div className="flex gap-2">
+                  <label htmlFor="desc" className="w-20">
+                    Description:
+                  </label>
+                  <p className="h-fit">{val.desc}</p>
+                </div>
+                {val.img && (
+                  <div className="flex justify-center w-full">
+                    <img
+                      src={val.img}
+                      alt="Project Preview"
+                      className="w-32 h-32 object-cover  rounded-md border"
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
+
+            {/* cancel btn  */}
           </div>
         </div>
       )}
       {/* deleteBtn */}
-      {deleteBtn && (
+      {/* {deleteBtn && (
         <div className="fixed inset-0 bg-black/40 bg-opacity-50 z-50 flex justify-center items-center">
           <div
             className="relative bg-gray-400  text-black h-fit p-4 rounded-md 
@@ -373,7 +448,7 @@ function Admin() {
             </p>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 }
