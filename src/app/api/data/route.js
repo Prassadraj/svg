@@ -27,7 +27,7 @@ export async function GET(req) {
       }
       return NextResponse.json(
         {
-          message: data,
+          data,
         },
         { status: 200 }
       );
@@ -43,7 +43,7 @@ export async function GET(req) {
       }
       return NextResponse.json(
         {
-          message: data,
+          data,
         },
         { status: 200 }
       );

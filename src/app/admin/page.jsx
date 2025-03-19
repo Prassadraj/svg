@@ -14,7 +14,7 @@ function Admin() {
   const [info, setInfo] = useState(false);
   const [deleteBtn, setDeleteBtn] = useState(false);
   const [edit, setEdit] = useState(false);
-
+  const [project, setProject] = useState([]);
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
@@ -23,7 +23,6 @@ function Admin() {
     email: "",
     password: "",
   });
-  const [project, setProject] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,13 +48,19 @@ function Admin() {
     try {
       setSpinner(true);
       const res = await axios.get("api/data");
-      setProject(res.data.message);
+
+      if (res && res.data && res.data.data) {
+        setProject(res.data.data);
+      } else {
+        console.warn("No data received!");
+      }
     } catch (err) {
       console.log(err);
     } finally {
       setSpinner(false);
     }
   };
+
   function handleLogin() {
     if (getUser.email === user.email && getUser.password === user.password) {
       localStorage.setItem("isLoggedIn", "true");

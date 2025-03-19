@@ -68,9 +68,11 @@ function Footer() {
         <ul
           className={`flex  items-end h-full laptop:text-3xl tablet:text-lg gap-4 ${montLight.className}`}
         >
-          <li className="">
-            <FaXTwitter />
-          </li>
+          <a href="/admin">
+            <li className="">
+              <FaXTwitter />
+            </li>
+          </a>
           <li className="">
             <FaFacebook />
           </li>
