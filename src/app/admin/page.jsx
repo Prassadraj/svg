@@ -109,13 +109,13 @@ function Admin() {
     e.preventDefault();
     console.log(formData);
     console.log(currentId)
-    // try {
-    //   await axios.put(`/api/data?postId=${currentId}`, formData);
-    //   fetchProjectData();
-    //   setEdit(false);
-    // } catch (error) {
-    //   alert("Not Updated");
-    // }
+    try {
+      await axios.put(`/api/data?postId=${currentId}`, formData);
+      fetchProjectData();
+      setEdit(false);
+    } catch (error) {
+      alert("Not Updated");
+    }
   };
 
   return (
