@@ -53,7 +53,7 @@ export async function GET(req) {
   }
 }
 
-export async function PUT(req) {
+export async function PATCH(req) {
   try {
     const url = new URL(req.url);
     const id = url.searchParams.get("postId");
@@ -86,6 +86,9 @@ export async function PUT(req) {
     });
   } catch (error) {
     console.log(error);
+    return NextResponse.json({
+      message: error,
+    });
   }
 }
 export async function DELETE(req) {
@@ -118,7 +121,11 @@ export async function DELETE(req) {
       message: "pic and post deleted",
     });
   } catch (error) {
-    console.log(error);
+    console.error("PUT error:", error);
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }
 

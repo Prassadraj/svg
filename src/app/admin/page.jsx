@@ -108,13 +108,14 @@ function Admin() {
   const handleUpdate = async (e) => {
     e.preventDefault();
     console.log(formData);
-    try {
-      await axios.put(`/api/data?postId=${currentId}`, formData);
-      fetchProjectData();
-      setEdit(false);
-    } catch (error) {
-      alert("Not Updated");
-    }
+    console.log(currentId)
+    // try {
+    //   await axios.put(`/api/data?postId=${currentId}`, formData);
+    //   fetchProjectData();
+    //   setEdit(false);
+    // } catch (error) {
+    //   alert("Not Updated");
+    // }
   };
 
   return (
