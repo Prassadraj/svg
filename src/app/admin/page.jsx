@@ -110,7 +110,7 @@ function Admin() {
     console.log(formData);
     console.log(currentId)
     try {
-      await axios.put(`/api/data?postId=${currentId}`, formData);
+      await axios.patch(`/api/data?postId=${currentId}`, formData);
       fetchProjectData();
       setEdit(false);
     } catch (error) {
