@@ -1,406 +1,235 @@
 "use client";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { CiEdit } from "react-icons/ci";
-import { MdDelete } from "react-icons/md";
-import { IoMdInformationCircleOutline } from "react-icons/io";
+import { useState, useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FaTrash, FaEdit, FaPlus, FaArrowLeft } from "react-icons/fa";
+import Modal from "./modal";
 
-function Admin() {
-  const [spinner, setSpinner] = useState(false);
-  const [currentId, setCurrentId] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [info, setInfo] = useState(false);
-  const [deleteBtn, setDeleteBtn] = useState(false);
-  const [edit, setEdit] = useState(false);
-  const [project, setProject] = useState([]);
-  const [updatedData, setUpdatedData] = useState([]);
-  const [formData, setFormData] = useState({
-    name: "",
-    desc: "",
-    img: "",
-    imgUrl: "",
-  });
+export default function AdminPosts() {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [tags, setTags] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [posts, setPosts] = useState([]);
+  const [editingPostId, setEditingPostId] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
-  };
-  const [user, setUser] = useState([]);
-  const [getUser, setGetUser] = useState({
-    email: "",
-    password: "",
-  });
-
+  // Fetch posts on load
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get("/api/login"); // <- THIS IS A GET REQUEST
-        setUser(res.data.message[0]);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    // fetchProjectData
-
-    fetchData();
-    fetchProjectData();
-    const loggedIn = localStorage.getItem("isLoggedIn");
-    if (loggedIn == "true") {
-      setIsLoggedIn(true);
-    }
+    fetch("/api/posts")
+      .then((res) => res.json())
+      .then((data) => setPosts(data))
+      .catch((error) => console.error("Error fetching posts:", error));
   }, []);
 
-  // 👇 Call the function inside useEffect
-  const fetchProjectData = async () => {
-    setSpinner(true);
-    try {
-      const res = await fetch("/api/data", {
-        cache: "no-store",
-      });
-      if (!res.ok) {
-        throw new Error("went wrong");
-      }
-      const data = await res.json();
-
-      setProject(data.data);
-    } catch (err) {
-      console.log(err);
-    }
-    setSpinner(false);
-  };
-  useEffect(() => {
-    const filterData = project?.find((val) => val._id == currentId);
-    setUpdatedData(filterData);
-    setFormData({
-      name: filterData?.name || "",
-      desc: filterData?.desc || "",
-      img: filterData?.img || "",
-      imgUrl: filterData?.img || "",
-    });
-  }, [currentId]);
-
-  function handleLogin() {
-    if (getUser.email === user.email && getUser.password === user.password) {
-      localStorage.setItem("isLoggedIn", "true");
-      setIsLoggedIn(true);
-    } else {
-      alert("invalid password or email");
-    }
-  }
-  function handleLogout() {
-    localStorage.removeItem("isLoggedIn", "false");
-    setIsLoggedIn(false);
-  }
-  async function handleInformation() {}
-
-  const handleDeletion = async (id) => {
-    const confirmed = confirm("Are you Sure");
-    if (confirmed) {
-      try {
-        await axios.delete(`/api/data?postId=${id}`);
-        setProject((prev) => prev?.filter((data) => data._id !== id));
-      } catch (error) {
-        alert("went wrong");
-      }
-    }
-  };
-  const handleUpdate = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    console.log(currentId)
+
+    const data = {
+      title,
+      content,
+      tags: tags.split(",").map((tag) => tag.trim()),
+      imageUrl,
+    };
+
     try {
-      await axios.patch(`/api/data?postId=${currentId}`, formData);
-      fetchProjectData();
-      setEdit(false);
+      let response;
+      if (editingPostId) {
+        response = await fetch(`/api/posts/?postId=${editingPostId}`, {
+          method: "PATCH",
+          body: JSON.stringify(data),
+        });
+      } else {
+        response = await fetch("/api/posts", {
+          method: "POST",
+          body: JSON.stringify(data),
+        });
+      }
+
+      if (response.ok) {
+        toast.success(
+          editingPostId ? "Post updated successfully!" : "Post added successfully!"
+        );
+        setTitle("");
+        setContent("");
+        setTags("");
+        setImageUrl("");
+        setEditingPostId(null);
+        setIsModalOpen(false);
+
+        // Fetch updated posts
+        const updatedPosts = await fetch("/api/posts").then((res) => res.json());
+        setPosts(updatedPosts);
+      } else {
+        const errorText = await response.text();
+        toast.error("Error adding/updating post: " + errorText);
+      }
     } catch (error) {
-      alert("Not Updated");
+      toast.error("Error: " + error.message);
     }
   };
+
+  const handleDeletePost = async (postId) => {
+    try {
+      const response = await fetch(`/api/posts/?postId=${postId}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        toast.success("Post deleted successfully!");
+        setPosts(posts.filter((post) => post._id !== postId));
+      } else {
+        toast.error("Error deleting post");
+      }
+    } catch (error) {
+      toast.error("Error: " + error.message);
+    }
+  };
+
+  const handleEditPost = (post) => {
+    setEditingPostId(post._id);
+    setTitle(post.title);
+    setContent(post.content);
+    setTags(post.tags.join(", "));
+    setImageUrl(post.imageUrl);
+    setIsModalOpen(true);
+  };
+
+  const handleAddPost = () => {
+    setEditingPostId(null);
+    setTitle("");
+    setContent("");
+    setTags("");
+    setImageUrl("");
+    setIsModalOpen(true);
+  };
+
+  const handleBack = () => {
+    window.history.back();
+  };
+
+  const filteredPosts = posts.filter(
+    (post) =>
+      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.tags.some((tag) =>
+        tag.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+  );
 
   return (
-    // <div className="h-screen w-full flex ">
-    //   {!isLoggedIn ? (
-    //     <div className="flex flex-col justify-center items-center w-full gap-6 p-4">
-    //       <h1 className="text-4xl mb-4 font-bold">Login</h1>
-
-    //       {/* E-Mail Field */}
-    //       <div className="flex items-center gap-4 w-full max-w-sm">
-    //         <label htmlFor="email" className="w-24 text-right">
-    //           E-Mail
-    //         </label>
-    //         <input
-    //           type="text"
-    //           id="email"
-    //           onChange={(e) =>
-    //             setGetUser((prev) => ({
-    //               ...prev,
-    //               email: e.target.value,
-    //             }))
-    //           }
-    //           className="flex-1 px-3 text-black py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400"
-    //         />
-    //       </div>
-
-    //       {/* Password Field */}
-    //       <div className="flex items-center gap-4 w-full max-w-sm relative">
-    //         <label htmlFor="password" className="w-24 text-right">
-    //           Password
-    //         </label>
-
-    //         <input
-    //           type={showPassword ? "text" : "password"}
-    //           id="password"
-    //           onChange={(e) =>
-    //             setGetUser((prev) => ({
-    //               ...prev,
-    //               password: e.target.value,
-    //             }))
-    //           }
-    //           className="flex-1 p-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400 pr-10"
-    //         />
-
-    //         {/* Eye Icon */}
-    //         <button
-    //           type="button"
-    //           onClick={togglePasswordVisibility}
-    //           className="absolute right-3 text-gray-500 focus:outline-none"
-    //         >
-    //           {showPassword ? <FaEyeSlash /> : <FaEye />}
-    //         </button>
-    //       </div>
-
-    //       {/* Optional: Add a button */}
-    //       <button
-    //         onClick={handleLogin}
-    //         className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
-    //       >
-    //         Login
-    //       </button>
-    //     </div>
-    //   ) : (
-
-    //   )}
-    // </div>
-    <>
-      <div className="flex mt-24 justify-between items-center w-full tablet:px-10 px-2 mb-4">
-        <div></div>
-        <h1 className="tablet:text-2xl font-bold ">Welcome, !</h1>
-        <button
-          onClick={handleLogout}
-          className=" text-sm  p-1
-          bg-red-600 text-white rounded-md hover:bg-red-700 transition"
-        >
-          Logout
-        </button>
-      </div>
-      <div className="  px-2 tablet:px-10">
-        <table className="table-auto border-collapse border border-gray-300 w-full">
-          <thead>
-            <tr>
-              <th className="border border-gray-300 px-4 py-2">No.</th>
-              <th className="border border-gray-300 px-4 py-2">Title</th>
-              <th className="border border-gray-300 px-4 py-2">Description</th>
-              <th className="border border-gray-300 px-4 py-2">Modify</th>
-            </tr>
-          </thead>
-          <tbody>
-            {spinner ? (
-              <tr>
-                <td colSpan="4" className="text-center py-4 text-white">
-                  Loading...
-                </td>
-              </tr>
-            ) : (
-              <>
-                {project && project.length > 0 ? (
-                  <>
-                    {project.map((val, i) => (
-                      <tr key={i} className="text-xs tablet:text-sm">
-                        <td className="border border-gray-300 px-4 ">
-                          {i + 1}
-                        </td>
-                        <td className="border border-gray-300 px-4 ">
-                          {val.name}
-                        </td>
-                        <td className="border border-gray-300 px-4 line-clamp-2">
-                          {val.desc}
-                        </td>
-                        <td className="border border-gray-300 px-4 w-32">
-                          <div className="flex items-center gap-4 text-lg">
-                            <CiEdit
-                              title="Edit"
-                              onClick={() => {
-                                setEdit((prev) => !prev);
-                                setCurrentId(val._id);
-                              }}
-                              className="cursor-pointer"
-                            />
-                            <MdDelete
-                              title="Delete"
-                              onClick={() => {
-                                setDeleteBtn(true);
-                                handleDeletion(val._id);
-                              }}
-                              className="cursor-pointer text-red-500"
-                            />
-                            <IoMdInformationCircleOutline
-                              onClick={() => {
-                                setInfo((prev) => !prev);
-                                setCurrentId(val._id);
-                              }}
-                              title="Info"
-                              className="cursor-pointer text-blue-500"
-                            />
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </>
-                ) : (
-                  <>
-                    <tr>
-                      <td colSpan="4" className="text-center py-4 text-white">
-                        No data
-                      </td>
-                    </tr>
-                  </>
-                )}
-              </>
-            )}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Edit info  */}
-      {edit && (
-        <div className="fixed inset-0 bg-black/40 bg-opacity-50 z-50 p-2 flex justify-center items-center">
-          <div className="relative bg-gray-200 w-full   tablet:w-1/2 text-black  p-4 rounded-md justify-center flex flex-col items-center gap-4">
-            {/* cancel btn  */}
-            <button
-              onClick={() => setEdit((prev) => !prev)}
-              className="tablet:text-white absolute tablet:!-top-5 !right-2 !top-1 tablet:!-right-5 text-xl"
-            >
-              X
-            </button>
-
-            <div className="flex flex-col gap-4 w-full">
-              <div className=" flex items-center gap-2">
-                <label htmlFor="name" className="w-20">
-                  Title
-                </label>
-                <input
-                  type="text"
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      name: e.target.value,
-                    }))
-                  }
-                  value={formData.name}
-                  className="rounded-sm p-2"
-                />
-              </div>
-              <div className=" flex items-center gap-2">
-                <label htmlFor="name" className="w-20">
-                  Description
-                </label>
-                <textarea
-                  value={formData.desc}
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      desc: e.target.value,
-                    }))
-                  }
-                  placeholder="Write your Description here..."
-                  className="border  border-gray-300 h-32 rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 touch-auto"
-                />
-              </div>
-              <div>
-                <p className="text-sm">Selected Image Preview:</p>
-                {formData.img ? (
-                  <img
-                    src={formData.imgUrl}
-                    alt="Preview"
-                    className="w-40 aspect-square object-cover border border-gray-300"
-                  />
-                ) : (
-                  <p>No image selected</p>
-                )}
-                <p className="text-xs mt-2 break-all text-gray-600">
-                  {formData.imgUrl}
-                </p>
-              </div>
-              <div className="flex w-full justify-between items-center ">
-                <input
-                  type="file"
-                  onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                      const imgUrl = URL.createObjectURL(file);
-                      setFormData((prev) => ({
-                        ...prev,
-                        img: file,
-                        imgUrl: imgUrl,
-                      }));
-                    }
-                  }}
-                  className="text-xs"
-                />
-
-                <button
-                  onClick={handleUpdate}
-                  className="bg-green-700 text-sm text-white rounded-md p-2"
-                >
-                  Save
-                </button>
-              </div>
-            </div>
-          </div>
+    <div className="min-h-screen p-8">
+      <ToastContainer />
+      <br></br>
+      <br></br>
+      <header className="mb-8 flex items-center justify-between">
+        <div className="flex-1">
+          <h1 className="text-4xl font-semibold">Manage Posts</h1>
         </div>
-      )}
-      {/*  info  */}
-      {info && (
-        <div className="fixed inset-0 bg-black/40 bg-opacity-50 z-50 flex justify-center items-center">
-          <div className="relative bg-gray-200 tablet:w-1/2 w-full text-black h-fit p-4 rounded-md  flex flex-col  gap-4">
-            <button
-              onClick={() => setInfo((prev) => !prev)}
-              className="tablet:text-white right-2 top-2 absolute tablet:!-top-5 tablet:!-right-5 text-xl "
-            >
-              X
-            </button>
+        <div className="flex">
+          <button
+            className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-2 rounded-md shadow-lg transform hover:scale-105 transition-all duration-300 ml-4 flex items-center"
+            onClick={handleAddPost}
+          >
+            <FaPlus className="mr-2" /> Add New Post
+          </button>
+          <button
+            className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-2 rounded-md shadow-lg transform hover:scale-105 transition-all duration-300 ml-4 flex items-center"
+            onClick={handleBack}
+          >
+            <FaArrowLeft className="mr-2" /> Back
+          </button>
+        </div>
+      </header>
 
-            <div className="flex flex-col gap-4 w-full">
-              <div className="flex gap-2">
-                <label htmlFor="name" className="w-20">
-                  Title:
-                </label>
-                <p>{formData.name}</p>
+      <div className="flex justify-center mb-8">
+        <input
+          type="text"
+          placeholder="Search posts..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full p-2 border rounded text-black transform transition-transform duration-300 hover:scale-75 hover:z-10 focus:outline-none focus:border-blue-500"
+        />
+      </div>
+
+      <div className="mt-10">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {filteredPosts.map((post) => (
+            <li
+              key={post._id}
+              className="border p-4 rounded relative transform transition-transform duration-300 ease-in-out hover:scale-105 hover:z-10 overflow-hidden"
+            >
+              <div className="flex items-center justify-center space-x-4 absolute top-0 right-2 bottom-0">
+                <FaEdit
+                  onClick={() => handleEditPost(post)}
+                  className="cursor-pointer text-blue-500 text-2xl"
+                />
+                <FaTrash
+                  onClick={() => handleDeletePost(post._id)}
+                  className="cursor-pointer text-blue-500 text-2xl"
+                />
               </div>
-              <div className="flex gap-2">
-                <label htmlFor="desc" className="w-20">
-                  Description:
-                </label>
-                <p className="h-fit">{formData.desc}</p>
-              </div>
-              {formData.img && (
-                <div className="flex justify-center w-full">
-                  <img
-                    src={formData.img}
-                    alt="Project Preview"
-                    className="w-32 h-32 object-cover  rounded-md border"
-                  />
-                </div>
+              <h2 className="text-xl font-bold">{post.title}</h2>
+              <p>{post.content.slice(0, 100)}...</p>
+              <p className="text-sm text-gray-600">
+                Tags: {post.tags.join(", ")}
+              </p>
+              {post.imageUrl && (
+                <img
+                  src={post.imageUrl}
+                  alt={post.title}
+                  className="w-full h-40 object-cover mt-2 rounded"
+                />
               )}
-            </div>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-            {/* cancel btn  */}
-          </div>
-        </div>
-      )}
-    </>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-full p-2 border rounded text-black"
+            required
+          />
+          <textarea
+            placeholder="Content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            className="w-full p-2 border rounded text-black"
+            rows="6"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Tags (comma separated)"
+            value={tags}
+            onChange={(e) => setTags(e.target.value)}
+            className="w-full p-2 border rounded text-black"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Image URL"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            className="w-full p-2 border rounded text-black"
+          />
+          {imageUrl && (
+            <img src={imageUrl} alt="Preview" className="w-full h-40 object-cover mt-2 rounded" />
+          )}
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white p-2 rounded"
+          >
+            {editingPostId ? "Update Post" : "Add Post"}
+          </button>
+        </form>
+      </Modal>
+    </div>
   );
 }
-
-export default Admin;

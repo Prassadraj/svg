@@ -18,9 +18,11 @@
     "lenis": "^1.1.21",
     "mongoose": "^8.12.1",
     "next": "^15.1.7",
+    "raw-body": "^3.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
+    "react-toastify": "^11.0.5",
     "swiper": "^11.2.5"
   },
   "devDependencies": {
