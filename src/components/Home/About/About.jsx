@@ -49,10 +49,13 @@ function About() {
       {/* first div  */}
       <div className="flex tablet:px-10 flex-col laptop:items-end w-full laptop:ml-auto laptop:gap-3 gap-4 items-center">
         <h1
-          className={` text-transparent bg-clip-text h-fit laptop:text-right text-center  bg-title-gradient text-5xl font-semibold ${news.className}`}
+          className={` text-transparent bg-clip-text h-fit laptop:text-right text-center  bg-subTitle-gradient text-5xl font-semibold ${news.className}`}
         >
           {/* Modern Interior Design Service  */}
-          Providing Innovative <br /> Interior Design.
+          Providing Innovative <br /> Interior{" "}
+          <span className="text-transparent bg-title-gradient bg-clip-text">
+            Design.
+          </span>
         </h1>
         <p
           className={`laptop:text-right text-center break-words laptop:w-1/3 laptop:hidden ${montLight.className}`}
