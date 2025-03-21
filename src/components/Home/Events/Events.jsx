@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
-import "./styles.css"; 
+import "./styles.css";
 import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
 import Image from "next/image";
 function Events() {
@@ -64,7 +64,11 @@ function Events() {
                   key={i}
                   className="tablet:!w-[350px] tablet:!h-[350px] !h-[200px] !w-[200px] relative rounded-md overflow-hidden !z-10"
                 >
-                  <img alt={`Nature ${i + 1}`} src={`/Events/${val}.jpeg`} />
+                  <img
+                    loading="lazy"
+                    alt={`Nature ${i + 1}`}
+                    src={`/Events/${val}.jpeg`}
+                  />
                   <div className="absolute bottom-0 w-full bg-black/50 p-2">
                     <p
                       className={`line-clamp-2 overflow-hidden text-ellipsis text-xs tablet:text-sm

@@ -43,6 +43,7 @@ function Service() {
             <Image
               alt="img"
               fill
+              loading="lazy"
               src="/Service/service5.jpeg"
               className="h-full relative w-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
             />
@@ -70,6 +71,7 @@ function Service() {
           >
             <Image
               alt="img"
+              loading="lazy"
               fill
               src="/Service/service2.jpeg"
               className="h-full relative w-full object-cover hover:scale-95 transition-all duration-500 ease-in-out"
@@ -99,6 +101,7 @@ function Service() {
             <Image
               alt="img"
               fill
+              loading="lazy"
               src="/Service/service3.jpeg"
               className="h-full relative w-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
             />

@@ -35,6 +35,7 @@ function Gallery() {
           <Image
             alt="img"
             fill
+            loading="lazy"
             src="/Gallery/bed.jpg"
             className="h-full w-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
@@ -50,6 +51,7 @@ function Gallery() {
           <Image
             alt="img"
             fill
+            loading="lazy"
             src="/Gallery/gardern.jpeg"
             className="h-full w-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
@@ -65,6 +67,7 @@ function Gallery() {
           <Image
             alt="img"
             fill
+            loading="lazy"
             src="/Gallery/gym1.jpeg"
             className="h-full w-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
@@ -81,6 +84,7 @@ function Gallery() {
           <Image
             alt="img"
             fill
+            loading="lazy"
             src="/Gallery/livingRoom.png"
             className="h-full w-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
@@ -96,6 +100,7 @@ function Gallery() {
           <Image
             alt="img"
             fill
+            loading="lazy"
             src="/Gallery/office.jpeg"
             className="h-full w-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
@@ -112,6 +117,7 @@ function Gallery() {
           <Image
             alt="img"
             fill
+            loading="lazy"
             src="/Gallery/reception2.jpeg"
             className="h-full w-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
@@ -127,6 +133,7 @@ function Gallery() {
           <Image
             alt="img"
             fill
+            loading="lazy"
             src="/Gallery/room.jpeg"
             className="h-full w-full object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />

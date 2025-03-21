@@ -163,6 +163,7 @@ export default function Section1() {
                 width={900}
                 className="w-full  object-cover  rounded-tl-[20%] rounded-xl bg-slate-400"
                 alt="img"
+                priority
                 height={900}
               />
             </motion.div>
@@ -177,6 +178,7 @@ export default function Section1() {
                 width={900}
                 className="w-full  object-cover h-[300px] rounded-2xl bg-slate-400"
                 alt="img"
+                priority
                 height={900}
               />
             </motion.div>

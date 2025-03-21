@@ -71,6 +71,7 @@ function Manufacture() {
         {/* Manufacturing img  */}
         <div className="row-start-1 row-end-4 col-start-2 col-end-4 z-0 overflow-hidden">
           <Image
+            loading="lazy"
             src="/Manufacture/img1.jpeg"
             width={900}
             alt="img"
@@ -81,6 +82,7 @@ function Manufacture() {
         <div className="row-start-2 col-start-3 col-end-5 row-end-3 z-10 overflow-hidden">
           {/* right img  */}
           <Image
+            loading="lazy"
             src="/Manufacture/img2.jpeg"
             width={900}
             height={900}
@@ -92,6 +94,7 @@ function Manufacture() {
         {/* vector */}
         <div className="row-start-1 row-end-4 col-start-3 col-end-5  -z-10">
           <Image
+            loading="lazy"
             src="/Manufacture/vector.svg"
             width={900}
             height={900}
@@ -101,6 +104,7 @@ function Manufacture() {
         </div>
         <div className="row-start-2 row-end-4 col-start-3 col-end-5  -z-10">
           <Image
+            loading="lazy"
             src="/Manufacture/vector2.svg"
             width={900}
             alt="img"

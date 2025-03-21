@@ -31,6 +31,7 @@ function About() {
           src="/two.png"
           width={900}
           height={900}
+          loading="lazy"
           alt="m"
           className="w-full h-full "
         />
@@ -39,6 +40,7 @@ function About() {
         <Image
           src="/circle.png"
           width={900}
+          loading="lazy"
           alt="m"
           height={900}
           className="w-full h-full "
@@ -79,6 +81,7 @@ function About() {
           <Image
             alt="img"
             fill
+            loading="lazy"
             src="/AboutImgs/about3.jpg"
             className="h-full w-full hover:rotate-1 object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
@@ -88,6 +91,7 @@ function About() {
           <Image
             alt="img"
             fill
+            loading="lazy"
             src="/AboutImgs/about2.jpg"
             className="w-full h-full hover:-rotate-1 bg-slate-400 object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
@@ -124,6 +128,7 @@ function About() {
       <div className={`${montLight.className} tablet:hidden`}>
         <Image
           alt="img"
+          loading="lazy"
           src="/AboutImgs/about1.jpeg"
           width={100}
           height={100}

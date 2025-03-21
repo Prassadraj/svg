@@ -105,6 +105,7 @@ function Team() {
                   </div>
                 </div>
                 <Image
+                  loading="lazy"
                   src={val.img}
                   width={900}
                   height={900}

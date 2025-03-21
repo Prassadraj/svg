@@ -50,6 +50,7 @@ function Counter() {
         <video
           key={videoSrc}
           autoPlay
+          preload="auto"
           muted
           onEnded={() =>
             setVideoSrc((prev) =>
@@ -92,6 +93,7 @@ function Counter() {
                 width={100}
                 height={100}
                 alt="img"
+                loading="lazy"
                 className="w-full bg-slate-400 h-full object-cover hover:scale-105 hover:-rotate-2 duration-200 ease-in-out"
               />
             </div>
@@ -102,6 +104,7 @@ function Counter() {
                 width={100}
                 height={100}
                 alt="img"
+                loading="lazy"
                 className="w-full  h-full object-cover duration-200 ease-in-out"
               />
             </div>
@@ -124,6 +127,7 @@ function Counter() {
             <Image
               src="/CounterImgs/rightImg.png"
               width={100}
+              loading="lazy"
               height={100}
               alt="img"
               className="w-full bg-slate-400 h-full object-cover hover:scale-105 hover:rotate-2 transition-all duration-700 ease-in-out"
@@ -152,6 +156,7 @@ function Counter() {
                   width={100}
                   height={100}
                   alt="img"
+                  loading="lazy"
                   className="h-10 w-fit object-cover"
                 />
                 <p ref={(el) => (statRefs.current[i] = el)} className="">
