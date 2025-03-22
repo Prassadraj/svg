@@ -152,7 +152,6 @@ function Admin() {
       alert(error);
     }
   };
-  console.log(formData.complete);
 
   return (
     // <div className="h-screen w-full flex ">
