@@ -31,6 +31,7 @@ function About() {
           src="/two.png"
           width={900}
           height={900}
+          loading="lazy"
           alt="m"
           className="w-full h-full "
         />
@@ -39,6 +40,7 @@ function About() {
         <Image
           src="/circle.png"
           width={900}
+          loading="lazy"
           alt="m"
           height={900}
           className="w-full h-full "
@@ -47,10 +49,13 @@ function About() {
       {/* first div  */}
       <div className="flex tablet:px-10 flex-col laptop:items-end w-full laptop:ml-auto laptop:gap-3 gap-4 items-center">
         <h1
-          className={` text-transparent bg-clip-text h-fit laptop:text-right text-center  bg-title-gradient text-5xl font-semibold ${news.className}`}
+          className={` text-transparent bg-clip-text h-fit laptop:text-right text-center  bg-subTitle-gradient text-5xl font-semibold ${news.className}`}
         >
           {/* Modern Interior Design Service  */}
-          Providing Innovative <br /> Interior Design.
+          Providing Innovative <br /> Interior{" "}
+          <span className="text-transparent bg-title-gradient bg-clip-text">
+            Design.
+          </span>
         </h1>
         <p
           className={`laptop:text-right text-center break-words laptop:w-1/3 laptop:hidden ${montLight.className}`}
@@ -79,6 +84,7 @@ function About() {
           <Image
             alt="img"
             fill
+            loading="lazy"
             src="/AboutImgs/about3.jpg"
             className="h-full w-full hover:rotate-1 object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
@@ -88,6 +94,7 @@ function About() {
           <Image
             alt="img"
             fill
+            loading="lazy"
             src="/AboutImgs/about2.jpg"
             className="w-full h-full hover:-rotate-1 bg-slate-400 object-cover hover:scale-105 transition-all duration-500 ease-in-out"
           />
@@ -124,6 +131,7 @@ function About() {
       <div className={`${montLight.className} tablet:hidden`}>
         <Image
           alt="img"
+          loading="lazy"
           src="/AboutImgs/about1.jpeg"
           width={100}
           height={100}

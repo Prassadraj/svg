@@ -53,7 +53,7 @@ export async function GET(req) {
   }
 }
 
-export async function PATCH(req) {
+export async function PUT(req) {
   try {
     const url = new URL(req.url);
     const id = url.searchParams.get("postId");
@@ -62,6 +62,8 @@ export async function PATCH(req) {
     const name = formData.get("name");
     const desc = formData.get("desc");
     const file = formData.get("img");
+    const completeStr = formData.get("complete");
+    const complete = completeStr === "true";
     await connectDB();
     const post = await Project.findById(id);
     if (!post) {
@@ -71,8 +73,9 @@ export async function PATCH(req) {
     }
     post.name = name || post.name;
     post.desc = desc || post.desc;
+    post.complete = complete;
 
-    if (file) {
+    if (file && file.name) {
       const oldPath = path.join(process.cwd(), "public", post.img);
       await fsPromises.unlink(oldPath);
       const newPath = path.join(process.cwd(), "public", "Project", file.name);
@@ -136,9 +139,10 @@ export async function POST(req) {
       name: formData.get("name"),
       desc: formData.get("desc"),
       file: formData.get("img"),
+      complete: formData.get("complete"),
     };
     console.log("newData:", newData);
-    if (!newData.name || !newData.desc || !newData.file) {
+    if (!newData.name || !newData.desc || !newData.file || !newData.file) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
@@ -159,13 +163,14 @@ export async function POST(req) {
 
     console.log("newPost:", newData.file.name);
 
-    await Project.create({
+    const data = await Project.create({
       name: newData.name,
       desc: newData.desc,
       img: `/Project/${newData.file.name}`,
+      complete: newData.complete,
     });
 
-    return NextResponse.json({ message: "success" });
+    return NextResponse.json({ message: data });
   } catch (error) {
     console.error("Error creating post:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });

@@ -5,9 +5,10 @@ const projectSchema = new mongoose.Schema(
     name: { type: String },
     desc: { type: String },
     img: { type: String },
+    complete: { type: Boolean },
   },
-  { timestamps: true, collection: "projectinfo" }
+  { timestamps: true, collection: "desi" }
 );
 
-export default mongoose.models.projectinfo ||
-  mongoose.model("projectinfo", projectSchema);
+export default mongoose.models.desi ||
+  mongoose.model("desi", projectSchema);
