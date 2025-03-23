@@ -58,42 +58,86 @@ export async function PUT(req) {
     const url = new URL(req.url);
     const id = url.searchParams.get("postId");
 
-    const formData = await req.formData(); // Use formData instead of json
+    const formData = await req.formData();
     const name = formData.get("name");
     const desc = formData.get("desc");
-    const file = formData.get("img");
     const completeStr = formData.get("complete");
     const complete = completeStr === "true";
+
+    // Retrieve all "img" fields (paths or File objects)
+    const imgs = formData.getAll("img");
+
     await connectDB();
+
     const post = await Project.findById(id);
+
     if (!post) {
-      return NextResponse.json({
-        message: "Not found",
-      });
+      return NextResponse.json({ message: "Post not found" }, { status: 404 });
     }
+
     post.name = name || post.name;
     post.desc = desc || post.desc;
     post.complete = complete;
 
-    if (file && file.name) {
-      const oldPath = path.join(process.cwd(), "public", post.img);
-      await fsPromises.unlink(oldPath);
-      const newPath = path.join(process.cwd(), "public", "Project", file.name);
-      const fileBuffer = await file.arrayBuffer();
-      await fsPromises.writeFile(newPath, Buffer.from(fileBuffer));
-      post.img = `/Project/${file.name}`;
+    const newImagePaths = [];
+
+    for (const img of imgs) {
+      if (typeof img === "string" && img.startsWith("/Project/")) {
+        // Existing image path, just reuse it
+        newImagePaths.push(img);
+      } else if (img && img.name) {
+        // It's a File, save it!
+        const buffer = Buffer.from(await img.arrayBuffer());
+        const fileName = img.name;
+        const savePath = path.join(
+          process.cwd(),
+          "public",
+          "Project",
+          fileName
+        );
+
+        await fsPromises.writeFile(savePath, buffer);
+        console.log(`Saved new image: ${savePath}`);
+
+        newImagePaths.push(`/Project/${fileName}`);
+      }
     }
+
+    // Delete old images that were replaced
+    const deletedImages = post.img.filter(
+      (oldImg) => !newImagePaths.includes(oldImg)
+    );
+
+    for (const oldImgPath of deletedImages) {
+      const absoluteOldPath = path.join(process.cwd(), "public", oldImgPath);
+      try {
+        await fsPromises.unlink(absoluteOldPath);
+        console.log(`Deleted old image: ${absoluteOldPath}`);
+      } catch (error) {
+        if (error.code !== "ENOENT") {
+          console.error(`Error deleting ${absoluteOldPath}:`, error);
+        }
+      }
+    }
+
+    // Update post image list
+    post.img = newImagePaths;
+
     await post.save();
+
     return NextResponse.json({
-      message: "Updated",
+      message: "Post updated successfully",
+      data: post,
     });
   } catch (error) {
-    console.log(error);
-    return NextResponse.json({
-      message: error,
-    });
+    console.error("PUT error:", error);
+    return NextResponse.json(
+      { message: "Internal Server Error", error: error.message },
+      { status: 500 }
+    );
   }
 }
+
 export async function DELETE(req) {
   try {
     const url = new URL(req.url);
@@ -105,26 +149,33 @@ export async function DELETE(req) {
         message: "not found",
       });
     }
-    await Project.findByIdAndDelete(id);
-    const filePath = path.join(process.cwd(), "public", post.img);
-    try {
-      await fsPromises.unlink(filePath);
-      console.log("pic deleted");
-    } catch (error) {
-      if (error.code === "ENOENT") {
-        // File not found
-        console.log(`File ${filePath} not found, skipping deletion.`);
-      } else {
-        console.error(`Error deleting file ${filePath}:`, error);
-        // Handle other errors appropriately (e.g., re-throw if critical)
-        // throw error;  // Example: re-throw if you want to stop execution
+    await Project.findById(id);
+    const imgArray = post.img; // array of image paths
+    if (Array.isArray(imgArray)) {
+      for (const imgPath of imgArray) {
+        const filePath = path.join(process.cwd(), "public", imgPath);
+
+        try {
+          await fsPromises.unlink(filePath);
+          console.log(`Deleted file: ${filePath}`);
+        } catch (error) {
+          if (error.code === "ENOENT") {
+            console.log(`File not found: ${filePath}, skipping...`);
+          } else {
+            console.error(`Error deleting file ${filePath}:`, error);
+          }
+        }
       }
     }
+
+    // Delete the post from the database
+    await Project.findByIdAndDelete(id);
+
     return NextResponse.json({
-      message: "pic and post deleted",
+      message: "Post and images deleted successfully",
     });
   } catch (error) {
-    console.error("PUT error:", error);
+    console.error("DELETE error:", error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }
@@ -138,7 +189,7 @@ export async function POST(req) {
     const newData = {
       name: formData.get("name"),
       desc: formData.get("desc"),
-      file: formData.get("img"),
+      file: formData.getAll("img"),
       complete: formData.get("complete"),
     };
     console.log("newData:", newData);
@@ -148,16 +199,15 @@ export async function POST(req) {
         { status: 400 }
       );
     }
+    const uploadedImages = [];
+    for (const file of newData.file) {
+      const fileBuffer = await file.arrayBuffer();
+      const fileName = file.name;
+      const filePath = path.join(process.cwd(), "public", "Project", fileName);
 
-    const filePath = path.join(
-      process.cwd(),
-      "public",
-      "Project",
-      newData.file.name
-    );
-    console.log(filePath);
-    const fileBuffer = await newData.file.arrayBuffer();
-    await fsPromises.writeFile(filePath, Buffer.from(fileBuffer));
+      await fsPromises.writeFile(filePath, Buffer.from(fileBuffer));
+      uploadedImages.push(`/Project/${fileName}`);
+    }
 
     await connectDB();
 
@@ -166,7 +216,7 @@ export async function POST(req) {
     const data = await Project.create({
       name: newData.name,
       desc: newData.desc,
-      img: `/Project/${newData.file.name}`,
+      img: uploadedImages,
       complete: newData.complete,
     });
 

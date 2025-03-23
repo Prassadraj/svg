@@ -4,11 +4,11 @@ const projectSchema = new mongoose.Schema(
   {
     name: { type: String },
     desc: { type: String },
-    img: { type: String },
+    img: { type: [String] },
     complete: { type: Boolean },
   },
-  { timestamps: true, collection: "desi" }
+  { timestamps: true, collection: "images" }
 );
 
-export default mongoose.models.desi ||
-  mongoose.model("desi", projectSchema);
+export default mongoose.models.images ||
+  mongoose.model("images", projectSchema);

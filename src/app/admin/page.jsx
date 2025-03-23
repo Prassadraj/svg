@@ -20,15 +20,15 @@ function Admin() {
   const [formData, setFormData] = useState({
     name: "",
     desc: "",
-    img: null,
-    imgUrl: null,
+    img: [],
+    imgUrl: [],
     complete: false,
   });
   const [newData, setNewData] = useState({
     name: "",
     desc: "",
-    img: null,
-    imgUrl: null,
+    img: [],
+    imgUrl: [],
     complete: false,
   });
 
@@ -80,16 +80,16 @@ function Admin() {
   };
   useEffect(() => {
     const filterData = project?.find((val) => val._id == currentId);
-
+    const imgs = filterData?.img || [];
     setFormData({
       name: filterData?.name || "",
       desc: filterData?.desc || "",
-      img: filterData?.img || null,
-      imgUrl: filterData?.img || null,
+      img: [...imgs],
+      imgUrl: [...imgs],
       complete: filterData?.complete || false,
     });
-  }, [currentId]);
-
+  }, [currentId, project]);
+  console.log(formData.img);
   function handleLogin() {
     if (getUser.email === user.email && getUser.password === user.password) {
       localStorage.setItem("isLoggedIn", "true");
@@ -139,9 +139,9 @@ function Admin() {
     const fd = new FormData();
     fd.append("name", formData.name);
     fd.append("desc", formData.desc);
-    fd.append("img", formData.img);
-    fd.append("complete", formData.complete ? "true" : "false");
 
+    fd.append("complete", formData.complete ? "true" : "false");
+    formData.img.forEach((imgUrl) => fd.append("img", imgUrl));
     try {
       await axios.put(`/api/data?postId=${currentId}`, fd);
       fetchProjectData();
@@ -229,7 +229,7 @@ function Admin() {
           Logout
         </button>
       </div>
-      <div className="  px-2 tablet:px-10">
+      <div className="  px-2 tablet:px-10 ">
         <table className="table-auto border-collapse border border-gray-300 w-full">
           <thead>
             <tr>
@@ -398,7 +398,7 @@ function Admin() {
       {/* Edit info  */}
       {edit && (
         <div className="fixed inset-0 bg-black/40 bg-opacity-50 z-50 flex justify-center items-center p-2">
-          <div className="relative bg-gray-200 w-full tablet:w-1/2 text-black p-4 rounded-md justify-center flex flex-col items-center gap-4">
+          <div className="relative bg-gray-200 w-full tablet:w-10/12 text-black p-4 rounded-md justify-center flex flex-col items-center gap-4">
             {/* cancel btn  */}
             <button
               onClick={() => setEdit(false)}
@@ -457,31 +457,62 @@ function Admin() {
               </div>
               <div className="flex w-full justify-between items-center ">
                 <input
+                  multiple
                   type="file"
                   onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                      const imgUrl = URL.createObjectURL(file);
+                    const file = Array.from(e.target.files);
+
+                    if (file.length) {
+                      const imgUrl = file.map((file) =>
+                        URL.createObjectURL(file)
+                      );
+
                       setFormData((prev) => ({
                         ...prev,
-                        img: file,
-                        imgUrl: imgUrl,
+                        img: [...prev.img, ...file],
+                        imgUrl: [...prev.imgUrl, ...imgUrl],
                       }));
                     }
                   }}
                   className="text-xs"
                 />
-                <div>
-                  <p className="text-sm">Selected Image Preview:</p>
-                  {formData.img ? (
-                    <img
-                      src={formData.imgUrl}
-                      alt="Preview"
-                      className="w-40 h-40 object-cover border border-gray-300"
-                    />
-                  ) : (
-                    <p>No image selected</p>
-                  )}
+                <div className="">
+                  <p className="text-sm mb-2">Selected Image Preview:</p>
+                  <div className="flex gap-2 items-center">
+                    {formData.img ? (
+                      formData?.imgUrl.map((val, i) => (
+                        <div className="relative" key={i}>
+                          <div
+                            className="text-black top-2 right-2 cursor-pointer"
+                            onClick={() =>
+                              setFormData((prev) => {
+                                const newImgs = prev.img.filter(
+                                  (_, index) => index !== i
+                                );
+                                const newImgUrls = prev.imgUrl.filter(
+                                  (_, index) => index !== i
+                                );
+                                return {
+                                  ...prev,
+                                  img: newImgs,
+                                  imgUrl: newImgUrls,
+                                };
+                              })
+                            }
+                          >
+                            X
+                          </div>
+                          <img
+                            src={val}
+                            alt="Preview"
+                            className="w-32 h-32 object-cover border border-gray-300"
+                          />
+                        </div>
+                      ))
+                    ) : (
+                      <p>No image selected</p>
+                    )}
+                  </div>
                 </div>
                 <button
                   onClick={handleUpdate}
@@ -526,15 +557,17 @@ function Admin() {
                   {formData.complete == true ? "Completed" : "OnGoing"}
                 </p>
               </div>
-              {formData.img && (
-                <div className="flex justify-center w-full">
-                  <img
-                    src={formData.img}
-                    alt="Project Preview"
-                    className="w-32 h-32 object-cover  rounded-md border"
-                  />
-                </div>
-              )}
+              <div className="flex justify-center w-full">
+                {formData.img &&
+                  formData.img.map((val, i) => (
+                    <img
+                      key={i}
+                      src={val}
+                      alt="Project Preview"
+                      className="w-32 h-32 object-cover  rounded-md border"
+                    />
+                  ))}
+              </div>
             </div>
 
             {/* cancel btn  */}
