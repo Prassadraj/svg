@@ -254,16 +254,16 @@ function Admin() {
                   <>
                     {project.map((val, i) => (
                       <tr key={i} className="text-xs tablet:text-sm">
-                        <td className="border border-gray-300 px-4 ">
+                        <td className="border border-gray-300 px-4 text-center">
                           {i + 1}
                         </td>
-                        <td className="border border-gray-300 px-4 ">
+                        <td className="border border-gray-300 px-4 text-center">
                           {val.name}
                         </td>
                         <td className="border border-gray-300 px-4 line-clamp-2">
                           {val.desc}
                         </td>
-                        <td className="border border-gray-300 px-4 ">
+                        <td className="border border-gray-300 px-4 text-center">
                           {val.complete ? "Completed" : "OnGoing"}
                         </td>
                         <td className="border border-gray-300 px-4 w-32">
@@ -553,7 +553,7 @@ function Admin() {
                 <label htmlFor="desc" className="w-20">
                   Project:
                 </label>
-                <p className="h-fit">
+                <p className="h-fit ">
                   {formData.complete == true ? "Completed" : "OnGoing"}
                 </p>
               </div>
