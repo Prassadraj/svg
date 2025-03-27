@@ -370,6 +370,7 @@ function About() {
                 src="/AboutImgs/section4.webp"
                 className="w-full object-cover h-full"
                 width={900}
+                loading="lazy"
                 alt="img"
                 height={900}
               />
