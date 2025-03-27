@@ -4,6 +4,7 @@ import React from "react";
 import { TiTick } from "react-icons/ti";
 
 import { IoIosArrowRoundForward } from "react-icons/io";
+import Footer from "@/components/Footer/Footer";
 const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
 const news = Newsreader({ subsets: ["latin"], weight: ["800"] });
 const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
@@ -229,11 +230,11 @@ function About() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-5 w-1/2">
+            <div className="flex flex-col gap-5 tablet:w-1/2 w-full">
               {/* grid1  */}
               <div className="grid grid-cols-4 tablet:!grid-rows-[100px_100px_100px] !grid-rows-[100px_100px_100px] gap-4">
                 {/* Move grid positioning here */}
-                <div className="row-start-1 tablet:row-end-4 row-end-4 col-start-1 tablet:col-end-3 col-end-4 w-full overflow-hidden rounded-lg">
+                <div className="row-start-1 tablet:row-end-4 row-end-4 col-start-1 tablet:col-end-3 col-end-3 w-full overflow-hidden rounded-lg">
                   <Image
                     src="/Footer/footer5.png"
                     width={900}
@@ -242,7 +243,7 @@ function About() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="row-start-1 row-end-4 tablet:col-start-3 col-start-2 tablet:col-end-5 col-end-5 w-full overflow-hidden rounded-lg">
+                <div className="row-start-1 row-end-4 tablet:col-start-3 col-start-3 tablet:col-end-5 col-end-5 w-full overflow-hidden rounded-lg">
                   <Image
                     src="/Footer/footer3.png"
                     width={900}
@@ -253,9 +254,9 @@ function About() {
                 </div>
               </div>{" "}
               {/* grid2 */}
-              <div className="grid grid-cols-5 tablet:!grid-rows-[100px_100px_100px] !grid-rows-[100px_100px_100px] gap-4">
+              <div className="grid tablet:grid-cols-5 grid-cols-4 tablet:!grid-rows-[100px_100px_100px] !grid-rows-[100px_100px_100px] gap-4">
                 {/* Move grid positioning here */}
-                <div className="row-start-1 tablet:row-end-4 row-end-4 col-start-1 tablet:col-end-3 col-end-4 w-full overflow-hidden rounded-lg">
+                <div className="row-start-1 tablet:row-end-4 row-end-4 col-start-1 tablet:col-end-3 col-end-3 w-full overflow-hidden rounded-lg">
                   <Image
                     src="/Footer/footer2.png"
                     width={900}
@@ -264,7 +265,7 @@ function About() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="row-start-1 row-end-4 tablet:col-start-3 col-start-2 tablet:col-end-8 col-end-5 w-full overflow-hidden rounded-lg">
+                <div className="row-start-1 row-end-4 tablet:col-start-3 col-start-3 tablet:col-end-8 col-end-5 w-full overflow-hidden rounded-lg">
                   <Image
                     src="/Footer/footer4.png"
                     width={900}
@@ -277,7 +278,105 @@ function About() {
             </div>
           </div>
           {/* section4  */}
+          <div className=" grid grid-rows-[250px_100px_100px_100px] grid-cols-4 w-full tablet:mb-32 mb-10">
+            <div className="row-start-1 col-start-1 col-end-3 flex flex-col gap-4 pt-10 ">
+              <h1
+                className={`${news.className} text-2xl tablet:!text-4xl text-transparent bg-clip-text bg-grey-gradient`}
+              >
+                Trusted Architectural Best Work
+              </h1>
+              <p
+                className={`${montLight.className} text-xs tablet:text-base text-transparent bg-clip-text bg-grey-gradient`}
+              >
+                From concept to completion, discover how we bring your vision to
+                life with innovation, collaboration, and expert craftsmanship.
+              </p>
+            </div>
+            {/* second  */}
+            <div
+              className="w-full grid grid-rows-2 grid-cols-2 tablet:grid-rows-2 tablet:grid-cols-2 laptop:gap-20
+            row-start-2 col-start-1 tablet:col-end-4 col-end-5 row-end-5 laptop:p-16 tablet:p-4 bg-[#624545] z-10 rounded-md p-2 gap-2 place-items-center"
+            >
+              <div className="flex gap-2">
+                <div className="tablet:p-2 bg-custom-gradient h-fit border border-gray-400 rounded-[50%] tablet:text-lg text-xs">
+                  {" "}
+                  <TiTick />
+                </div>
+                <div className="flex flex-col gap-2">
+                  {" "}
+                  <p className={`${news.className} text-xl`}>
+                    Innovative Design
+                  </p>
+                  <p
+                    className={`${montLight.className} tablet:text-sm text-xs`}
+                  >
+                    Tailored Design Solutions We provide personalized interior{" "}
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <div className="tablet:p-2 bg-custom-gradient h-fit border border-gray-400 rounded-[50%] tablet:text-lg text-xs">
+                  {" "}
+                  <TiTick />
+                </div>
+                <div className="flex flex-col gap-2">
+                  {" "}
+                  <p className={`${news.className} text-xl`}>
+                    Architectural Drawing
+                  </p>
+                  <p
+                    className={`${montLight.className} tablet:text-sm text-xs`}
+                  >
+                    Tailored Design Solutions We provide personalized interior{" "}
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <div className="tablet:p-2 bg-custom-gradient h-fit border border-gray-400 rounded-[50%] tablet:text-lg text-xs">
+                  {" "}
+                  <TiTick />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <p className={`${news.className} text-xl`}>
+                    3D Model Building
+                  </p>
+                  <p
+                    className={`${montLight.className} tablet:text-sm text-xs`}
+                  >
+                    Tailored Design Solutions We provide personalized interior{" "}
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-2 ">
+                <div className="tablet:p-2 bg-custom-gradient h-fit border border-gray-400 rounded-[50%] tablet:text-lg text-xs">
+                  {" "}
+                  <TiTick />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <p className={`${news.className} text-xl`}>
+                    Building The Space
+                  </p>
+                  <p
+                    className={`${montLight.className} tablet:text-sm text-xs`}
+                  >
+                    Tailored Design Solutions We provide personalized interior{" "}
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* thiird right  */}
+            <div className="row-start-1 col-start-3 col-end-5 tablet:row-end-5 row-end-3 w-full h-full">
+              <Image
+                src="/AboutImgs/section4.webp"
+                className="w-full object-cover h-full"
+                width={900}
+                alt="img"
+                height={900}
+              />
+            </div>
+          </div>
         </div>
+        <Footer />
       </div>
     </>
   );

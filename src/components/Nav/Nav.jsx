@@ -43,9 +43,7 @@ function Nav() {
           <li>
             <Link href="/project">Project</Link>
           </li>
-          <li>
-            <Link href="/enquiry">Enquiry</Link>
-          </li>
+
           <li>
             <Link href="/contact">Contact Us</Link>
           </li>
