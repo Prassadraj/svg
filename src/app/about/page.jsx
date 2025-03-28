@@ -304,7 +304,7 @@ function About() {
                 </div>
                 <div className="flex flex-col gap-2">
                   {" "}
-                  <p className={`${news.className} text-xl`}>
+                  <p className={`${news.className} !text-2xl`}>
                     Innovative Design
                   </p>
                   <p
@@ -321,7 +321,7 @@ function About() {
                 </div>
                 <div className="flex flex-col gap-2">
                   {" "}
-                  <p className={`${news.className} text-xl`}>
+                  <p className={`${news.className} text-2xl`}>
                     Architectural Drawing
                   </p>
                   <p
