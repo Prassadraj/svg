@@ -7,6 +7,7 @@ import { faRocketchat } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./contact.css";
 const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
+const montmedium = Montserrat({ subsets: ["latin"], weight: ["600"] });
 const news = Newsreader({ subsets: ["latin"], weight: ["800"] });
 const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
 import Image from "next/image";
@@ -93,7 +94,7 @@ function Contact() {
         </div>
 
         {/* contact form  */}
-        <div className="flex flex-col tablet:flex-row justify-center   w-full p-6 tablet:gap-10">
+        <div className="flex flex-col-reverse tablet:flex-row justify-center   w-full p-6 tablet:gap-10">
           {/* Left Side: Contact Form */}
           <div className="w-full tablet:w-[400px] flex flex-col gap-10 items-center border shadow-gray-600 rounded-lg p-6  shadow-2xl">
             {messageLoading && (
@@ -167,10 +168,26 @@ function Contact() {
 
           {/* Right Side: Placeholder for Additional Content */}
           <div
-            className={`w-full tablet:w-1/2 flex flex-col   rounded-lg p-6   ${news.className}`}
+            className={`w-full tablet:w-[400px] flex flex-col gap-6  rounded-lg p-6   ${news.className}`}
           >
-            <h1 className="text-5xl">5+</h1>
-            <h1 className="text-5xl max-w-lg">Years in the Industry</h1>
+            <div className="flex flex-col gap-1">
+              <h1 className="tablet:text-4xl text-3xl">5+</h1>
+              <h1 className="tablet:text-4xl text-3xl max-w-lg w-64">
+                Years in the Industry
+              </h1>
+            </div>
+            <div
+              className={`${montLight.className} flex flex-col gap-4  text-transparent bg-grey-gradient bg-clip-text`}
+            >
+              <h1 className={`${montmedium.className} text-3xl`}>
+                Let's Shape Your Dream Space
+              </h1>
+              <p>
+                Connect with us today to explore how we can transform your
+                interiors into a perfect blend of style, comfort, and
+                functionality.
+              </p>
+            </div>
           </div>
         </div>
       </div>
