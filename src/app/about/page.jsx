@@ -15,7 +15,7 @@ function About() {
         {/* section 1 */}
         <div
           className={`relative h-[50vh] bg-slate-500 w-full bg-[url('/Service/background7.jpeg')] bg-center tablet:bg-fixed bg-cover bg-scroll flex flex-col items-center  justify-center
-        bg-no-repeat `}
+        bg-no-repeat tablet:mt-16`}
         >
           <div className="absolute w-full h-full left-0 top-0 bg-black/60 tablet:bg-black/60 "></div>
           <div className="flex flex-col gap-4 items-center  justify-center z-10">
@@ -56,9 +56,9 @@ function About() {
                 className="object-cover w-full h-44 -z-10 opacity-50"
               />
             </div>
-            <div className="grid grid-cols-[100px_100px_100px_50px] tablet:!grid-rows-[100px_100px_100px_100px_100px] !grid-rows-[100px_100px_100px_100px]">
+            <div className="grid grid-cols-[100px_100px_100px_50px] tablet:!grid-rows-[100px_100px_100px_100px_100px] !grid-rows-[100px_100px_100px_100px] tablet:w-[50%]">
               {/* Move grid positioning here */}
-              <div className="row-start-1 tablet:row-end-5 row-end-4 col-start-1 tablet:col-end-5 col-end-4 w-full overflow-hidden rounded-lg">
+              <div className="row-start-1 tablet:row-end-5 row-end-4 col-start-1 tablet:col-end-4 laptop:col-end-5 col-end-4 w-full overflow-hidden rounded-lg">
                 <Image
                   src="/Footer/footer5.png"
                   width={900}
@@ -67,7 +67,7 @@ function About() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="row-start-3 row-end-6 tablet:col-start-3 col-start-2 tablet:col-end-8 col-end-5 w-full overflow-hidden rounded-lg">
+              <div className="row-start-3 row-end-6 laptop:col-start-3 tablet:col-start-2 col-start-2 tablet:col-end-8 col-end-5 w-full overflow-hidden rounded-lg">
                 <Image
                   src="/Footer/footerCut.png"
                   width={900}
