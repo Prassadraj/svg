@@ -17,11 +17,14 @@ module.exports = {
       colors: {
         background: "rgb(var(--background) / <alpha-value>)",
         foreground: "rgb(var(--foreground) / <alpha-value>)",
+        orange: "#f09330",
       },
       backgroundImage: {
         "custom-gradient": "linear-gradient(150deg, #000000, #4D4040)",
         "subTitle-gradient":
           "linear-gradient(357deg, rgba(184,183,181,1) 0%, rgba(128,128,128,1) 100%)",
+        "light-gradient":
+          "linear-gradient(0deg, rgba(189,186,180,1) 0%, rgba(240,147,48,1) 100%)",
         "title-gradient":
           "linear-gradient(90deg, #FF6200 0%, #FD7F2C 51%, #FD9346 100%)",
         "grey-gradient":
