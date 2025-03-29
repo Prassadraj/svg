@@ -66,7 +66,9 @@ function Nav() {
       {/* menu  */}
       {open && (
         <div
-          className="fixed  top-20 left-0 h-screen w-screen gap-10  bg-black flex flex-col px-4 p-10"
+          className={`fixed ${
+            open ? "translate-x-0" : "translate-x-[400px]"
+          } transform duration-500 ease-in-out transition-all top-20  h-screen w-screen gap-10  bg-black flex flex-col px-4 p-10`}
           style={{ zIndex: "999" }}
         >
           <ul
