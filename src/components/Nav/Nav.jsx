@@ -177,7 +177,14 @@ function Nav() {
       </div>
       {/* right  */}
       <div className="tablet:flex gap-2 items-center hidden ">
-        <FaWhatsapp className="text-xl text-green-400" />
+        <Link
+          href="https://wa.me/919876543210"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xl text-green-400"
+        >
+          <FaWhatsapp className="text-xl text-green-400" />
+        </Link>
         <Link href="/contact">
           {" "}
           <FaLocationDot className="text-lg  text-red-500" />
