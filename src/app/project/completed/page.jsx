@@ -23,18 +23,6 @@ function Comlpeted() {
     };
     fetchData();
   }, []);
-  console.log(projectdata);
-  const data = [
-    "/Service/background6.jpeg",
-    "/Service/background4.jpeg",
-    "/Service/background7.jpeg",
-    "/Service/background2.jpeg",
-    "/Service/background3.jpeg",
-    "/Service/background7.jpeg",
-    "/Service/background6.jpeg",
-    "/Service/background6.jpeg",
-    "/Service/background6.jpeg",
-  ];
 
   return (
     <div className={`${mont.className}`}>
