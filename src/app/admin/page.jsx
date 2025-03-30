@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import { IoMdInformationCircleOutline } from "react-icons/io";
+import Image from "next/image";
 
 function Admin() {
   const [spinner, setSpinner] = useState(false);
@@ -321,8 +322,8 @@ function Admin() {
       {/* save */}
       {save && (
         <div className="fixed inset-0 bg-black/40 bg-opacity-50 z-50 flex justify-center items-center p-2">
-          <div className="relative bg-gray-200 w-full tablet:w-1/2 text-black p-4 rounded-md justify-center flex flex-col items-center gap-4">
-            {/* cancel btn  */}
+          <div className="relative bg-gray-200 w-full tablet:w-10/12 text-black p-4 rounded-md justify-center flex flex-col items-center gap-4">
+            {/* Cancel button */}
             <button
               onClick={() => setSave(false)}
               className="text-white absolute -top-5 -right-5 text-xl"
@@ -331,7 +332,7 @@ function Admin() {
             </button>
 
             <div className="flex flex-col gap-4 w-full">
-              <div className=" flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <label htmlFor="name" className="w-20">
                   Title
                 </label>
@@ -347,8 +348,9 @@ function Admin() {
                   className="rounded-sm p-2"
                 />
               </div>
-              <div className=" flex items-center gap-2">
-                <label htmlFor="name" className="w-20">
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="description" className="w-20">
                   Description
                 </label>
                 <textarea
@@ -359,72 +361,99 @@ function Admin() {
                       desc: e.target.value,
                     }))
                   }
-                  placeholder="Write your Description here..."
+                  placeholder="Write your description here..."
                   className="border border-gray-300 rounded-md p-2 w-full h-48 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                <div className="flex items-center gap-2">
-                  <label htmlFor="name" className="w-20">
-                    Project:
-                  </label>
-                  <input
-                    type="checkbox"
-                    checked={setNewData.complete}
-                    onChange={(e) =>
-                      setNewData((prev) => ({
-                        ...prev,
-                        complete: e.target.checked,
-                      }))
-                    }
-                  />
-                </div>
               </div>
-              <div className="flex w-full justify-between items-center ">
+
+              <div className="flex items-center gap-2">
+                <label htmlFor="project" className="w-20">
+                  Project:
+                </label>
+                <input
+                  type="checkbox"
+                  checked={newData.complete}
+                  onChange={(e) =>
+                    setNewData((prev) => ({
+                      ...prev,
+                      complete: e.target.checked,
+                    }))
+                  }
+                />
+              </div>
+
+              <div className="flex w-full gap-2 items-center">
                 <input
                   type="file"
                   multiple
                   onChange={(e) => {
-                    const files = Array.from(e.target.files); // Convert FileList to array
+                    const files = Array.from(e.target.files);
                     if (files.length > 0) {
                       const imgUrls = files.map((file) =>
                         URL.createObjectURL(file)
                       );
                       setNewData((prev) => ({
                         ...prev,
-                        img: files, // Store the file array
-                        imgUrl: imgUrls, // Store the preview URLs
+                        img: [...prev.img, ...files],
+                        imgUrl: [...prev.imgUrl, ...imgUrls],
                       }));
                     }
                   }}
                   className="text-xs"
                 />
+
                 <div>
-                  <p className="text-sm">Selected Image Preview:</p>
+                  <p className="text-sm mb-2">Selected Image Preview:</p>
                   {newData.img.length > 0 ? (
-                    <div className="flex gap-2">
+                    <div className="grid tablet:grid-cols-6 grid-cols-3 gap-2">
                       {newData.imgUrl.map((url, index) => (
-                        <img
-                          key={index}
-                          src={url}
-                          alt={`Preview ${index}`}
-                          className="w-20 h-20 object-cover border border-gray-300"
-                        />
+                        <div key={index} className="w-20 h-20 relative">
+                          <Image
+                            src={url}
+                            width={900}
+                            height={900}
+                            alt="Preview"
+                            className="object-cover w-full h-full border border-gray-300"
+                          />
+                          <p
+                            onClick={() =>
+                              setNewData((prev) => {
+                                const img = prev.img.filter(
+                                  (_, i) => i !== index
+                                );
+                                const imgUrl = prev.imgUrl.filter(
+                                  (_, i) => i !== index
+                                );
+                                return {
+                                  ...prev,
+                                  img,
+                                  imgUrl,
+                                };
+                              })
+                            }
+                            className="absolute -top-1 -right-3 text-black bg-white rounded-full px-1 cursor-pointer z-10"
+                          >
+                            X
+                          </p>
+                        </div>
                       ))}
                     </div>
                   ) : (
                     <p>No image selected</p>
                   )}
                 </div>
-                <button
-                  onClick={handleSave}
-                  className="bg-green-700 text-sm text-white rounded-md p-2"
-                >
-                  Save
-                </button>
               </div>
             </div>
+            <button
+              onClick={handleSave}
+              className="bg-green-700 text-sm text-white rounded-md p-2"
+            >
+              Save
+            </button>
           </div>
         </div>
       )}
+
       {/* Edit info  */}
       {edit && (
         <div className="fixed inset-0 bg-black/40 bg-opacity-50 z-50 flex justify-center items-center p-2">

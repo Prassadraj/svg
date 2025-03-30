@@ -4,7 +4,7 @@ const news = Newsreader({ subsets: ["latin"], weight: ["800"] });
 const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
 const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import "./styles.css";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";

@@ -3,6 +3,13 @@ import axios from "axios";
 import { Montserrat, Newsreader } from "next/font/google";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+
+import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
 const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
 const montmedium = Montserrat({ subsets: ["latin"], weight: ["600"] });
 const news = Newsreader({ subsets: ["latin"], weight: ["800"] });
@@ -51,15 +58,22 @@ function Comlpeted() {
           </div>
         </div>
       </div>
-      <div className="mx-auto tablet:container px-2   tablet:!px-10  mt-10 tablet:mt-28  w-full">
+      <div className="mx-auto tablet:container px-2 tablet:mb-32 mb-10  tablet:!px-10  mt-10 tablet:mt-28  w-full">
+        <h1 className={`tablet:text-5xl text-3xl mb-4 ${news.className}`}>
+          Our Works
+        </h1>
         {/* img */}
-        <div className="columns-[300px] space-y-4">
+        <div className="grid tablet:grid-cols-3 laptop:grid-cols-4 gap-4 ">
           {/* ✅ Check if projectdata has images */}
           {projectdata?.length > 0 ? (
             projectdata.map((project, i) => (
-              <div key={project._id || i} onClick={() => setOpen(true)}>
+              <div
+                key={project._id || i}
+                onClick={() => setOpen(true)}
+                className="w-full laptop:h-[400px] tablet:h-[300px] h-[250px] overflow-hidden cursor-pointer"
+              >
                 <Image
-                  className="rounded-lg break-inside-avoid"
+                  className="rounded-lg object-cover w-full h-full"
                   width={900}
                   height={900}
                   src={project.img[0]}
@@ -72,7 +86,37 @@ function Comlpeted() {
           )}
         </div>
         {open && (
-          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 w-[90vw] h-[80vh] -translate-y-1/2 bg-slate-400 z-10"></div>
+          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 w-[90vw] h-[80vh] -translate-y-1/2 bg-slate-400 z-10 ">
+            <>
+              <Swiper
+                effect={"coverflow"}
+                grabCursor={true}
+                centeredSlides={true}
+                slidesPerView={"auto"}
+                navigation={true}
+                initialSlide={3}
+                coverflowEffect={{
+                  rotate: 50,
+                  stretch: 0,
+                  depth: 100,
+                  modifier: 5,
+                  slideShadows: true,
+                }}
+                pagination={{ clickable: true }}
+                modules={[EffectCoverflow, Pagination, Navigation]}
+                className="mySwiper"
+              >
+                {projectdata[4]?.img.map((val, i) => (
+                  <SwiperSlide
+                    key={i}
+                    className="tablet:!w-[350px] tablet:!h-[350px] !h-[200px] !w-[200px] relative rounded-md overflow-hidden !z-10"
+                  >
+                    <img loading="lazy" alt={`Nature ${i + 1}`} src={val} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </>
+          </div>
         )}
       </div>
     </div>
