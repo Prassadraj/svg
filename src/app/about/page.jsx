@@ -4,6 +4,7 @@ import React from "react";
 import { TiTick } from "react-icons/ti";
 
 import { IoIosArrowRoundForward } from "react-icons/io";
+import Footer from "@/components/Footer/Footer";
 const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
 const news = Newsreader({ subsets: ["latin"], weight: ["800"] });
 const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
@@ -11,20 +12,22 @@ function About() {
   return (
     <>
       <div className={`text-white w-full  ${mont.className}`}>
-     {/* Banner  */}
+        {/* section 1 */}
         <div
           className={`relative h-[50vh] bg-slate-500 w-full bg-[url('/Service/background7.jpeg')] bg-center tablet:bg-fixed bg-cover bg-scroll flex flex-col items-center  justify-center
-        bg-no-repeat `}
+        bg-no-repeat tablet:mt-20`}
         >
           <div className="absolute w-full h-full left-0 top-0 bg-black/60 tablet:bg-black/60 "></div>
           <div className="flex flex-col gap-4 items-center  justify-center z-10">
-            <h1 className="text-5xl  font-bold">
-              About{" "}
-              <span className="text-transparent bg-title-gradient bg-clip-text">
+            <h1 className="tablet:text-5xl text-2xl font-bold">
+              About
+              <span className="ml-2 text-transparent bg-title-gradient bg-clip-text">
                 Us
               </span>
             </h1>
-            <div className="flex gap-2 p-2 bg-black/40 rounded-lg text-lg">
+            <div
+              className={`${montLight.className} flex gap-2 p-2 bg-black/40 rounded-lg tablet:text-lg text-xs`}
+            >
               <p className="font-medium">Home</p>
               <p>&gt;</p>
               <p className="font-bold text-transparent bg-title-gradient bg-clip-text">
@@ -55,9 +58,9 @@ function About() {
                 className="object-cover w-full h-44 -z-10 opacity-50"
               />
             </div>
-            <div className="grid grid-cols-[100px_100px_100px_50px] tablet:!grid-rows-[100px_100px_100px_100px_100px] !grid-rows-[100px_100px_100px_100px]">
+            <div className="grid grid-cols-[100px_100px_100px_50px] tablet:!grid-rows-[100px_100px_100px_100px_100px] !grid-rows-[100px_100px_100px_100px] tablet:w-[50%]">
               {/* Move grid positioning here */}
-              <div className="row-start-1 tablet:row-end-5 row-end-4 col-start-1 tablet:col-end-5 col-end-4 w-full overflow-hidden rounded-lg">
+              <div className="row-start-1 tablet:row-end-5 row-end-4 col-start-1 tablet:col-end-4 laptop:col-end-5 col-end-4 w-full overflow-hidden rounded-lg">
                 <Image
                   src="/Footer/footer5.png"
                   width={900}
@@ -66,7 +69,7 @@ function About() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="row-start-3 row-end-6 tablet:col-start-3 col-start-2 tablet:col-end-8 col-end-5 w-full overflow-hidden rounded-lg">
+              <div className="row-start-3 row-end-6 laptop:col-start-3 tablet:col-start-2 col-start-2 tablet:col-end-8 col-end-5 w-full overflow-hidden rounded-lg">
                 <Image
                   src="/Footer/footerCut.png"
                   width={900}
@@ -229,11 +232,11 @@ function About() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-5 w-1/2">
+            <div className="flex flex-col gap-5 tablet:w-1/2 w-full">
               {/* grid1  */}
               <div className="grid grid-cols-4 tablet:!grid-rows-[100px_100px_100px] !grid-rows-[100px_100px_100px] gap-4">
                 {/* Move grid positioning here */}
-                <div className="row-start-1 tablet:row-end-4 row-end-4 col-start-1 tablet:col-end-3 col-end-4 w-full overflow-hidden rounded-lg">
+                <div className="row-start-1 tablet:row-end-4 row-end-4 col-start-1 tablet:col-end-3 col-end-3 w-full overflow-hidden rounded-lg">
                   <Image
                     src="/Footer/footer5.png"
                     width={900}
@@ -242,7 +245,7 @@ function About() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="row-start-1 row-end-4 tablet:col-start-3 col-start-2 tablet:col-end-5 col-end-5 w-full overflow-hidden rounded-lg">
+                <div className="row-start-1 row-end-4 tablet:col-start-3 col-start-3 tablet:col-end-5 col-end-5 w-full overflow-hidden rounded-lg">
                   <Image
                     src="/Footer/footer3.png"
                     width={900}
@@ -253,9 +256,9 @@ function About() {
                 </div>
               </div>{" "}
               {/* grid2 */}
-              <div className="grid grid-cols-5 tablet:!grid-rows-[100px_100px_100px] !grid-rows-[100px_100px_100px] gap-4">
+              <div className="grid tablet:grid-cols-5 grid-cols-4 tablet:!grid-rows-[100px_100px_100px] !grid-rows-[100px_100px_100px] gap-4">
                 {/* Move grid positioning here */}
-                <div className="row-start-1 tablet:row-end-4 row-end-4 col-start-1 tablet:col-end-3 col-end-4 w-full overflow-hidden rounded-lg">
+                <div className="row-start-1 tablet:row-end-4 row-end-4 col-start-1 tablet:col-end-3 col-end-3 w-full overflow-hidden rounded-lg">
                   <Image
                     src="/Footer/footer2.png"
                     width={900}
@@ -264,7 +267,7 @@ function About() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="row-start-1 row-end-4 tablet:col-start-3 col-start-2 tablet:col-end-8 col-end-5 w-full overflow-hidden rounded-lg">
+                <div className="row-start-1 row-end-4 tablet:col-start-3 col-start-3 tablet:col-end-8 col-end-5 w-full overflow-hidden rounded-lg">
                   <Image
                     src="/Footer/footer4.png"
                     width={900}
@@ -277,8 +280,8 @@ function About() {
             </div>
           </div>
           {/* section4  */}
-          <div className=""></div>
         </div>
+        <Footer />
       </div>
     </>
   );

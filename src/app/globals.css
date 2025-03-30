@@ -11,6 +11,14 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    /* color: #f09330; */
+  }
+}
+@media (max-width: 640px) {
+  .no-scroll {
+    overflow: hidden;
+    height: 100vh;
+    touch-action: none;
   }
 }
 

@@ -1,48 +1,13 @@
-import Image from "next/image";
 import React from "react";
-
+import { FaNetworkWired } from "react-icons/fa";
+import { TiTick } from "react-icons/ti";
+const news = Newsreader({ subsets: ["latin"], weight: ["800"] });
+const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
+const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
 function Service() {
   return (
-    <div className=" flex mx-auto tablet:container px-2   tablet:!px-10 tablet:mb-32 mt-10 tablet:mt-32 mb-10 w-full">
-      <div className="flex justify-between gap-10 w-full">
-        <div className="tablet:w-64 tablet:h-96 mt-20" 
-        >
-          <Image
-            src="/Service/service5.jpeg"
-            width={900}
-            alt="img"
-            height={900}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="tablet:w-72  tablet:h-96 tablet:block hidden">
-          <Image
-            src="/Service/service3.png"
-            width={900}
-            alt="img"
-            height={900}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="tablet:w-72 tablet:h-96">
-          <Image
-            src="/Service/service2.png"
-            width={900}
-            alt="img"
-            height={900}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="tablet:w-64 tablet:h-96 mt-20">
-          <Image
-            src="/Service/service4.jpeg"
-            width={900}
-            alt="img"
-            height={900}
-            className="w-full h-full object-cover "
-          />
-        </div>
-      </div>
+    <div className="h-screen flex justify-center text-white w-full items-center">
+      Service page
     </div>
   );
 }
