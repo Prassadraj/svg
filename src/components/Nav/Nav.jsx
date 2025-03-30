@@ -3,6 +3,7 @@ import { Montserrat, Newsreader } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { CiUser } from "react-icons/ci";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { LuPhoneCall } from "react-icons/lu";
@@ -187,11 +188,15 @@ function Nav() {
         </Link>
         <Link href="/contact">
           {" "}
-          <FaLocationDot className="text-lg  text-red-500" />
+          <FaLocationDot className="text-xl  text-red-500" />
         </Link>
-        <Link href="/contact">
+        {/* <Link href="/contact">
           {" "}
           <LuPhoneCall className="text-lg " />
+        </Link> */}
+        <Link href="/admin">
+          {" "}
+          <CiUser className="text-xl " />
         </Link>
       </div>
     </div>

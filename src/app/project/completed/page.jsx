@@ -9,6 +9,7 @@ const news = Newsreader({ subsets: ["latin"], weight: ["800"] });
 const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
 function Comlpeted() {
   const [projectdata, setProjectData] = useState([]);
+  const [open, setOpen] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -51,16 +52,17 @@ function Comlpeted() {
         </div>
       </div>
       <div className="mx-auto tablet:container px-2   tablet:!px-10  mt-10 tablet:mt-28  w-full">
+        {/* img */}
         <div className="columns-[300px] space-y-4">
           {/* ✅ Check if projectdata has images */}
           {projectdata?.length > 0 ? (
             projectdata.map((project, i) => (
-              <div key={project._id || i}>
+              <div key={project._id || i} onClick={() => setOpen(true)}>
                 <Image
                   className="rounded-lg break-inside-avoid"
                   width={900}
                   height={900}
-                  src={project.img[0]} // ✅ Now correctly mapping image URLs
+                  src={project.img[0]}
                   alt={`Project Image `}
                 />
               </div>
@@ -69,6 +71,9 @@ function Comlpeted() {
             <p className="text-center text-gray-500">No projects available.</p>
           )}
         </div>
+        {open && (
+          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 w-[90vw] h-[80vh] -translate-y-1/2 bg-slate-400 z-10"></div>
+        )}
       </div>
     </div>
   );

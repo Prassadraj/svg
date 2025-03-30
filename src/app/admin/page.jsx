@@ -89,7 +89,7 @@ function Admin() {
       complete: filterData?.complete || false,
     });
   }, [currentId, project]);
-  console.log(formData.img);
+
   function handleLogin() {
     if (getUser.email === user.email && getUser.password === user.password) {
       localStorage.setItem("isLoggedIn", "true");
@@ -98,6 +98,7 @@ function Admin() {
       alert("invalid password or email");
     }
   }
+
   function handleLogout() {
     localStorage.removeItem("isLoggedIn", "false");
     setIsLoggedIn(false);
@@ -107,8 +108,8 @@ function Admin() {
     const fd = new FormData();
     fd.append("name", newData.name);
     fd.append("desc", newData.desc);
-    fd.append("img", newData.img);
-    fd.append("complete", newData.complete);
+    fd.append("complete", newData.complete ? "true" : "false");
+    newData.img.forEach((imgUrl) => fd.append("img", imgUrl));
     try {
       await axios.post("/api/data", fd);
       fetchProjectData();
@@ -117,7 +118,8 @@ function Admin() {
 
       newData.name = "";
       newData.desc = "";
-      newData.img = null;
+      newData.img = [];
+      newData.imgUrl = [];
     } catch (error) {
       alert("not post");
     }
@@ -219,8 +221,13 @@ function Admin() {
     // </div>
     <>
       <div className="flex mt-24 justify-between items-center w-full tablet:px-10 px-2 mb-4">
-        <div onClick={() => setSave((prev) => !prev)}>Create +</div>
-        <h1 className="tablet:text-2xl font-bold ">Welcome, !</h1>
+        <div
+          onClick={() => setSave((prev) => !prev)}
+          className="cursor-pointer bg-green-700 p-2 rounded-md "
+        >
+          Create +
+        </div>
+        <h1 className="tablet:text-2xl font-bold ">Welcome, Admin !</h1>
         <button
           onClick={handleLogout}
           className=" text-sm  p-1
@@ -355,18 +362,36 @@ function Admin() {
                   placeholder="Write your Description here..."
                   className="border border-gray-300 rounded-md p-2 w-full h-48 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
+                <div className="flex items-center gap-2">
+                  <label htmlFor="name" className="w-20">
+                    Project:
+                  </label>
+                  <input
+                    type="checkbox"
+                    checked={setNewData.complete}
+                    onChange={(e) =>
+                      setNewData((prev) => ({
+                        ...prev,
+                        complete: e.target.checked,
+                      }))
+                    }
+                  />
+                </div>
               </div>
               <div className="flex w-full justify-between items-center ">
                 <input
                   type="file"
+                  multiple
                   onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                      const imgUrl = URL.createObjectURL(file);
+                    const files = Array.from(e.target.files); // Convert FileList to array
+                    if (files.length > 0) {
+                      const imgUrls = files.map((file) =>
+                        URL.createObjectURL(file)
+                      );
                       setNewData((prev) => ({
                         ...prev,
-                        img: file,
-                        imgUrl: imgUrl,
+                        img: files, // Store the file array
+                        imgUrl: imgUrls, // Store the preview URLs
                       }));
                     }
                   }}
@@ -374,12 +399,17 @@ function Admin() {
                 />
                 <div>
                   <p className="text-sm">Selected Image Preview:</p>
-                  {newData.img ? (
-                    <img
-                      src={newData.imgUrl}
-                      alt="Preview"
-                      className="w-40 h-40 object-cover border border-gray-300"
-                    />
+                  {newData.img.length > 0 ? (
+                    <div className="flex gap-2">
+                      {newData.imgUrl.map((url, index) => (
+                        <img
+                          key={index}
+                          src={url}
+                          alt={`Preview ${index}`}
+                          className="w-20 h-20 object-cover border border-gray-300"
+                        />
+                      ))}
+                    </div>
                   ) : (
                     <p>No image selected</p>
                   )}
