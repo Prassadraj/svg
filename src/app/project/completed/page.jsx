@@ -86,7 +86,7 @@ function Comlpeted() {
           )}
         </div>
         {open && (
-          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 w-[90vw] h-[80vh] -translate-y-1/2 bg-slate-400 z-10 ">
+          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 w-[90vw] h-[70vh] -translate-y-1/2 bg-slate-400 z-10 ">
             <>
               <Swiper
                 effect={"coverflow"}
@@ -106,7 +106,7 @@ function Comlpeted() {
                 modules={[EffectCoverflow, Pagination, Navigation]}
                 className="mySwiper"
               >
-                {projectdata[4]?.img.map((val, i) => (
+                {projectdata[2]?.img.map((val, i) => (
                   <SwiperSlide
                     key={i}
                     className="tablet:!w-[350px] tablet:!h-[350px] !h-[200px] !w-[200px] relative rounded-md overflow-hidden !z-10"
@@ -116,6 +116,12 @@ function Comlpeted() {
                 ))}
               </Swiper>
             </>
+            <div
+              className="absolute -right-5 top-0 cursor-pointer"
+              onClick={() => setOpen(false)}
+            >
+              X
+            </div>
           </div>
         )}
       </div>
