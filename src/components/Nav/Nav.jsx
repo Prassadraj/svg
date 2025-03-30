@@ -40,9 +40,9 @@ function Nav() {
   }, [open]);
   return (
     <div
-      className={`fixed top-0 left-0 h-20 w-full !px-2 bg-black z-50 laptop:px-10 tablet:px-10 flex justify-between items-center transition-all duration-500 ${
+      className={`fixed top-0 left-0 h-20 w-full !px-2 bg-black z-50 laptop:!px-10 tablet:px-10 flex justify-between items-center transition-all duration-500 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
-      } ${mont.className}`}
+      } ${montLight.className}`}
     >
       <div className="z-[9999]">logo</div>
       {/* right btn  */}

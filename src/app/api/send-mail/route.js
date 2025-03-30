@@ -27,7 +27,7 @@ export async function POST(req) {
     const info = await transporter.sendMail({
       from: `"${name}" <${process.env.EMAIL_USER}>`, // Your authenticated email as the sender
       replyTo: email, // User's email as the reply-to address
-      to: "info@estilofashions.com", // Your email (recipient)
+      to: "prassadpr111@gmail.com", // Your email (recipient)
       subject: "Message from website", // Subject line
       text: message, // Plain text message
       html: `
@@ -37,7 +37,7 @@ export async function POST(req) {
         <p><strong>Message:</strong> ${message}</p>
       `, // HTML body
     });
-
+    // EMAIL_PASS=qiackgrkegrgkjmv
     return NextResponse.json({
       message: "Email sent successfully!",
       messageId: info.messageId,

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import axios from "axios";
 import { toast } from "sonner";
@@ -36,6 +36,7 @@ function Contact() {
       console.log("Success:", response.data);
       setMessageLoading(false);
       toast.success("SuccessFully Message Sent");
+
       setFormData({
         name: "",
         email: "",
@@ -44,8 +45,7 @@ function Contact() {
       });
     } catch (error) {
       setMessageLoading(false);
-      console.error("Error sending message:", error);
-      alert("Failed to send message. Please try again.");
+      toast.success("Failed to send message. Please try again.");
     }
   };
 
@@ -175,7 +175,7 @@ function Contact() {
 
             <form
               onSubmit={handleSubmit}
-              className={`w-full flex flex-col gap-4 text-gray-800 ${montLight.className}`}
+              className={`w-full flex flex-col gap-4 text-white ${montLight.className}`}
             >
               <input
                 type="text"
@@ -209,7 +209,7 @@ function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Have anything to say..."
-                className="h-[20vh] w-full pt-2 text-base outline-none p-3 rounded-lg border border-gray-300 placeholder:white focus:ring-2  bg-transparent focus:ring-gray-400"
+                className="h-[20vh] w-full pt-2 text-white text-base outline-none p-3 rounded-lg border border-gray-300 placeholder:white focus:ring-2  bg-transparent focus:ring-gray-400"
                 required
               ></textarea>
               <div className="flex items-center justify-center">
