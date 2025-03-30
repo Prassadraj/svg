@@ -11,7 +11,7 @@ function About() {
   return (
     <>
       <div className={`text-white w-full  ${mont.className}`}>
-        {/* section 1 */}
+     {/* Banner  */}
         <div
           className={`relative h-[50vh] bg-slate-500 w-full bg-[url('/Service/background7.jpeg')] bg-center tablet:bg-fixed bg-cover bg-scroll flex flex-col items-center  justify-center
         bg-no-repeat `}
@@ -35,7 +35,7 @@ function About() {
         </div>
 
         <div className="mx-auto tablet:container px-2   tablet:!px-10 w-full">
-          {/* section2  */}
+          {/* section1  */}
           <div className="tablet:flex relative gap-10 tablet:mb-32 mb-10 tablet:mt-32 mt-5">
             <div className="absolute -top-10 right-10 ">
               <Image
@@ -136,7 +136,7 @@ function About() {
               </div>
             </div>
           </div>
-          {/* sectio3  */}
+          {/* sectio2  */}
           <div className="tablet:flex-row flex flex-col-reverse relative gap-5 tablet:mb-32 mb-10 tablet:mt-32 mt-5">
             <div className="absolute -top-10 right-10 ">
               {/* <Image
@@ -277,6 +277,7 @@ function About() {
             </div>
           </div>
           {/* section4  */}
+          <div className=""></div>
         </div>
       </div>
     </>
