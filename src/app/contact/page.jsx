@@ -33,7 +33,7 @@ function Contact() {
     setMessageLoading(true);
     try {
       const response = await axios.post("/api/send-mail", formData);
-      console.log("Success:", response.data);
+
       setMessageLoading(false);
       toast.success("SuccessFully Message Sent");
 
