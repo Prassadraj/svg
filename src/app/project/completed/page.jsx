@@ -119,7 +119,7 @@ function Comlpeted() {
           </>
         )}
         {open && (
-          <div className="fixed top-1/2  left-1/2 -translate-x-1/2 overflow-y-auto w-[90vw] max-h-[90vh] tablet:h-[80vh] laptop:h-[90vh] h-[600px] -translate-y-1/2 bg-black/90  z-10 p-4  flex flex-col  ">
+          <div className="fixed top-1/2  left-1/2 -translate-x-1/2 overflow-y-auto w-[90vw] tablet:h-[80vh] laptop:h-[90vh] h-[600px] -translate-y-1/2 bg-black/90  z-10 p-4  flex flex-col  ">
             <div
               className={`absolute  top-2 !right-2  z-50 text-2xl cursor-pointer ${montLight.className}`}
               onClick={() => setOpen(false)}
@@ -145,14 +145,14 @@ function Comlpeted() {
                       clickable: true,
                     }}
                     modules={[Zoom, Navigation, Pagination]}
-                    className="mySwiper tablet:w-[500px] w-[300px] tablet:h-[300px] h-[250px]  "
+                    className="mySwiper tablet:w-[500px] w-[300px] tablet:h-[250px] h-[200px]  "
                   >
                     {singleData[0]?.img.map((val, i) => (
                       <SwiperSlide key={i}>
-                        <div className="swiper-zoom-container w-[350px] h-[300px]">
+                        <div className="swiper-zoom-container w-[350px] h-[200px]">
                           <Image
                             width={600} // Adjust based on container size
-                            height={700}
+                            height={600}
                             alt="imgs"
                             priority
                             src={val}
@@ -170,9 +170,35 @@ function Comlpeted() {
                 </>
               )}
               <p
-                className={`${montLight.className} text-center tablet:text-sm text-xs overflow-y-auto h-40`}
+                className={`${montLight.className} text-center tablet:text-sm text-xs`}
               >
-                {singleData[0]?.desc || "No description available"}
+                {/* {singleData[0]?.desc || "No description available"} */}
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem
+                quaerat ut tenetur esse quod saepe temporibus quisquam incidunt
+                expedita, veniam, est quos excepturi. Est, praesentium beatae ut
+                sint sit inventore? Lorem ipsum, dolor sit amet consectetur
+                adipisicing elit. Rerum atque nesciunt nisi nobis ipsa alias,
+                architecto odit perferendis necessitatibus illo hic minima. Hic
+                sapiente neque mollitia sequi natus incidunt in? Lorem ipsum
+                dolor sit amet, consectetur adipisicing elit. Obcaecati nihil
+                dolor ipsam inventore commodi impedit harum, officia distinctio
+                molestias doloremque in quas similique maxime itaque fuga quae
+                quos error aut? Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit. Ipsam magni odit dolor labore enim tenetur
+                expedita voluptates, odio adipisci obcaecati tempora, eius
+                quisquam? Aliquid, at amet ad aspernatur autem nulla! Lorem,
+                ipsum dolor sit amet consectetur adipisicing elit. Quas
+                molestias inventore rerum molestiae iusto fugiat ducimus
+                expedita ex animi aliquid ut dolor, similique in cumque
+                accusantium sequi ab. Quasi, illo! Lorem ipsum dolor, sit amet
+                consectetur adipisicing elit. Deserunt blanditiis laboriosam,
+                ipsam necessitatibus veniam unde tempora reiciendis ipsum sit
+                minus eum. Eius officiis, deserunt perspiciatis sapiente ipsum
+                error inventore nesciunt? Lorem ipsum, dolor sit amet
+                consectetur adipisicing elit. Assumenda magni repudiandae, sunt
+                esse, pariatur dolor reprehenderit tempora animi sint numquam
+                ipsa beatae harum velit consequuntur ratione eum non, porro
+                dicta.
               </p>
             </div>
           </div>
