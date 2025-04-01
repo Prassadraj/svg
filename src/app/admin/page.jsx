@@ -60,7 +60,7 @@ function Admin() {
       setIsLoggedIn(true);
     }
   }, []);
-  console.log(user);
+
   //  👇 Call the function inside useEffect
   const fetchProjectData = async () => {
     setSpinner(true);
@@ -157,9 +157,9 @@ function Admin() {
   };
 
   return (
-    <div className="h-screen w-full flex flex-col items-center justify-center">
+    <div className="h-screen w-full flex flex-col  ">
       {!isLoggedIn ? (
-        <div className="flex flex-col justify-center items-center w-full gap-6 p-4">
+        <div className="flex flex-col justify-center items-center w-full gap-6 p-4 mt-24">
           <h1 className="text-4xl mb-4 font-bold">Login</h1>
 
           {/* E-Mail Field */}
