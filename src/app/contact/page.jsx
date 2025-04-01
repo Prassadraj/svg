@@ -45,7 +45,7 @@ function Contact() {
       });
     } catch (error) {
       setMessageLoading(false);
-      toast.success("Failed to send message. Please try again.");
+      toast.error("Failed to send message. Please try again.");
     }
   };
 
