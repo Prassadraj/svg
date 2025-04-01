@@ -25,9 +25,11 @@ function Ongoing() {
   const [projectdata, setProjectData] = useState([]);
   const [singleData, setSingleData] = useState([]);
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await axios.get("/api/data");
         const completedProjects = response.data.data.filter(
@@ -36,6 +38,8 @@ function Ongoing() {
         setProjectData(completedProjects);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -78,32 +82,43 @@ function Ongoing() {
           Our Works
         </h1>
         {/* img */}
-        <div className="grid tablet:grid-cols-3 laptop:grid-cols-4 gap-4 ">
-          {/* ✅ Check if projectdata has images */}
-          {projectdata?.length > 0 ? (
-            projectdata.map((project, i) => (
-              <div
-                key={project._id || i}
-                onClick={() => {
-                  setOpen(true);
+        {loading ? (
+          <>
+            <div className="text-center text-gray-500">Loading projects...</div>
+          </>
+        ) : (
+          <>
+            {" "}
+            <div className="grid tablet:grid-cols-3 laptop:grid-cols-4 gap-4 ">
+              {/* ✅ Check if projectdata has images */}
+              {projectdata?.length > 0 ? (
+                projectdata.map((project, i) => (
+                  <div
+                    key={project._id || i}
+                    onClick={() => {
+                      setOpen(true);
 
-                  filterDetails(i);
-                }}
-                className="w-full laptop:h-[400px] tablet:h-[300px] h-[250px] overflow-hidden cursor-pointer z-0"
-              >
-                <Image
-                  className="rounded-lg object-cover w-full h-full"
-                  width={900}
-                  height={900}
-                  src={project.img[0]}
-                  alt={`Project Image `}
-                />
-              </div>
-            ))
-          ) : (
-            <p className="text-center text-gray-500">No projects available.</p>
-          )}
-        </div>
+                      filterDetails(i);
+                    }}
+                    className="w-full laptop:h-[400px] tablet:h-[300px] h-[250px] overflow-hidden cursor-pointer z-0"
+                  >
+                    <Image
+                      className="rounded-lg object-cover w-full h-full"
+                      width={900}
+                      height={900}
+                      src={project.img[0]}
+                      alt={`Project Image `}
+                    />
+                  </div>
+                ))
+              ) : (
+                <p className="text-center text-gray-500">
+                  No projects available.
+                </p>
+              )}
+            </div>
+          </>
+        )}
         {open && (
           <div className="fixed top-1/2  left-1/2 -translate-x-1/2 overflow-y-auto w-[90vw] max-h-[90vh] tablet:h-[80vh] laptop:h-[90vh] h-[600px] -translate-y-1/2 bg-black/90  z-10 p-4  flex flex-col  ">
             <div
