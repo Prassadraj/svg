@@ -119,19 +119,22 @@ function Comlpeted() {
           </>
         )}
         {open && (
-          <div className="fixed top-1/2  left-1/2 -translate-x-1/2 overflow-y-auto w-[90vw] tablet:h-[80vh] laptop:h-[90vh] h-[600px] -translate-y-1/2 bg-black/90  z-10 p-4  flex flex-col  ">
-            <div
-              className={`absolute  top-2 !right-2  z-50 text-2xl cursor-pointer ${montLight.className}`}
-              onClick={() => setOpen(false)}
-            >
-              X
-            </div>
-            <div className="flex flex-col items-center gap-4 mt-4">
-              <h1 className={`${news.className} tablet:text-2xl`}>
-                Work Information
-              </h1>
-              {singleData[0]?.img && singleData[0].img.length > 0 ? (
-                <>
+          <div
+            className="fixed inset-0 flex items-center justify-center bg-black/50 z-10 
+          "
+          >
+            <div className="relative p-4 flex flex-col w-[90vw] max-h-[90vh] tablet:h-[80vh] laptop:h-[90vh] h-[600px] bg-black/80">
+              <div
+                className={`absolute tablet:top-10 top-2 right-2 z-50 text-2xl cursor-pointer ${montLight.className}`}
+                onClick={() => setOpen(false)}
+              >
+                X
+              </div>
+              <div className="flex flex-col items-center gap-4 mt-4">
+                <h1 className={`${news.className} tablet:text-2xl`}>
+                  Work Information
+                </h1>
+                {singleData[0]?.img && singleData[0].img.length > 0 ? (
                   <Swiper
                     style={{
                       "--swiper-navigation-color": "#fff",
@@ -141,39 +144,34 @@ function Comlpeted() {
                     zoom={true}
                     loop={true}
                     navigation={true}
-                    pagination={{
-                      clickable: true,
-                    }}
+                    pagination={{ clickable: true }}
                     modules={[Zoom, Navigation, Pagination]}
-                    className="mySwiper tablet:w-[500px] w-[300px] tablet:h-[250px] h-[200px]  "
+                    className="mySwiper tablet:w-[350px] w-[300px] tablet:h-[250px] h-[280px]"
                   >
                     {singleData[0]?.img.map((val, i) => (
                       <SwiperSlide key={i}>
-                        <div className="swiper-zoom-container w-[350px] h-[200px]">
+                        <div className="swiper-zoom-container w-[300px] h-[250px]">
                           <Image
-                            width={600} // Adjust based on container size
-                            height={600}
+                            width={600}
+                            height={700}
                             alt="imgs"
                             priority
                             src={val}
-                            className=" w-full h-full object-cover"
+                            className="w-full h-full object-cover"
                           />
                         </div>
                       </SwiperSlide>
                     ))}
                   </Swiper>
-                </>
-              ) : (
-                <>
-                  {" "}
+                ) : (
                   <p>No images available</p>
-                </>
-              )}
-              <p
-                className={`${montLight.className} text-center tablet:text-sm text-xs`}
-              >
-                {singleData[0]?.desc || "No description available"}
-              </p>
+                )}
+                <p
+                  className={`${montLight.className} text-center tablet:text-sm text-xs overflow-y-auto h-40`}
+                >
+                  {singleData[0]?.desc || "No description available"}
+                </p>
+              </div>
             </div>
           </div>
         )}

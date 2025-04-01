@@ -119,14 +119,18 @@ function Nav() {
             </li>
           </ul>
           <div className="flex gap-2 items-center  justify-evenly w-full ">
-            <FaWhatsapp className="tablet:text-xl  text-4xl text-green-400" />
+            <FaWhatsapp className="tablet:text-xl  text-2xl text-green-400" />
             <Link href="/contact">
               {" "}
-              <FaLocationDot className="tablet:text-lg text-4xl  text-red-500" />
+              <FaLocationDot className="tablet:text-lg text-2xl  text-red-500" />
             </Link>
             <Link href="/contact">
               {" "}
-              <LuPhoneCall className="tablet:text-lg   text-4xl" />
+              <LuPhoneCall className="tablet:text-lg   text-2xl" />
+            </Link>
+            <Link href="/admin">
+              {" "}
+              <CiUser className="text-2xl " />
             </Link>
           </div>
         </div>
