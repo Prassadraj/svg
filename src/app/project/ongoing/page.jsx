@@ -29,9 +29,7 @@ function Ongoing() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://tminteriors.netlify.app/api/data"
-        );
+        const response = await axios.get("tminteriors.netlify.app/api/data");
         const completedProjects = response.data.data.filter(
           (project) => project.complete == false
         );
