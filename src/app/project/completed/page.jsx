@@ -4,25 +4,34 @@ import { Montserrat, Newsreader } from "next/font/google";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/effect-coverflow";
+import "swiper/css/zoom";
+import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
+import "./styles.css";
+
+// import required modules
+import { Zoom, Navigation, Pagination } from "swiper/modules";
+
 const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
 const montmedium = Montserrat({ subsets: ["latin"], weight: ["600"] });
 const news = Newsreader({ subsets: ["latin"], weight: ["800"] });
 const montLight = Montserrat({ subsets: ["latin"], weight: ["400"] });
+
 function Comlpeted() {
   const [projectdata, setProjectData] = useState([]);
-  const [open, setOpen] = useState("");
+  const [singleData, setSingleData] = useState([]);
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("/api/data");
         const completedProjects = response.data.data.filter(
-          (project) => project.complete
+          (project) => project.complete == true
         );
         setProjectData(completedProjects);
       } catch (error) {
@@ -31,6 +40,12 @@ function Comlpeted() {
     };
     fetchData();
   }, []);
+
+  const filterDetails = (selectedId) => {
+    const response = projectdata.filter((data, i) => i == selectedId);
+
+    setSingleData(response);
+  };
 
   return (
     <div className={`${mont.className}`}>
@@ -69,8 +84,12 @@ function Comlpeted() {
             projectdata.map((project, i) => (
               <div
                 key={project._id || i}
-                onClick={() => setOpen(true)}
-                className="w-full laptop:h-[400px] tablet:h-[300px] h-[250px] overflow-hidden cursor-pointer"
+                onClick={() => {
+                  setOpen(true);
+
+                  filterDetails(i);
+                }}
+                className="w-full laptop:h-[400px] tablet:h-[300px] h-[250px] overflow-hidden cursor-pointer z-0"
               >
                 <Image
                   className="rounded-lg object-cover w-full h-full"
@@ -86,41 +105,61 @@ function Comlpeted() {
           )}
         </div>
         {open && (
-          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 w-[90vw] h-[70vh] -translate-y-1/2 bg-slate-400 z-10 ">
-            <>
-              <Swiper
-                effect={"coverflow"}
-                grabCursor={true}
-                centeredSlides={true}
-                slidesPerView={"auto"}
-                navigation={true}
-                initialSlide={3}
-                coverflowEffect={{
-                  rotate: 50,
-                  stretch: 0,
-                  depth: 100,
-                  modifier: 5,
-                  slideShadows: true,
-                }}
-                pagination={{ clickable: true }}
-                modules={[EffectCoverflow, Pagination, Navigation]}
-                className="mySwiper"
-              >
-                {projectdata[2]?.img.map((val, i) => (
-                  <SwiperSlide
-                    key={i}
-                    className="tablet:!w-[350px] tablet:!h-[350px] !h-[200px] !w-[200px] relative rounded-md overflow-hidden !z-10"
-                  >
-                    <img loading="lazy" alt={`Nature ${i + 1}`} src={val} />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </>
+          <div className="fixed top-1/2  left-1/2 -translate-x-1/2 overflow-y-auto w-[90vw] max-h-[90vh] tablet:h-[80vh] laptop:h-[90vh] h-[600px] -translate-y-1/2 bg-black/90  z-10 p-4  flex flex-col  ">
             <div
-              className="absolute -right-5 top-0 cursor-pointer"
+              className={`absolute  top-2 !right-2  z-50 text-2xl cursor-pointer ${montLight.className}`}
               onClick={() => setOpen(false)}
             >
               X
+            </div>
+            <div className="flex flex-col items-center gap-4 mt-4">
+              <h1 className={`${news.className} tablet:text-2xl`}>
+                Work Information
+              </h1>
+              {singleData[0]?.img && singleData[0].img.length > 0 ? (
+                <>
+                  <Swiper
+                    style={{
+                      "--swiper-navigation-color": "#fff",
+                      "--swiper-pagination-color": "#fff",
+                      "--swiper-navigation-size": "15px",
+                    }}
+                    zoom={true}
+                    loop={true}
+                    navigation={true}
+                    pagination={{
+                      clickable: true,
+                    }}
+                    modules={[Zoom, Navigation, Pagination]}
+                    className="mySwiper tablet:w-[500px] w-[300px] tablet:h-[300px] h-[250px]  "
+                  >
+                    {singleData[0]?.img.map((val, i) => (
+                      <SwiperSlide key={i}>
+                        <div className="swiper-zoom-container w-[350px] h-[300px]">
+                          <Image
+                            width={600} // Adjust based on container size
+                            height={700}
+                            alt="imgs"
+                            priority
+                            src={val}
+                            className=" w-full h-full object-cover"
+                          />
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <p>No images available</p>
+                </>
+              )}
+              <p
+                className={`${montLight.className} text-center tablet:text-sm text-xs overflow-y-auto h-40`}
+              >
+                {singleData[0]?.desc || "No description available"}
+              </p>
             </div>
           </div>
         )}
