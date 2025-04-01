@@ -1,3 +1,26 @@
 .swiper-slide {
   overflow: hidden;
 }
+.swiper-button-prev,
+.swiper-button-next {
+  color: grey !important; /* Default inactive state */
+  transition: color 0.3s ease-in-out;
+}
+
+/* Active state (hovered/clicked) */
+.swiper-button-prev:not(.swiper-button-disabled),
+.swiper-button-next:not(.swiper-button-disabled) {
+  color: white !important; /* Active state */
+}
+/* Add this to your CSS file (global or in a styled component) */
+.swiper-pagination-bullet {
+  border: 2px solid rgb(196, 195, 195); /* Border color for pagination bullets */
+  width: 12px; /* Width of the bullet */
+  height: 12px; /* Height of the bullet */
+  background-color: white; /* Bullet color */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #9d980d; /* Active bullet color */
+  border-color: #fff; /* Active bullet border */
+}

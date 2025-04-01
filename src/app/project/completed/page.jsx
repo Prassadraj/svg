@@ -15,6 +15,7 @@ import "./styles.css";
 
 // import required modules
 import { Zoom, Navigation, Pagination } from "swiper/modules";
+import { MdArrowOutward } from "react-icons/md";
 
 const mont = Montserrat({ subsets: ["latin"], weight: ["800"] });
 const montmedium = Montserrat({ subsets: ["latin"], weight: ["600"] });
@@ -99,7 +100,7 @@ function Comlpeted() {
 
                       filterDetails(i);
                     }}
-                    className="w-full laptop:h-[400px] tablet:h-[300px] h-[250px] overflow-hidden cursor-pointer z-0"
+                    className="relative w-full group laptop:h-[300px] tablet:h-[300px] h-[250px] overflow-hidden cursor-pointer z-0"
                   >
                     <Image
                       className="rounded-lg object-cover w-full h-full"
@@ -108,6 +109,9 @@ function Comlpeted() {
                       src={project.img[0]}
                       alt={`Project Image `}
                     />
+                    <div className="absolute right-2 bottom-4 text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out">
+                      <MdArrowOutward />
+                    </div>
                   </div>
                 ))
               ) : (
@@ -138,13 +142,17 @@ function Comlpeted() {
                   <Swiper
                     style={{
                       "--swiper-navigation-color": "#fff",
-                      "--swiper-pagination-color": "#fff",
-                      "--swiper-navigation-size": "15px",
+                      "--swiper-pagination-border": "2px solid gray",
+                      "--swiper-pagination-color": "white",
+                      "--swiper-navigation-size": "20px",
                     }}
                     zoom={true}
                     loop={true}
                     navigation={true}
-                    pagination={{ clickable: true }}
+                    pagination={{
+                      clickable: true,
+                      type: "bullets", // Use bullet pagination
+                    }}
                     modules={[Zoom, Navigation, Pagination]}
                     className="mySwiper tablet:w-[350px] w-[300px] tablet:h-[250px] h-[280px]"
                   >
@@ -166,11 +174,14 @@ function Comlpeted() {
                 ) : (
                   <p>No images available</p>
                 )}
-                <p
-                  className={`${montLight.className} text-center tablet:text-sm text-xs overflow-y-auto h-40`}
-                >
-                  {singleData[0]?.desc || "No description available"}
-                </p>
+                <div className="flex flex-col items-center">
+                  <h1> {singleData[0]?.name || "No title available"}</h1>
+                  <p
+                    className={`${montLight.className} text-center tablet:text-sm text-xs overflow-y-auto h-40`}
+                  >
+                    {singleData[0]?.desc || "No description available"}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
