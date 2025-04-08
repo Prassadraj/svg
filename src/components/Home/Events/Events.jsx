@@ -40,49 +40,53 @@ function Events() {
           </p>
         </div>
         <>
-          <Swiper
-            effect={"coverflow"}
-            grabCursor={true}
-            centeredSlides={true}
-            slidesPerView={"auto"}
-            navigation={true}
-            initialSlide={3}
-            coverflowEffect={{
-              rotate: 50,
-              stretch: 0,
-              depth: 100,
-              modifier: 5,
-              slideShadows: true,
-            }}
-            pagination={{ clickable: true }}
-            modules={[EffectCoverflow, Pagination, Navigation]}
-            className="mySwiper"
-          >
-            {["one", "two", "three", "four", "five", "six", "seven"].map(
-              (val, i) => (
-                <SwiperSlide
-                  key={i}
-                  className="tablet:!w-[350px] tablet:!h-[350px] !h-[200px] !w-[200px] relative rounded-md overflow-hidden !z-10"
-                >
-                  <img
-                    loading="lazy"
-                    alt={`Nature ${i + 1}`}
-                    src={`/Events/${val}.jpeg`}
-                  />
-                  <div className="absolute bottom-0 w-full bg-black/50 p-2">
-                    <p
-                      className={`line-clamp-2 overflow-hidden text-ellipsis text-xs tablet:text-sm
-                      tablet:line-clamp-3 ${montLight.className}`}
-                    >
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Quas sapiente amet corporis repellendus asperiores,
-                      suscipit neque qui
-                    </p>
-                  </div>
-                </SwiperSlide>
-              )
-            )}
-          </Swiper>
+          <div className="relative tablet:mt-5">
+            <Swiper
+              effect={"coverflow"}
+              grabCursor={true}
+              centeredSlides={true}
+              slidesPerView={"auto"}
+              navigation={true}
+              initialSlide={3}
+              coverflowEffect={{
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 5,
+                slideShadows: true,
+              }}
+              pagination={{ clickable: true, el: ".custom-pagination" }}
+              modules={[EffectCoverflow, Pagination, Navigation]}
+              className="mySwiper"
+            >
+              {["one", "two", "three", "four", "five", "six", "seven"].map(
+                (val, i) => (
+                  <SwiperSlide
+                    key={i}
+                    className="tablet:!w-[350px] tablet:!h-[350px] !h-[200px] !w-[200px] relative rounded-md overflow-hidden !z-10"
+                  >
+                    <img
+                      loading="lazy"
+                      alt={`Nature ${i + 1}`}
+                      src={`/Events/${val}.jpeg`}
+                    />
+                    <div className="absolute bottom-0 w-full bg-black/50 p-2">
+                      <p
+                        className={`line-clamp-2 overflow-hidden text-ellipsis text-xs tablet:text-sm tablet:line-clamp-3 ${montLight.className}`}
+                      >
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quas sapiente amet corporis repellendus asperiores,
+                        suscipit neque qui
+                      </p>
+                    </div>
+                  </SwiperSlide>
+                )
+              )}
+            </Swiper>
+
+            {/* Custom pagination below Swiper */}
+            <div className="custom-pagination mt-5 flex justify-center"></div>
+          </div>
         </>
       </div>
     </div>

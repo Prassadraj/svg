@@ -1,12 +1,18 @@
 .swiper {
   width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+
+  padding-bottom: 0px;
 }
 
 .swiper-slide {
   background-position: center;
   background-size: cover;
+}
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 2.5rem; /* mt-10 */
+  bottom: auto !important; /* prevent it from sticking to bottom */
+  text-align: center;
 }
 
 .swiper-slide img {
@@ -18,18 +24,22 @@
 .swiper-button-prev {
   color: #ffffff !important; /* 🔥 Change to your preferred color */
 }
+/* Add margin-top to the bullets */
 
 /* Optional: Change pagination dot color */
 .swiper-pagination-bullet {
   background-color: #ffffff !important; /* 🔥 Change dot color */
   font-size: xx-large;
-  height: 14px;
-  width: 14px;
+  height: 24px;
+  width: 24px;
   border: 2px rgb(255, 255, 255) solid;
 }
 
 /* Optional: Change active pagination dot color */
 .swiper-pagination-bullet-active {
   background-color: #ffffff !important; /* Darker shade */
-  border: 3px rgb(255, 93, 23) solid;
+  border: 3px rgb(255, 99, 60) solid;
+  margin-top: 30px;
+  height: 24px;
+  width: 24px;
 }
